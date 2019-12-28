@@ -1,0 +1,2 @@
+1|Telefon|asd|100||nic|1|2018-02-27||brak|TAK|brak
+2|Telefon|asdsa|50||asdf|1|2018-03-19||asdf|TAK|fsad
