@@ -233,8 +233,8 @@ namespace SystemSerwisowy
                         indeks = 0;
                         System.Drawing.Printing.PrintDocument pd = new System.Drawing.Printing.PrintDocument();
                         pd.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocumentSprzedaz_PrintPage);
-                        //printPreviewDialogSprzedaz.Document = pd;  // psuje drukowanie - tylko pierwsza strona wychodzi
-                        //printPreviewDialogSprzedaz.ShowDialog();
+                        printPreviewDialogSprzedaz.Document = pd;  // psuje drukowanie - tylko pierwsza strona wychodzi
+                        printPreviewDialogSprzedaz.ShowDialog();
 
                         if (printDialogSprzedaz.ShowDialog() == DialogResult.OK)
                             pd.Print();
