@@ -33,7 +33,7 @@ namespace SystemSerwisowy
             bazaKlientow = new Dictionary<string, string>();
             regulamin = new List<string>();
             wczytajPliki();
-            Przypominacz();
+            //Przypominacz();
             timer1.Enabled = true;
             timer2.Enabled = true;
             generujRaport();
@@ -736,7 +736,7 @@ namespace SystemSerwisowy
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            Przypominacz();
+            //Przypominacz();
         }
         #endregion
 

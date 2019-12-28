@@ -61,3 +61,24 @@ E:\Adam\Projekty\Zlecenia\SystemSerwisowy\SystemSerwisowy\bin\Debug\SystemSerwis
 E:\Adam\Projekty\Zlecenia\SystemSerwisowy\SystemSerwisowy\bin\Debug\SystemSerwisowy.pdb
 E:\Adam\Projekty\Zlecenia\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.exe
 E:\Adam\Projekty\Zlecenia\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.pdb
+E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\SystemSerwisowy\bin\Debug\SystemSerwisowy.exe
+E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\SystemSerwisowy\bin\Debug\SystemSerwisowy.pdb
+E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.csproj.ResolveComReference.cache
+E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.DodajAkcesoria.resources
+E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.DodajProdukt.resources
+E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.DodajUsterke.resources
+E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.EdycjaUsterki.resources
+E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.FirmaDane.resources
+E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.Glowna.resources
+E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.Properties.Resources.resources
+E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.Przypominacz.resources
+E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.Regulamin.resources
+E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.SekcjaAkcesoriow.resources
+E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.SekcjaProduktow.resources
+E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.SekcjaRaportow.resources
+E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.SekcjaSerwisu.resources
+E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.SprzedajAkcesoria.resources
+E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.SprzedajProdukt.resources
+E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.csproj.GenerateResource.Cache
+E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.exe
+E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.pdb
