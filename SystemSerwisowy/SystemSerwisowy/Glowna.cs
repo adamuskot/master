@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Threading;
 
+
 namespace SystemSerwisowy
 {
     public partial class Glowna : Form
