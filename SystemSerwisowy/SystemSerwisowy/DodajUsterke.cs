@@ -20,7 +20,7 @@ namespace SystemSerwisowy
             InitializeComponent();
             tbId.Text = serwis.glowna.GetFreeIdUsterek().ToString();
             nudCzasNaprawy.Value = serwis.glowna.czasNaprawy;
-            tbData.Text = DateTime.Now.ToShortDateString();
+            tbData.Text = DateTime.Now.ToString("yyyy-MM-dd");
             DateTime now = DateTime.Today;
             dateTimePicker1.Value = now.AddDays((double)nudCzasNaprawy.Value);
             cbStatus.SelectedIndex = 3;
@@ -37,7 +37,7 @@ namespace SystemSerwisowy
             {
                 Usterka usterka = new Usterka();
                 usterka.DataZgloszenia = tbData.Text;
-                usterka.DataRealizacji = dateTimePicker1.Value.ToShortDateString();
+                usterka.DataRealizacji = dateTimePicker1.Value.ToString("yyyy-MM-dd");
                 usterka.ID = Convert.ToInt32(tbId.Text);
                 usterka.Koszt = tbKoszt.Text;
                 usterka.Model = tbModel.Text;

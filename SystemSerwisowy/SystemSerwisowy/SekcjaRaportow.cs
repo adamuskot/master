@@ -70,7 +70,8 @@ namespace SystemSerwisowy
             {
                 DateTime now = DateTime.Today;
                 //dateTimePicker1.Value = now.AddDays(2);
-                TimeSpan ts = now - Convert.ToDateTime(glowna.listaUsterek[i].DataRealizacji);
+                var dat = DateTime.Parse(glowna.listaUsterek[i].DataRealizacji);
+                TimeSpan ts = now - dat;
                 if (ts.Days > 2 && glowna.listaUsterek[i].Odbior == "NIE" && glowna.listaUsterek[i].Status != "Brak możliwości naprawy")
                 {
                     if (glowna.listaUsterek[i].Uwagi.Contains("Pilne"))

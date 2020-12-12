@@ -100,7 +100,7 @@ namespace SystemSerwisowy
             serwis.glowna.listaUsterek[indeks].Odbior = cbOdbior.SelectedItem.ToString();
             if (cbOdbior.SelectedItem.ToString() == "TAK" && serwis.glowna.listaUsterek[indeks].DataOdbioru == "")
             {
-                serwis.glowna.listaUsterek[indeks].DataOdbioru = DateTime.Now.ToShortDateString();
+                serwis.glowna.listaUsterek[indeks].DataOdbioru = DateTime.Now.ToString("yyyy-MM-dd");
             }
             serwis.glowna.listaUsterek[indeks].WykonaneNaprawy = tbNaprawy.Text;
             if (chbPilne.Checked && !serwis.glowna.listaUsterek[indeks].Uwagi.Contains("Pilne"))

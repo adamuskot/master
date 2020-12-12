@@ -83,7 +83,35 @@ namespace SystemSerwisowy
             StreamWriter zapisuj = new StreamWriter(plik);
             for (int i = 0; i < listaUsterek.Count(); i++)
             {
-                zapisuj.WriteLine(listaUsterek[i].ID + "|" + listaUsterek[i].Nazwisko + "|" + listaUsterek[i].Telefon + "|" + listaUsterek[i].Model + "|" + listaUsterek[i].NumerSeryjny + "|" + listaUsterek[i].Opis + "|" + listaUsterek[i].Uwagi + "|" + listaUsterek[i].Koszt + "|" + listaUsterek[i].DataZgloszenia + "|" + listaUsterek[i].DataRealizacji + "|" + listaUsterek[i].Status + "|" + listaUsterek[i].Odbior + "|" + listaUsterek[i].WykonaneNaprawy + "|" + listaUsterek[i].DataOdbioru);
+                string dataRealizacji = "";
+                if (listaUsterek[i].DataRealizacji.Contains(".") && listaUsterek[i].DataRealizacji != "" && listaUsterek[i].DataRealizacji.Length == 10)
+                {
+                    dataRealizacji = listaUsterek[i].DataRealizacji.Substring(6, 4) + "-" + listaUsterek[i].DataRealizacji.Substring(3, 2) + "-" + listaUsterek[i].DataRealizacji.Substring(0, 2);
+                }
+                else
+                {
+                    dataRealizacji = listaUsterek[i].DataRealizacji;
+                }
+                string dataZgloszenia = "";
+                if (listaUsterek[i].DataZgloszenia.Contains(".") && listaUsterek[i].DataZgloszenia != "" && listaUsterek[i].DataZgloszenia.Length == 10)
+                {
+                    dataZgloszenia = listaUsterek[i].DataZgloszenia.Substring(6, 4) + "-" + listaUsterek[i].DataZgloszenia.Substring(3, 2) + "-" + listaUsterek[i].DataZgloszenia.Substring(0, 2);
+                }
+                else
+                {
+                    dataZgloszenia = listaUsterek[i].DataZgloszenia;
+                }
+                string dataOdbioru = "";
+                if (listaUsterek[i].DataOdbioru.Contains(".") && listaUsterek[i].DataOdbioru != "" && listaUsterek[i].DataOdbioru.Length == 10)
+                {
+                    dataOdbioru = listaUsterek[i].DataOdbioru.Substring(6, 4) + "-" + listaUsterek[i].DataOdbioru.Substring(3, 2) + "-" + listaUsterek[i].DataOdbioru.Substring(0, 2);
+                }
+                else
+                {
+                    dataOdbioru = listaUsterek[i].DataOdbioru;
+                }
+
+                zapisuj.WriteLine(listaUsterek[i].ID + "|" + listaUsterek[i].Nazwisko + "|" + listaUsterek[i].Telefon + "|" + listaUsterek[i].Model + "|" + listaUsterek[i].NumerSeryjny + "|" + listaUsterek[i].Opis + "|" + listaUsterek[i].Uwagi + "|" + listaUsterek[i].Koszt + "|" + dataZgloszenia + "|" + dataRealizacji + "|" + listaUsterek[i].Status + "|" + listaUsterek[i].Odbior + "|" + listaUsterek[i].WykonaneNaprawy + "|" + dataOdbioru);
             }
             zapisuj.Close();
         }
@@ -489,9 +517,9 @@ namespace SystemSerwisowy
                                 if (item == null)
                                 {
                                     listaUsterek.Add(ust);
-                                    if (!bazaKlientow.ContainsKey(ust.Nazwisko))
+                                    if (!bazaKlientow.ContainsKey(ust.Nazwisko + " " + ust.Telefon))
                                     {
-                                        bazaKlientow.Add(ust.Nazwisko, ust.Telefon);
+                                        bazaKlientow.Add(ust.Nazwisko + " " + ust.Telefon, ust.Telefon);
                                     }
 
                                 }
