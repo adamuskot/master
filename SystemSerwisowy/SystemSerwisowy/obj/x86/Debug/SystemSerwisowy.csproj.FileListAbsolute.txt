@@ -82,3 +82,7 @@ E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\
 E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.csproj.GenerateResource.Cache
 E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.exe
 E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.pdb
+E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.csprojResolveAssemblyReference.cache
+E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\SystemSerwisowy\bin\Debug\SystemSerwisowy.exe.config
+E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\SystemSerwisowy\bin\Debug\smsApi.dll
+E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\SystemSerwisowy\bin\Debug\smsApi.pdb

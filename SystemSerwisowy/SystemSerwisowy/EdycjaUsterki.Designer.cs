@@ -30,6 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.chbPilne = new System.Windows.Forms.CheckBox();
             this.tbNaprawy = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.tbDataDo = new System.Windows.Forms.TextBox();
@@ -57,7 +58,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btZapisz = new System.Windows.Forms.Button();
             this.btAnuluj = new System.Windows.Forms.Button();
-            this.chbPilne = new System.Windows.Forms.CheckBox();
+            this.btnWyslijSms = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,10 +74,11 @@
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.btnWyslijSms);
             this.panel1.Controls.Add(this.chbPilne);
             this.panel1.Controls.Add(this.tbNaprawy);
             this.panel1.Controls.Add(this.label13);
@@ -108,6 +110,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(460, 391);
             this.panel1.TabIndex = 1;
+            // 
+            // chbPilne
+            // 
+            this.chbPilne.AutoSize = true;
+            this.chbPilne.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.chbPilne.Location = new System.Drawing.Point(341, 211);
+            this.chbPilne.Name = "chbPilne";
+            this.chbPilne.Size = new System.Drawing.Size(65, 20);
+            this.chbPilne.TabIndex = 27;
+            this.chbPilne.Text = "PILNE";
+            this.chbPilne.UseVisualStyleBackColor = true;
             // 
             // tbNaprawy
             // 
@@ -371,16 +384,15 @@
             this.btAnuluj.UseVisualStyleBackColor = true;
             this.btAnuluj.Click += new System.EventHandler(this.btAnuluj_Click);
             // 
-            // chbPilne
+            // btnWyslijSms
             // 
-            this.chbPilne.AutoSize = true;
-            this.chbPilne.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.chbPilne.Location = new System.Drawing.Point(341, 211);
-            this.chbPilne.Name = "chbPilne";
-            this.chbPilne.Size = new System.Drawing.Size(65, 20);
-            this.chbPilne.TabIndex = 27;
-            this.chbPilne.Text = "PILNE";
-            this.chbPilne.UseVisualStyleBackColor = true;
+            this.btnWyslijSms.Location = new System.Drawing.Point(307, 69);
+            this.btnWyslijSms.Name = "btnWyslijSms";
+            this.btnWyslijSms.Size = new System.Drawing.Size(75, 23);
+            this.btnWyslijSms.TabIndex = 28;
+            this.btnWyslijSms.Text = "Wyślij SMS";
+            this.btnWyslijSms.UseVisualStyleBackColor = true;
+            this.btnWyslijSms.Click += new System.EventHandler(this.btnWyslijSms_Click);
             // 
             // EdycjaUsterki
             // 
@@ -433,5 +445,6 @@
         private System.Windows.Forms.TextBox tbNaprawy;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.CheckBox chbPilne;
+        private System.Windows.Forms.Button btnWyslijSms;
     }
 }

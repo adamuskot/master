@@ -1,0 +1,5 @@
+E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\smsApi\bin\Debug\smsApi.dll
+E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\smsApi\bin\Debug\smsApi.pdb
+E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\smsApi\obj\Debug\smsApi.dll
+E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\smsApi\obj\Debug\smsApi.pdb
+E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\smsApi\bin\Debug\smsApi.dll.config
