@@ -23,6 +23,8 @@ namespace SystemSerwisowy
         public List<string> regulamin;
         private int indeks = 0;
         public int czasNaprawy = 2;
+        public string trescSms = "";
+        public string nadawcaSms = "";
 
         public Glowna()
         {
@@ -111,7 +113,7 @@ namespace SystemSerwisowy
                     dataOdbioru = listaUsterek[i].DataOdbioru;
                 }
 
-                zapisuj.WriteLine(listaUsterek[i].ID + "|" + listaUsterek[i].Nazwisko + "|" + listaUsterek[i].Telefon + "|" + listaUsterek[i].Model + "|" + listaUsterek[i].NumerSeryjny + "|" + listaUsterek[i].Opis + "|" + listaUsterek[i].Uwagi + "|" + listaUsterek[i].Koszt + "|" + dataZgloszenia + "|" + dataRealizacji + "|" + listaUsterek[i].Status + "|" + listaUsterek[i].Odbior + "|" + listaUsterek[i].WykonaneNaprawy + "|" + dataOdbioru);
+                zapisuj.WriteLine(listaUsterek[i].ID + "|" + listaUsterek[i].Nazwisko + "|" + listaUsterek[i].Telefon + "|" + listaUsterek[i].Model + "|" + listaUsterek[i].NumerSeryjny + "|" + listaUsterek[i].Opis + "|" + listaUsterek[i].Uwagi + "|" + listaUsterek[i].Koszt + "|" + dataZgloszenia + "|" + dataRealizacji + "|" + listaUsterek[i].Status + "|" + listaUsterek[i].Odbior + "|" + listaUsterek[i].WykonaneNaprawy + "|" + dataOdbioru + "|" + listaUsterek[i].SMS);
             }
             zapisuj.Close();
         }
@@ -149,6 +151,8 @@ namespace SystemSerwisowy
             plik = new FileStream(sciezka, FileMode.Append, FileAccess.Write);
             StreamWriter zapisuj = new StreamWriter(plik);
             zapisuj.WriteLine("Czas naprawy=" + czasNaprawy.ToString());
+            zapisuj.WriteLine("Nadawca=" + nadawcaSms);
+            zapisuj.WriteLine("Tresc sms=" + trescSms);
             zapisuj.Close();
         }
 
@@ -297,6 +301,14 @@ namespace SystemSerwisowy
                             if (split[0] == "Czas naprawy")
                             {
                                 czasNaprawy = Convert.ToInt32(split[1]);
+                            }
+                            if (split[0] == "Nadawca")
+                            {
+                                nadawcaSms = split[1];
+                            }
+                            if (split[0] == "Tresc sms")
+                            {
+                                trescSms = split[1];
                             }
                         }
                     }
@@ -478,9 +490,12 @@ namespace SystemSerwisowy
                                 ust.WykonaneNaprawy = split[12];
                                 ust.DataOdbioru = split[13];
                                 ust.DniPoTerminie = Convert.ToInt32((Convert.ToDateTime(DateTime.Today) - Convert.ToDateTime(ust.DataRealizacji)).TotalDays);
+                                ust.SMS = (split[14] == null) ? "NIE" : split[14];
                             }
                             catch
                             {
+                                if (split.Count() < 15)
+                                    ust.SMS = "NIE";
                                 if (split.Count() < 14)
                                     ust.DataOdbioru = "";
                                 if (split.Count() < 13)
@@ -1039,6 +1054,12 @@ namespace SystemSerwisowy
             nadpiszUstawienia();
             nadpiszUsterki();
             wczytajPliki();
+        }
+
+        private void trescSmsToolStrip_Click(object sender, EventArgs e)
+        {
+            TrescSMS sms = new TrescSMS(this);
+            sms.Show(this);
         }
 
 

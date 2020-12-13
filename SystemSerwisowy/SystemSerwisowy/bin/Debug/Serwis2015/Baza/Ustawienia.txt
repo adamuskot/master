@@ -1,1 +1,3 @@
 Czas naprawy=2
+Nadawca=LUMIK
+Tresc sms=Tresc wiadomosci testowej

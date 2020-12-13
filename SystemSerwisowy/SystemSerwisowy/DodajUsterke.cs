@@ -24,11 +24,6 @@ namespace SystemSerwisowy
             DateTime now = DateTime.Today;
             dateTimePicker1.Value = now.AddDays((double)nudCzasNaprawy.Value);
             cbStatus.SelectedIndex = 3;
-            var sortedDict = from entry in serwis.glowna.bazaKlientow orderby entry.Key ascending select entry;
-            foreach (KeyValuePair<string, string> item in sortedDict)
-            {
-                cbKlienci.Items.Add(item.Key);
-            }
         }
 
         private void btDodaj_Click(object sender, EventArgs e)
@@ -237,12 +232,6 @@ namespace SystemSerwisowy
             DateTime now = DateTime.Today;
             dateTimePicker1.Value = now.AddDays((double)nudCzasNaprawy.Value);
             serwis.glowna.czasNaprawy = (int)nudCzasNaprawy.Value;
-        }
-
-        private void cbKlienci_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            tbNazwisko.Text = cbKlienci.SelectedItem.ToString();
-            tbTelefon.Text = serwis.glowna.bazaKlientow[cbKlienci.SelectedItem.ToString()];
         }
     }
 }

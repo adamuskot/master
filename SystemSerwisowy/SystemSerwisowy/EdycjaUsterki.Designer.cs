@@ -30,6 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnWyslijSms = new System.Windows.Forms.Button();
             this.chbPilne = new System.Windows.Forms.CheckBox();
             this.tbNaprawy = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -58,7 +59,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btZapisz = new System.Windows.Forms.Button();
             this.btAnuluj = new System.Windows.Forms.Button();
-            this.btnWyslijSms = new System.Windows.Forms.Button();
+            this.chbSmsWyslany = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,6 +79,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.chbSmsWyslany);
             this.panel1.Controls.Add(this.btnWyslijSms);
             this.panel1.Controls.Add(this.chbPilne);
             this.panel1.Controls.Add(this.tbNaprawy);
@@ -110,6 +112,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(460, 391);
             this.panel1.TabIndex = 1;
+            // 
+            // btnWyslijSms
+            // 
+            this.btnWyslijSms.Location = new System.Drawing.Point(298, 70);
+            this.btnWyslijSms.Name = "btnWyslijSms";
+            this.btnWyslijSms.Size = new System.Drawing.Size(75, 23);
+            this.btnWyslijSms.TabIndex = 28;
+            this.btnWyslijSms.Text = "Wyślij SMS";
+            this.btnWyslijSms.UseVisualStyleBackColor = true;
+            this.btnWyslijSms.Click += new System.EventHandler(this.btnWyslijSms_Click);
             // 
             // chbPilne
             // 
@@ -384,15 +396,16 @@
             this.btAnuluj.UseVisualStyleBackColor = true;
             this.btAnuluj.Click += new System.EventHandler(this.btAnuluj_Click);
             // 
-            // btnWyslijSms
+            // chbSmsWyslany
             // 
-            this.btnWyslijSms.Location = new System.Drawing.Point(307, 69);
-            this.btnWyslijSms.Name = "btnWyslijSms";
-            this.btnWyslijSms.Size = new System.Drawing.Size(75, 23);
-            this.btnWyslijSms.TabIndex = 28;
-            this.btnWyslijSms.Text = "Wyślij SMS";
-            this.btnWyslijSms.UseVisualStyleBackColor = true;
-            this.btnWyslijSms.Click += new System.EventHandler(this.btnWyslijSms_Click);
+            this.chbSmsWyslany.AutoSize = true;
+            this.chbSmsWyslany.Enabled = false;
+            this.chbSmsWyslany.Location = new System.Drawing.Point(378, 76);
+            this.chbSmsWyslany.Name = "chbSmsWyslany";
+            this.chbSmsWyslany.Size = new System.Drawing.Size(68, 17);
+            this.chbSmsWyslany.TabIndex = 29;
+            this.chbSmsWyslany.Text = "Wysłany";
+            this.chbSmsWyslany.UseVisualStyleBackColor = true;
             // 
             // EdycjaUsterki
             // 
@@ -405,6 +418,7 @@
             this.Controls.Add(this.btZapisz);
             this.Controls.Add(this.panel1);
             this.Name = "EdycjaUsterki";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EdycjaUsterki";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EdycjaUsterki_FormClosing);
             this.panel1.ResumeLayout(false);
@@ -446,5 +460,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.CheckBox chbPilne;
         private System.Windows.Forms.Button btnWyslijSms;
+        private System.Windows.Forms.CheckBox chbSmsWyslany;
     }
 }

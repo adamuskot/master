@@ -61,7 +61,6 @@
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.cbKlienci = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudCzasNaprawy)).BeginInit();
             this.SuspendLayout();
@@ -82,7 +81,6 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.cbKlienci);
             this.panel1.Controls.Add(this.lblDni);
             this.panel1.Controls.Add(this.nudCzasNaprawy);
             this.panel1.Controls.Add(this.lblCzas);
@@ -419,17 +417,6 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
-            // cbKlienci
-            // 
-            this.cbKlienci.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbKlienci.FormattingEnabled = true;
-            this.cbKlienci.Location = new System.Drawing.Point(321, 39);
-            this.cbKlienci.Name = "cbKlienci";
-            this.cbKlienci.Size = new System.Drawing.Size(193, 21);
-            this.cbKlienci.TabIndex = 26;
-            this.cbKlienci.SelectedIndexChanged += new System.EventHandler(this.cbKlienci_SelectedIndexChanged);
-            // 
             // DodajUsterke
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -483,6 +470,5 @@
         private System.Windows.Forms.Label lblDni;
         private System.Windows.Forms.NumericUpDown nudCzasNaprawy;
         private System.Windows.Forms.Label lblCzas;
-        private System.Windows.Forms.ComboBox cbKlienci;
     }
 }

@@ -7,6 +7,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Diagnostics;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace SystemSerwisowy
 {
@@ -117,13 +119,14 @@ namespace SystemSerwisowy
                     row.DefaultCellStyle.BackColor = Color.LightBlue;
                 }
             }
-            dgvUsterki.Columns[3].DefaultCellStyle.Font = new Font(FontFamily.GenericSansSerif, 8, FontStyle.Bold);
-            dgvUsterki.Columns[3].DefaultCellStyle.ForeColor = Color.DarkRed;
+            dgvUsterki.Columns[4].DefaultCellStyle.Font = new Font(FontFamily.GenericSansSerif, 8, FontStyle.Bold);
+            dgvUsterki.Columns[4].DefaultCellStyle.ForeColor = Color.DarkRed;
             dgvUsterki.Columns[0].Width = 40;
+            dgvUsterki.Columns[3].Width = 40;
             dgvUsterki.Columns[2].Width = 70;
-            dgvUsterki.Columns[3].Width = 70;
-            dgvUsterki.Columns[6].Width = 220;
+            dgvUsterki.Columns[4].Width = 70;
             dgvUsterki.Columns[7].Width = 220;
+            dgvUsterki.Columns[8].Width = 220;
             this.Refresh();
         }
 
@@ -472,6 +475,78 @@ namespace SystemSerwisowy
         private void chbNaprawa_CheckedChanged(object sender, EventArgs e)
         {
             AktualizujGrida();
+        }
+
+        private void btnExportKlientow_Click(object sender, EventArgs e)
+        {
+            Excel.Application ExcelApp = new Excel.Application();
+
+            Excel.Workbook ExcelWorkBook = null;
+
+            Excel.Worksheet ExcelWorkSheet = null;
+
+
+
+            ExcelApp.Visible = true;
+
+            ExcelWorkBook = ExcelApp.Workbooks.Add(Excel.XlWBATemplate.xlWBATWorksheet);
+
+            // ExcelWorkBook.Worksheets.Add(); //Adding New Sheet in Excel Workbook
+
+            try
+            {
+
+                ExcelWorkSheet = ExcelWorkBook.Worksheets[1]; // Compulsory Line in which sheet you want to write data
+
+                //Writing data into excel of 100 rows with 10 column
+                int i = 2;
+                ExcelWorkSheet.Cells[1, 1] = "Imię i nazwisko";
+                ExcelWorkSheet.Cells[1, 2] = "Numer Telefonu";
+                foreach (Usterka item in glowna.listaUsterek)
+                {
+                    if (Convert.ToDateTime(item.DataZgloszenia) >= new DateTime(2020, 12, 01))
+                    {
+                        ExcelWorkSheet.Cells[i, 1] = item.Nazwisko;
+                        ExcelWorkSheet.Cells[i, 2] = item.Telefon;
+                        i++;
+                    }
+                }
+
+                ExcelWorkBook.Worksheets[1].Name = "MySheet";//Renaming the Sheet1 to MySheet
+
+                ExcelWorkBook.SaveAs("d:\\RaportKlientow.xlsx");
+
+                ExcelWorkBook.Close();
+
+                ExcelApp.Quit();
+
+                //Excel.Marshal.ReleaseComObject(ExcelWorkSheet);
+
+                //Marshal.ReleaseComObject(ExcelWorkBook);
+
+                //Marshal.ReleaseComObject(ExcelApp);
+
+            }
+
+            catch (Exception exHandle)
+            {
+
+                Console.WriteLine("Exception: " + exHandle.Message);
+
+                Console.ReadLine();
+
+            }
+
+            finally
+            {
+
+
+
+                foreach (Process process in Process.GetProcessesByName("Excel"))
+
+                    process.Kill();
+
+            }
         }
     }
 }

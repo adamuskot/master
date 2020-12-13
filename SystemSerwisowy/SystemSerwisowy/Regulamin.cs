@@ -17,8 +17,7 @@ namespace SystemSerwisowy
             glowna = g;
             InitializeComponent();
             uzupelnijRegulamin();
-            label1.MaximumSize = new Size(800, 0);
-            label1.AutoSize = true;
+
         }
 
         private void btZapisz_Click(object sender, EventArgs e)

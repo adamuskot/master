@@ -86,3 +86,5 @@ E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\
 E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\SystemSerwisowy\bin\Debug\SystemSerwisowy.exe.config
 E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\SystemSerwisowy\bin\Debug\smsApi.dll
 E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\SystemSerwisowy\bin\Debug\smsApi.pdb
+E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.TrescSMS.resources
+E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.WyslijSMS.resources

@@ -34,7 +34,7 @@
             this.plikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.zamknij = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.PomocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DaneOFirmie = new System.Windows.Forms.ToolStripMenuItem();
             this.regulaminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wydrukiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,6 +61,7 @@
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.btnRaporty = new System.Windows.Forms.Button();
+            this.trescSmsToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -72,7 +73,7 @@
             // 
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.plikToolStripMenuItem,
-            this.helpToolStripMenuItem,
+            this.PomocToolStripMenuItem,
             this.wydrukiToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
@@ -101,26 +102,27 @@
             this.zamknij.Text = "Zamknij";
             this.zamknij.Click += new System.EventHandler(this.zamknij_Click);
             // 
-            // helpToolStripMenuItem
+            // PomocToolStripMenuItem
             // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.PomocToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.DaneOFirmie,
-            this.regulaminToolStripMenuItem});
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
-            this.helpToolStripMenuItem.Text = "Pomoc";
+            this.regulaminToolStripMenuItem,
+            this.trescSmsToolStrip});
+            this.PomocToolStripMenuItem.Name = "PomocToolStripMenuItem";
+            this.PomocToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.PomocToolStripMenuItem.Text = "Pomoc";
             // 
             // DaneOFirmie
             // 
             this.DaneOFirmie.Name = "DaneOFirmie";
-            this.DaneOFirmie.Size = new System.Drawing.Size(147, 22);
+            this.DaneOFirmie.Size = new System.Drawing.Size(180, 22);
             this.DaneOFirmie.Text = "Dane o Firmie";
             this.DaneOFirmie.Click += new System.EventHandler(this.DaneOFirmie_Click);
             // 
             // regulaminToolStripMenuItem
             // 
             this.regulaminToolStripMenuItem.Name = "regulaminToolStripMenuItem";
-            this.regulaminToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.regulaminToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.regulaminToolStripMenuItem.Text = "Regulamin";
             this.regulaminToolStripMenuItem.Click += new System.EventHandler(this.regulaminToolStripMenuItem_Click);
             // 
@@ -295,7 +297,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(428, 168);
+            this.tabPage2.Size = new System.Drawing.Size(513, 168);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "SPRZEDAŻ";
             // 
@@ -318,7 +320,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(428, 168);
+            this.tabPage3.Size = new System.Drawing.Size(513, 168);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "AKCESORIA";
             // 
@@ -367,6 +369,13 @@
             this.btnRaporty.UseVisualStyleBackColor = true;
             this.btnRaporty.Click += new System.EventHandler(this.btnRaporty_Click);
             // 
+            // trescSmsToolStrip
+            // 
+            this.trescSmsToolStrip.Name = "trescSmsToolStrip";
+            this.trescSmsToolStrip.Size = new System.Drawing.Size(152, 22);
+            this.trescSmsToolStrip.Text = "Treść SMS";
+            this.trescSmsToolStrip.Click += new System.EventHandler(this.trescSmsToolStrip_Click);
+            // 
             // Glowna
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -400,7 +409,7 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip2;
-        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem PomocToolStripMenuItem;
         private System.Windows.Forms.Button btSerwis;
         private System.Windows.Forms.Button btProdukty;
         private System.Windows.Forms.Button btAkcesoria;
@@ -430,6 +439,7 @@
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Button btnRaporty;
+        private System.Windows.Forms.ToolStripMenuItem trescSmsToolStrip;
     }
 }
 

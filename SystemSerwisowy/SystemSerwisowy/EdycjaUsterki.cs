@@ -13,19 +13,19 @@ namespace SystemSerwisowy
 {
     public partial class EdycjaUsterki : Form
     {
-        SekcjaSerwisu serwis;
-        Usterka temp;
+        public SekcjaSerwisu serwis;
+        public Usterka ust;
         int indeks;
         public EdycjaUsterki(SekcjaSerwisu s, int ind)
         {
             indeks = ind;
             serwis = s;
             InitializeComponent();
-            temp = serwis.glowna.listaUsterek[ind];
-            UzupelnijFormularz(temp);
+            ust = serwis.glowna.listaUsterek[ind];
+            UzupelnijFormularz(ust);
         }
 
-        private void UzupelnijFormularz(Usterka usterka)
+        public void UzupelnijFormularz(Usterka usterka)
         {
             tbId.Text = usterka.ID.ToString();
             tbDataOd.Text = usterka.DataZgloszenia;
@@ -63,6 +63,7 @@ namespace SystemSerwisowy
             {
                 cbStatus.SelectedIndex = 0;
             }
+            chbSmsWyslany.Checked = (usterka.SMS == "TAK");
         }
 
         private void btAnuluj_Click(object sender, EventArgs e)
@@ -118,8 +119,8 @@ namespace SystemSerwisowy
         private void EdycjaUsterki_FormClosing(object sender, FormClosingEventArgs e)
         {
             Pomocnik pomoc = new Pomocnik();
-            Usterka uster = new Usterka(Convert.ToInt32(tbId.Text),tbTelefon.Text, tbNazwisko.Text, tbModel.Text, tbNumer.Text,tbDataOd.Text,  tbDataDo.Text, tbOpis.Text, (chbPilne.Checked)? tbUwagi.Text + "Pilne": tbUwagi.Text, tbKoszt.Text, 
-                cbStatus.SelectedItem.ToString(),cbOdbior.SelectedItem.ToString(),tbNaprawy.Text ,DateTime.Now.ToShortDateString()  );
+            Usterka uster = new Usterka(Convert.ToInt32(tbId.Text), tbTelefon.Text, tbNazwisko.Text, tbModel.Text, tbNumer.Text, tbDataOd.Text, tbDataDo.Text, tbOpis.Text, (chbPilne.Checked) ? tbUwagi.Text + "Pilne" : tbUwagi.Text, tbKoszt.Text,
+                cbStatus.SelectedItem.ToString(), cbOdbior.SelectedItem.ToString(), tbNaprawy.Text, DateTime.Now.ToShortDateString(), (chbSmsWyslany.Checked ? "TAK" : "NIE"));
             if (pomoc.czyUsterkiTakieSame(serwis.glowna.listaUsterek[indeks], uster))
             {
                 serwis.Enabled = true;
@@ -140,112 +141,14 @@ namespace SystemSerwisowy
             }
 
         }
-        protected smsApi.Api.IClient _client;
-        protected smsApi.Api.ProxyAddress _proxyAddress;
-        protected string _validTestNumber;
-        protected string _username;
-        protected string _password;
+
         private void btnWyslijSms_Click(object sender, EventArgs e)
         {
-            try
-            {
-                //smsApi.Api.IClient client = new smsApi.Api.ClientOAuth("token");
-                var authorizationType = ConfigurationManager.AppSettings["authorizationType"];
-
-                if (authorizationType == smsApi.Api.AuthorizationType.basic.ToString())
-                {
-                    var basicClient = new smsApi.Api.Client(_username);
-                    basicClient.SetPasswordHash(ConfigurationManager.AppSettings["password"]);
-                    _client = basicClient;
-                }
-                else if (authorizationType == smsApi.Api.AuthorizationType.oauth.ToString())
-                {
-                    _client = new smsApi.Api.ClientOAuth(ConfigurationManager.AppSettings["oauthToken"]);
-                }
+            WyslijSMS sms = new WyslijSMS(this, ust);
+            sms.Show(this);
 
 
-                var smsapi = new smsApi.Api.SMSFactory(_client, smsApi.Api.ProxyAddress.SmsApiPl);
-
-                var result =
-                    smsapi.ActionSend()
-                        .SetText("Hej Lukasz testuje smsAPI :)")
-                        .SetTo("504402500")
-                        .SetSender("Lumik") //Sender name
-                        .Execute();
-
-                MessageBox.Show("Send: " + result.Count);
-                System.Console.WriteLine("Send: " + result.Count);
-
-                string[] ids = new string[result.Count];
-
-                for (int i = 0, l = 0; i < result.List.Count; i++)
-                {
-                    if (!result.List[i].isError())
-                    {
-                        if (!result.List[i].isFinal())
-                        {
-                            ids[l] = result.List[i].ID;
-                            l++;
-                        }
-                    }
-                }
-
-                System.Console.WriteLine("Get:");
-                result =
-                    smsapi.ActionGet()
-                        .Ids(ids)
-                        .Execute();
-
-                foreach (var status in result.List)
-                {
-                    System.Console.WriteLine("ID: " + status.ID + " NUmber: " + status.Number + " Points:" + status.Points + " Status:" + status.Status + " IDx: " + status.IDx);
-                }
-
-                for (int i = 0, l = 0; i < result.List.Count; i++)
-                {
-                    if (!result.List[i].isError())
-                    {
-                        var deleted =
-                            smsapi.ActionDelete()
-                                .Id(result.List[i].ID)
-                                .Execute();
-                        System.Console.WriteLine("Deleted: " + deleted.Count);
-                    }
-                }
-            }
-            catch (smsApi.Api.ActionException r)
-            {
-                /**
-                 * Action error
-                 */
-                System.Console.WriteLine(r.Message);
-            }
-            catch (smsApi.Api.ClientException a)
-            {
-                /**
-                 * Error codes (list available in smsapi docs). Example:
-                 * 101 	Invalid authorization info
-                 * 102 	Invalid username or password
-                 * 103 	Insufficient credits on Your account
-                 * 104 	No such template
-                 * 105 	Wrong IP address (for IP filter turned on)
-                 * 110	Action not allowed for your account
-                 */
-                System.Console.WriteLine(a.Message);
-            }
-            catch (smsApi.Api.HostException q)
-            {
-                /* 
-                 * Server errors
-                 * SMSApi.Api.HostException.E_JSON_DECODE - problem with parsing data
-                 */
-                System.Console.WriteLine(q.Message);
-            }
-            catch (smsApi.Api.ProxyException p)
-            {
-                // communication problem between client and sever
-                System.Console.WriteLine(p.Message);
-            }
+            
         }
     }
 }

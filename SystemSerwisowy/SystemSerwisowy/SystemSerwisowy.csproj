@@ -153,7 +153,19 @@
     <Compile Include="SprzedajProdukt.Designer.cs">
       <DependentUpon>SprzedajProdukt.cs</DependentUpon>
     </Compile>
+    <Compile Include="TrescSMS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TrescSMS.Designer.cs">
+      <DependentUpon>TrescSMS.cs</DependentUpon>
+    </Compile>
     <Compile Include="Usterka.cs" />
+    <Compile Include="WyslijSMS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WyslijSMS.Designer.cs">
+      <DependentUpon>WyslijSMS.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="DodajAkcesoria.resx">
       <DependentUpon>DodajAkcesoria.cs</DependentUpon>
     </EmbeddedResource>
@@ -208,6 +220,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SprzedajProdukt.resx">
       <DependentUpon>SprzedajProdukt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrescSMS.resx">
+      <DependentUpon>TrescSMS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WyslijSMS.resx">
+      <DependentUpon>WyslijSMS.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="Properties\Settings.settings">

@@ -62,9 +62,9 @@
             // 
             // RTBRegulamin
             // 
-            this.RTBRegulamin.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.RTBRegulamin.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.RTBRegulamin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.RTBRegulamin.Location = new System.Drawing.Point(13, 12);
             this.RTBRegulamin.Name = "RTBRegulamin";
@@ -74,14 +74,13 @@
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label1.ForeColor = System.Drawing.Color.Red;
             this.label1.Location = new System.Drawing.Point(13, 333);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1188, 15);
+            this.label1.Size = new System.Drawing.Size(912, 35);
             this.label1.TabIndex = 4;
             this.label1.Text = resources.GetString("label1.Text");
             // 
@@ -100,7 +99,6 @@
             this.Text = "Regulamin";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Regulamin_FormClosing);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

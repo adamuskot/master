@@ -22,6 +22,7 @@ namespace SystemSerwisowy
         private string odbior;
         private string naprawy;
         private string dataOdbioru;
+        private string smsWyslany;
 
         public int ID
         {
@@ -54,6 +55,17 @@ namespace SystemSerwisowy
             set
             {
                 telefon = value;
+            }
+        }
+        public string SMS
+        {
+            get
+            {
+                return smsWyslany;
+            }
+            set
+            {
+                smsWyslany = value;
             }
         }
         public int DniPoTerminie
@@ -191,6 +203,7 @@ namespace SystemSerwisowy
             }
         }
 
+
         public Usterka()
         {
             id = 0;
@@ -207,9 +220,10 @@ namespace SystemSerwisowy
             odbior = "NIE";
             naprawy = "";
             dataOdbioru = "";
+            smsWyslany = "NIE";
         }
 
-        public Usterka(int _id, string tel, string nazw, string mod, string num, string datOd, string datDo, string opi, string uwag, string koszta, string stat, string odb, string napr, string dataOdb)
+        public Usterka(int _id, string tel, string nazw, string mod, string num, string datOd, string datDo, string opi, string uwag, string koszta, string stat, string odb, string napr, string dataOdb, string smsWysl)
         {
             id = _id;
             telefon = tel;
@@ -225,6 +239,7 @@ namespace SystemSerwisowy
             odbior = odb;
             naprawy = napr;
             dataOdbioru = dataOdb;
+            smsWyslany = smsWysl;
         }
     }
 }
