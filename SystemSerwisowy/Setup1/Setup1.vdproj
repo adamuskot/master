@@ -15,6 +15,12 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_101E2EE2930BB70A0484DA7487B70075"
+        "OwnerKey" = "8:_83911A0EDB1F464BAE06D673AAC2A8AF"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_83911A0EDB1F464BAE06D673AAC2A8AF"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -23,6 +29,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_83911A0EDB1F464BAE06D673AAC2A8AF"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_101E2EE2930BB70A0484DA7487B70075"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -130,6 +142,37 @@
         }
         "File"
         {
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_101E2EE2930BB70A0484DA7487B70075"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:smsApi, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_101E2EE2930BB70A0484DA7487B70075"
+                    {
+                    "Name" = "8:smsApi.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:smsApi.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_17CFE00FFA134A51B026FFA7DF9C91A2"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
@@ -138,7 +181,7 @@
         {
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_17CFE00FFA134A51B026FFA7DF9C91A2"
             {
-            "DefaultLocation" = "8:[ProgramFiles64Folder][Manufacturer]\\[ProductName]"
+            "DefaultLocation" = "8:[ProgramFilesFolder][Manufacturer]\\[ProductName]"
             "Name" = "8:#1925"
             "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
@@ -209,7 +252,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Serwis2015"
         "ProductCode" = "8:{36BFFF43-4A50-49B8-88D1-11856162396F}"
-        "PackageCode" = "8:{DC576325-EEEB-4AFB-B66A-5DBF0B995FF6}"
+        "PackageCode" = "8:{720C9154-8572-42AC-9CEB-831F6FFBD30B}"
         "UpgradeCode" = "8:{9642A068-4BF8-458B-98E8-D4015E7AB396}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -230,7 +273,7 @@
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
-        "TargetPlatform" = "3:1"
+        "TargetPlatform" = "3:0"
         "PreBuildEvent" = "8:"
         "PostBuildEvent" = "8:"
         "RunPostBuildEvent" = "3:0"

@@ -45,7 +45,6 @@
             this.tbSzukajka = new System.Windows.Forms.TextBox();
             this.chbNaprawa = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnExportKlientow = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsterki)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -232,24 +231,11 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtry";
             // 
-            // btnExportKlientow
-            // 
-            this.btnExportKlientow.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnExportKlientow.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnExportKlientow.Location = new System.Drawing.Point(103, 12);
-            this.btnExportKlientow.Name = "btnExportKlientow";
-            this.btnExportKlientow.Size = new System.Drawing.Size(124, 66);
-            this.btnExportKlientow.TabIndex = 13;
-            this.btnExportKlientow.Text = "Eksport klientów";
-            this.btnExportKlientow.UseVisualStyleBackColor = true;
-            this.btnExportKlientow.Click += new System.EventHandler(this.btnExportKlientow_Click);
-            // 
             // SekcjaSerwisu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1329, 627);
-            this.Controls.Add(this.btnExportKlientow);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tbSzukajka);
             this.Controls.Add(this.cbKryterium);
@@ -290,6 +276,5 @@
         private System.Windows.Forms.TextBox tbSzukajka;
         private System.Windows.Forms.CheckBox chbNaprawa;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnExportKlientow;
     }
 }
