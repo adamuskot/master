@@ -118,7 +118,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDni.AutoSize = true;
             this.lblDni.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblDni.Location = new System.Drawing.Point(389, 231);
+            this.lblDni.Location = new System.Drawing.Point(401, 231);
             this.lblDni.Name = "lblDni";
             this.lblDni.Size = new System.Drawing.Size(28, 16);
             this.lblDni.TabIndex = 25;
@@ -131,7 +131,7 @@
             this.nudCzasNaprawy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.nudCzasNaprawy.Location = new System.Drawing.Point(350, 229);
             this.nudCzasNaprawy.Name = "nudCzasNaprawy";
-            this.nudCzasNaprawy.Size = new System.Drawing.Size(117, 21);
+            this.nudCzasNaprawy.Size = new System.Drawing.Size(45, 21);
             this.nudCzasNaprawy.TabIndex = 24;
             this.nudCzasNaprawy.ValueChanged += new System.EventHandler(this.nudCzasNaprawy_ValueChanged);
             // 
@@ -159,7 +159,8 @@
             "Wysłane na gwarancję",
             "Przyjęty do naprawy",
             "Czeka na części",
-            "Czeka na decyzje klienta"});
+            "Czeka na decyzje klienta",
+            "Brak zgody na naprawę"});
             this.cbStatus.Location = new System.Drawing.Point(149, 283);
             this.cbStatus.Name = "cbStatus";
             this.cbStatus.Size = new System.Drawing.Size(365, 24);
@@ -271,7 +272,7 @@
             this.tbNazwisko.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.tbNazwisko.Location = new System.Drawing.Point(149, 39);
             this.tbNazwisko.Name = "tbNazwisko";
-            this.tbNazwisko.Size = new System.Drawing.Size(166, 22);
+            this.tbNazwisko.Size = new System.Drawing.Size(184, 22);
             this.tbNazwisko.TabIndex = 11;
             // 
             // tbId
@@ -282,7 +283,7 @@
             this.tbId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.tbId.Location = new System.Drawing.Point(149, 12);
             this.tbId.Name = "tbId";
-            this.tbId.Size = new System.Drawing.Size(137, 22);
+            this.tbId.Size = new System.Drawing.Size(184, 22);
             this.tbId.TabIndex = 10;
             // 
             // label10

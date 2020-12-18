@@ -23,8 +23,9 @@ namespace SystemSerwisowy
         public List<string> regulamin;
         private int indeks = 0;
         public int czasNaprawy = 2;
-        public string trescSms = "";
-        public string nadawcaSms = "";
+        public string trescSmsNaprawiony = "";
+        public string trescSmsNienaprawiony = "";
+        public string trescSmsInny = "";
 
         public Glowna()
         {
@@ -151,8 +152,9 @@ namespace SystemSerwisowy
             plik = new FileStream(sciezka, FileMode.Append, FileAccess.Write);
             StreamWriter zapisuj = new StreamWriter(plik);
             zapisuj.WriteLine("Czas naprawy=" + czasNaprawy.ToString());
-            zapisuj.WriteLine("Nadawca=" + nadawcaSms);
-            zapisuj.WriteLine("Tresc sms=" + trescSms);
+            zapisuj.WriteLine("Tresc sms naprawiony=" + trescSmsNaprawiony);
+            zapisuj.WriteLine("Tresc sms nienaprawiony=" + trescSmsNienaprawiony);
+            zapisuj.WriteLine("Tresc sms inny=" + trescSmsInny);
             zapisuj.Close();
         }
 
@@ -302,13 +304,17 @@ namespace SystemSerwisowy
                             {
                                 czasNaprawy = Convert.ToInt32(split[1]);
                             }
-                            if (split[0] == "Nadawca")
+                            if (split[0] == "Tresc sms naprawiony")
                             {
-                                nadawcaSms = split[1];
+                                trescSmsNaprawiony = split[1];
                             }
-                            if (split[0] == "Tresc sms")
+                            if (split[0] == "Tresc sms nienaprawiony")
                             {
-                                trescSms = split[1];
+                                trescSmsNienaprawiony = split[1];
+                            }
+                            if (split[0] == "Tresc sms inny")
+                            {
+                                trescSmsInny = split[1];
                             }
                         }
                     }

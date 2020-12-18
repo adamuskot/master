@@ -30,6 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.chbSmsWyslany = new System.Windows.Forms.CheckBox();
             this.btnWyslijSms = new System.Windows.Forms.Button();
             this.chbPilne = new System.Windows.Forms.CheckBox();
             this.tbNaprawy = new System.Windows.Forms.TextBox();
@@ -59,7 +60,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btZapisz = new System.Windows.Forms.Button();
             this.btAnuluj = new System.Windows.Forms.Button();
-            this.chbSmsWyslany = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -112,6 +112,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(460, 391);
             this.panel1.TabIndex = 1;
+            // 
+            // chbSmsWyslany
+            // 
+            this.chbSmsWyslany.AutoSize = true;
+            this.chbSmsWyslany.Enabled = false;
+            this.chbSmsWyslany.Location = new System.Drawing.Point(378, 76);
+            this.chbSmsWyslany.Name = "chbSmsWyslany";
+            this.chbSmsWyslany.Size = new System.Drawing.Size(68, 17);
+            this.chbSmsWyslany.TabIndex = 29;
+            this.chbSmsWyslany.Text = "Wysłany";
+            this.chbSmsWyslany.UseVisualStyleBackColor = true;
             // 
             // btnWyslijSms
             // 
@@ -169,7 +180,7 @@
             "TAK"});
             this.cbOdbior.Location = new System.Drawing.Point(158, 323);
             this.cbOdbior.Name = "cbOdbior";
-            this.cbOdbior.Size = new System.Drawing.Size(121, 24);
+            this.cbOdbior.Size = new System.Drawing.Size(112, 24);
             this.cbOdbior.TabIndex = 23;
             // 
             // label12
@@ -192,7 +203,8 @@
             "Wysłane na gwarancję",
             "Przyjęty do naprawy",
             "Czeka na części",
-            "Czeka na decyzje klienta"});
+            "Czeka na decyzje klienta",
+            "Brak zgody na naprawę"});
             this.cbStatus.Location = new System.Drawing.Point(158, 293);
             this.cbStatus.Name = "cbStatus";
             this.cbStatus.Size = new System.Drawing.Size(202, 24);
@@ -203,7 +215,7 @@
             this.tbDataOd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.tbDataOd.Location = new System.Drawing.Point(158, 239);
             this.tbDataOd.Name = "tbDataOd";
-            this.tbDataOd.Size = new System.Drawing.Size(100, 22);
+            this.tbDataOd.Size = new System.Drawing.Size(112, 22);
             this.tbDataOd.TabIndex = 19;
             // 
             // tbKoszt
@@ -211,7 +223,7 @@
             this.tbKoszt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.tbKoszt.Location = new System.Drawing.Point(158, 211);
             this.tbKoszt.Name = "tbKoszt";
-            this.tbKoszt.Size = new System.Drawing.Size(65, 22);
+            this.tbKoszt.Size = new System.Drawing.Size(112, 22);
             this.tbKoszt.TabIndex = 18;
             // 
             // tbUwagi
@@ -259,7 +271,7 @@
             this.tbNazwisko.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.tbNazwisko.Location = new System.Drawing.Point(158, 43);
             this.tbNazwisko.Name = "tbNazwisko";
-            this.tbNazwisko.Size = new System.Drawing.Size(134, 22);
+            this.tbNazwisko.Size = new System.Drawing.Size(215, 22);
             this.tbNazwisko.TabIndex = 12;
             // 
             // tbId
@@ -395,17 +407,6 @@
             this.btAnuluj.Text = "Anuluj";
             this.btAnuluj.UseVisualStyleBackColor = true;
             this.btAnuluj.Click += new System.EventHandler(this.btAnuluj_Click);
-            // 
-            // chbSmsWyslany
-            // 
-            this.chbSmsWyslany.AutoSize = true;
-            this.chbSmsWyslany.Enabled = false;
-            this.chbSmsWyslany.Location = new System.Drawing.Point(378, 76);
-            this.chbSmsWyslany.Name = "chbSmsWyslany";
-            this.chbSmsWyslany.Size = new System.Drawing.Size(68, 17);
-            this.chbSmsWyslany.TabIndex = 29;
-            this.chbSmsWyslany.Text = "Wysłany";
-            this.chbSmsWyslany.UseVisualStyleBackColor = true;
             // 
             // EdycjaUsterki
             // 

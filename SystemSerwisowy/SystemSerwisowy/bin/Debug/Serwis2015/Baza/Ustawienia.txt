@@ -1,3 +1,4 @@
-Czas naprawy=2
-Nadawca=LUMIK
-Tresc sms=Tresc wiadomosci testowej
+Czas naprawy=3
+Tresc sms naprawiony=Dzien dobry, artykul naprawiony
+Tresc sms nienaprawiony=Dzien dobry, artykul nienaprawiony
+Tresc sms inny=Dzien dobry, nie wiem co z telefonem ale wysylam sms

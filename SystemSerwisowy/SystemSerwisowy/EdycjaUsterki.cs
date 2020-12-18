@@ -63,7 +63,7 @@ namespace SystemSerwisowy
             {
                 cbStatus.SelectedIndex = 0;
             }
-            chbSmsWyslany.Checked = (usterka.SMS == "TAK");
+            chbSmsWyslany.Checked = (usterka.SMS.Contains("TAK"));
         }
 
         private void btAnuluj_Click(object sender, EventArgs e)

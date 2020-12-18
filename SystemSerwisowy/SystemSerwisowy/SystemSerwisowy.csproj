@@ -201,6 +201,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Regulamin.resx">
       <DependentUpon>Regulamin.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="SekcjaAkcesoriow.resx">
       <DependentUpon>SekcjaAkcesoriow.cs</DependentUpon>
@@ -227,7 +228,9 @@
     <EmbeddedResource Include="WyslijSMS.resx">
       <DependentUpon>WyslijSMS.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

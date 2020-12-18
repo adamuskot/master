@@ -98,19 +98,19 @@ namespace SystemSerwisowy
             }
             foreach (DataGridViewRow row in dgvUsterki.Rows)
             {
-                if (row.Cells[11].Value.ToString() == "Naprawiony")
+                if (row.Cells[12].Value.ToString() == "Naprawiony")
                 {
                     row.DefaultCellStyle.BackColor = Color.LightGreen;
                 }
-                else if (row.Cells[11].Value.ToString() == "Brak możliwości naprawy")
+                else if (row.Cells[12].Value.ToString() == "Brak możliwości naprawy")
                 {
                     row.DefaultCellStyle.BackColor = Color.Red;
                 }
-                else if (row.Cells[11].Value.ToString() == "Wysłane na gwarancję")
+                else if (row.Cells[12].Value.ToString() == "Wysłane na gwarancję")
                 {
                     row.DefaultCellStyle.BackColor = Color.Yellow;
                 }
-                else if (row.Cells[11].Value.ToString() == "Przyjęty do naprawy")
+                else if (row.Cells[12].Value.ToString() == "Przyjęty do naprawy")
                 {
                     row.DefaultCellStyle.BackColor = Color.White;
                 }
@@ -121,12 +121,15 @@ namespace SystemSerwisowy
             }
             dgvUsterki.Columns[4].DefaultCellStyle.Font = new Font(FontFamily.GenericSansSerif, 8, FontStyle.Bold);
             dgvUsterki.Columns[4].DefaultCellStyle.ForeColor = Color.DarkRed;
-            dgvUsterki.Columns[0].Width = 40;
-            dgvUsterki.Columns[3].Width = 40;
+            dgvUsterki.Columns[0].Width = 40; // ID
+            dgvUsterki.Columns[1].Width = 160; // Imie i nazwisko
             dgvUsterki.Columns[2].Width = 70;
-            dgvUsterki.Columns[4].Width = 70;
+            dgvUsterki.Columns[3].Width = 40;
+            dgvUsterki.Columns[4].Width = 40;
+            dgvUsterki.Columns[5].Width = 125;
             dgvUsterki.Columns[7].Width = 220;
             dgvUsterki.Columns[8].Width = 220;
+            dgvUsterki.Columns[9].Width = 50;
             this.Refresh();
         }
 
@@ -448,19 +451,19 @@ namespace SystemSerwisowy
             }
             foreach (DataGridViewRow row in dgvUsterki.Rows)
             {
-                if (row.Cells[11].Value.ToString() == "Naprawiony")
+                if (row.Cells[12].Value.ToString() == "Naprawiony")
                 {
                     row.DefaultCellStyle.BackColor = Color.LightGreen;
                 }
-                else if (row.Cells[11].Value.ToString() == "Brak możliwości naprawy")
+                else if (row.Cells[12].Value.ToString() == "Brak możliwości naprawy")
                 {
                     row.DefaultCellStyle.BackColor = Color.Red;
                 }
-                else if (row.Cells[11].Value.ToString() == "Wysłane na gwarancję")
+                else if (row.Cells[12].Value.ToString() == "Wysłane na gwarancję")
                 {
                     row.DefaultCellStyle.BackColor = Color.Yellow;
                 }
-                else if (row.Cells[11].Value.ToString() == "Przyjęty do naprawy")
+                else if (row.Cells[12].Value.ToString() == "Przyjęty do naprawy")
                 {
                     row.DefaultCellStyle.BackColor = Color.White;
                 }

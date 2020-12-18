@@ -5938,7 +5938,7 @@
 5939|MIŚKIEWICZ KAMIL |660961871|SAMSUNG J5 2016|354603080726790|GNIAZDO ||90|2020-08-18|2020-08-25|Naprawiony|NIE|||NIE
 5940|Mariusz Miśkiwicz|662957535|my phone hammer|myphone hammer|problem z ładowaniem |||2020-08-18|2020-08-25|Naprawiony|NIE|||NIE
 5941|Paweł Cackowski|530536552; 791750340|lenovo k6 note|x|wymiana digitizer||170|2020-08-18|2020-08-25|Naprawiony|NIE|||NIE
-5942|Paweł Banach|534964143|samsung a70|353230115233203|po zalaniu |brak szufladki sim/ MUSI CZEKAC NA DRUG A SZTUKE||2020-08-18|2020-08-25|Przyjęty do naprawy|NIE|||TAK
+5942|Paweł Banach|534964143|samsung a70|353230115233203|po zalaniu |brak szufladki sim/ MUSI CZEKAC NA DRUG A SZTUKE||2020-08-18|2020-08-25|Przyjęty do naprawy|NIE|||TAK3
 5943|Zbigniew Smagłowski|502520539|samsung xcvoer 4|355621088444538|wymiana lcd||200|2020-08-18|2020-08-25|Naprawiony|NIE|||NIE
 5944|Mirosław Jabłoński|695570027|dell inspirion|x|system||100|2020-08-19|2020-08-26|Brak możliwości naprawy|NIE|||NIE
 5945|Dawid Sobolewski|794939288|mate 20 lite|x| wymiana lcd|1122|250|2020-08-19|2020-08-26|Naprawiony|NIE|||NIE
@@ -6135,7 +6135,7 @@
 6136|TOMASZEWSKA JULIA|608047173|SAMSUNG S9+ |355220093668007|PROBLEM Z URUCHOMIENIEM|DANE NIE WAŻNE|WYCENA|2020-09-29|2020-10-06|Brak możliwości naprawy|NIE|||NIE
 6137|lorenc agnieszka|537864710|zte kis3|864509020768292|wisi na logo||wycena|2020-09-30|2020-10-07|Naprawiony|NIE|||NIE
 6138|poklasiński krzystof|726204674|iphone 7|x|szyba||200|2020-09-30|2020-10-07|Naprawiony|NIE|||NIE
-6139|piotr ziólkowski|503659382|samsung s7 edge|355612086623272|lcd|czeka na drugą sztukę|wycena|2020-09-30|2020-10-07|Przyjęty do naprawy|NIE|||NIE
+6139|piotr ziólkowski|503659382|samsung s7 edge|355612086623272|lcd|czeka na drugą sztukę|wycena|2020-09-30|2020-10-07|Przyjęty do naprawy|NIE|||TAK3
 6140|DUSZYŃSKI MICHAŁ|537144135|IPHONE 8|354889094489984|LCD ZAMIENIK||250|2020-09-30|2020-10-07|Naprawiony|NIE|||NIE
 6141|GZIK HENRYK|696649675|SAMSUNG GALAXY A10|359611106523476|SZYBA||200|2020-09-30|2020-10-07|Naprawiony|NIE|||NIE
 6142|KARDACKA ZDZISŁAWA|695304437|SAMSUNG GALAXY A40|358974109875116|GŁOŚNIK HARCZY/DOTYK SAM REAGUJE|KUPIONY U NAS 29.07.2020/WYSYŁAMY NA GW |GW|2020-09-30|2020-10-07|Naprawiony|NIE|||NIE
@@ -6410,3 +6410,4 @@
 6410|marcin kozioł|665166504|hauwei t3 10|x|gniazdo||100|2020-12-07|2020-12-14|Przyjęty do naprawy|NIE|||NIE
 6411|aleksander mewald|535154553|blackberry|x biały|nie czyta karty sim||wycena|2020-12-08|2020-12-15|Przyjęty do naprawy|NIE|||NIE
 6412|Elżbieta ruta|663941305|samsung j7 2017|3596003082468586|nie ładuje||wycena|2020-12-08|2020-12-15|Przyjęty do naprawy|NIE|||NIE
+6413|Władysław Trzepiekoński|74575676|ASDFASD|EWFDS|ASDF|ASDF|2|2020-12-18|2020-12-21|Przyjęty do naprawy|NIE|||NIE

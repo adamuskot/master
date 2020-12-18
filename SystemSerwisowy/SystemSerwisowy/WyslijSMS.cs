@@ -29,10 +29,10 @@ namespace SystemSerwisowy
 
         private void UzupelnijFormatke()
         {
-            tbNazwaNadawcy.Text = sekcjaEdycjiUsterki.serwis.glowna.nadawcaSms;
+            //tbNazwaNadawcy.Text = sekcjaEdycjiUsterki.serwis.glowna.nadawcaSms;
             tbNumerOdbiorcy.Text = usterka.Telefon;
             rtbTrescSMS.Clear();
-            rtbTrescSMS.AppendText(sekcjaEdycjiUsterki.serwis.glowna.trescSms);
+            cbWyborTresci.SelectedIndex = -1;
         }
 
         private void btWyslij_Click(object sender, EventArgs e)
@@ -40,41 +40,49 @@ namespace SystemSerwisowy
             try
             {
                 //smsApi.Api.IClient client = new smsApi.Api.ClientOAuth("token");
-                var authorizationType = ConfigurationManager.AppSettings["authorizationType"];
-
-                if (authorizationType == smsApi.Api.AuthorizationType.basic.ToString())
+                if (cbWyborTresci.SelectedIndex == -1)
                 {
-                    var basicClient = new smsApi.Api.Client(_username);
-                    basicClient.SetPasswordHash(ConfigurationManager.AppSettings["password"]);
-                    _client = basicClient;
+                    MessageBox.Show("Wybierz rodzaj treści!");
                 }
-                else if (authorizationType == smsApi.Api.AuthorizationType.oauth.ToString())
+                else
                 {
-                    _client = new smsApi.Api.ClientOAuth(ConfigurationManager.AppSettings["oauthToken"]);
+
+                    var authorizationType = ConfigurationManager.AppSettings["authorizationType"];
+
+                    if (authorizationType == smsApi.Api.AuthorizationType.basic.ToString())
+                    {
+                        var basicClient = new smsApi.Api.Client(_username);
+                        basicClient.SetPasswordHash(ConfigurationManager.AppSettings["password"]);
+                        _client = basicClient;
+                    }
+                    else if (authorizationType == smsApi.Api.AuthorizationType.oauth.ToString())
+                    {
+                        _client = new smsApi.Api.ClientOAuth(ConfigurationManager.AppSettings["oauthToken"]);
+                    }
+                    string trescSms = "";
+                    foreach (string item in rtbTrescSMS.Lines)
+                    {
+                        trescSms += item;
+                    }
+
+                    var smsapi = new smsApi.Api.SMSFactory(_client, smsApi.Api.ProxyAddress.SmsApiPl);
+
+                    var result =
+                        smsapi.ActionSend()
+                            .SetText(trescSms)
+                            .SetTo(tbNumerOdbiorcy.Text)
+                            .SetSender("") //Sender name
+                            .Execute();
+
+                    MessageBox.Show("Wiadomość wysłana pomyślnie.");
+                    Usterka u = sekcjaEdycjiUsterki.serwis.glowna.listaUsterek.Cast<Usterka>().Where(x => x.ID == usterka.ID).FirstOrDefault();
+                    u.SMS = "TAK" + ((int)cbWyborTresci.SelectedIndex + 1).ToString();
+                    sekcjaEdycjiUsterki.UzupelnijFormularz(u);
+                    sekcjaEdycjiUsterki.serwis.glowna.nadpiszUsterki();
+                    Close();
+                    sekcjaEdycjiUsterki.Enabled = true;
+                    sekcjaEdycjiUsterki.Focus();
                 }
-                string trescSms = "";
-                foreach (string item in rtbTrescSMS.Lines)
-                {
-                    trescSms += item;
-                }
-
-                var smsapi = new smsApi.Api.SMSFactory(_client, smsApi.Api.ProxyAddress.SmsApiPl);
-
-                var result =
-                    smsapi.ActionSend()
-                        .SetText(trescSms)
-                        .SetTo(tbNumerOdbiorcy.Text)
-                        .SetSender(tbNazwaNadawcy.Text) //Sender name
-                        .Execute();
-
-                MessageBox.Show("Wiadomość wysłana pomyślnie.");
-                Usterka u = sekcjaEdycjiUsterki.serwis.glowna.listaUsterek.Cast<Usterka>().Where(x => x.ID == usterka.ID).FirstOrDefault();
-                u.SMS = "TAK";
-                sekcjaEdycjiUsterki.UzupelnijFormularz(u);
-                sekcjaEdycjiUsterki.serwis.glowna.nadpiszUsterki();
-                sekcjaEdycjiUsterki.Enabled = true;
-                sekcjaEdycjiUsterki.Focus();
-
                 //System.Console.WriteLine("Send: " + result.Count);
 
                 //string[] ids = new string[result.Count];
@@ -156,6 +164,26 @@ namespace SystemSerwisowy
         {
             sekcjaEdycjiUsterki.Enabled = true;
             sekcjaEdycjiUsterki.Focus();
+        }
+
+        private void cbWyborTresci_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbWyborTresci.SelectedIndex == 0)
+            {
+                rtbTrescSMS.Text = sekcjaEdycjiUsterki.serwis.glowna.trescSmsNaprawiony;
+            }
+            else if (cbWyborTresci.SelectedIndex == 1)
+            {
+                rtbTrescSMS.Text = sekcjaEdycjiUsterki.serwis.glowna.trescSmsNienaprawiony;
+            }
+            else if (cbWyborTresci.SelectedIndex == 2)
+            {
+                rtbTrescSMS.Text = sekcjaEdycjiUsterki.serwis.glowna.trescSmsInny;
+            }
+            else
+            {
+                rtbTrescSMS.Text = "";
+            }
         }
 
     }
