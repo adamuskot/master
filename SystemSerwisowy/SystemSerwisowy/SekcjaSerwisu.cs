@@ -480,77 +480,83 @@ namespace SystemSerwisowy
             AktualizujGrida();
         }
 
-        //private void btnExportKlientow_Click(object sender, EventArgs e)
-        //{
-        // to rozwiązanie z excelem działa wiec mozna bedzie do czegos wykorzystac
-        //    Excel.Application ExcelApp = new Excel.Application();
+        private void btnRaportRodo_Click(object sender, EventArgs e)
+        {
 
-        //    Excel.Workbook ExcelWorkBook = null;
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.InitialDirectory = @"C:\";
+            saveFileDialog.Filter = "Excel files (*.xlsx)|*.xlsx";
+            saveFileDialog.FilterIndex = 0;
+            saveFileDialog.RestoreDirectory = true;
+            saveFileDialog.CreatePrompt = true;
+            saveFileDialog.Title = "Zapisz Raport do:";            
 
-        //    Excel.Worksheet ExcelWorkSheet = null;
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string path = saveFileDialog.FileName;
 
+                Excel.Application ExcelApp = new Excel.Application();
 
+                Excel.Workbook ExcelWorkBook = null;
 
-        //    ExcelApp.Visible = true;
-
-        //    ExcelWorkBook = ExcelApp.Workbooks.Add(Excel.XlWBATemplate.xlWBATWorksheet);
-
-        //    // ExcelWorkBook.Worksheets.Add(); //Adding New Sheet in Excel Workbook
-
-        //    try
-        //    {
-
-        //        ExcelWorkSheet = ExcelWorkBook.Worksheets[1]; // Compulsory Line in which sheet you want to write data
-
-        //        //Writing data into excel of 100 rows with 10 column
-        //        int i = 2;
-        //        ExcelWorkSheet.Cells[1, 1] = "Imię i nazwisko";
-        //        ExcelWorkSheet.Cells[1, 2] = "Numer Telefonu";
-        //        foreach (Usterka item in glowna.listaUsterek)
-        //        {
-        //            if (Convert.ToDateTime(item.DataZgloszenia) >= new DateTime(2020, 12, 01))
-        //            {
-        //                ExcelWorkSheet.Cells[i, 1] = item.Nazwisko;
-        //                ExcelWorkSheet.Cells[i, 2] = item.Telefon;
-        //                i++;
-        //            }
-        //        }
-
-        //        ExcelWorkBook.Worksheets[1].Name = "MySheet";//Renaming the Sheet1 to MySheet
-
-        //        ExcelWorkBook.SaveAs("d:\\RaportKlientow.xlsx");
-
-        //        ExcelWorkBook.Close();
-
-        //        ExcelApp.Quit();
-
-        //        //Excel.Marshal.ReleaseComObject(ExcelWorkSheet);
-
-        //        //Marshal.ReleaseComObject(ExcelWorkBook);
-
-        //        //Marshal.ReleaseComObject(ExcelApp);
-
-        //    }
-
-        //    catch (Exception exHandle)
-        //    {
-
-        //        Console.WriteLine("Exception: " + exHandle.Message);
-
-        //        Console.ReadLine();
-
-        //    }
-
-        //    finally
-        //    {
+                Excel.Worksheet ExcelWorkSheet = null;
 
 
 
-        //        foreach (Process process in Process.GetProcessesByName("Excel"))
+                ExcelApp.Visible = true;
 
-        //            process.Kill();
+                ExcelWorkBook = ExcelApp.Workbooks.Add(Excel.XlWBATemplate.xlWBATWorksheet);
 
-        //    }
-        //}
+                try
+                {
+
+                    ExcelWorkSheet = ExcelWorkBook.Worksheets[1]; 
+                    int i = 2;
+                    ExcelWorkSheet.Cells[1, 1] = "Imię i nazwisko";
+                    ExcelWorkSheet.Cells[1, 2] = "Numer Telefonu";
+                    foreach (Usterka item in glowna.listaUsterek)
+                    {
+                        if (item.ZgodaElektro == "TAK")
+                        {
+                            ExcelWorkSheet.Cells[i, 1] = item.Nazwisko;
+                            ExcelWorkSheet.Cells[i, 2] = item.Telefon;
+                            i++;
+                        }
+                    }
+
+                    ExcelWorkBook.Worksheets[1].Name = "Raport zgód RODO";
+                    ExcelWorkBook.SaveAs(path);
+
+
+                    ExcelWorkBook.Close();
+
+                    ExcelApp.Quit();
+                    MessageBox.Show("Raport zapisano pomyślnie w: " + saveFileDialog.FileName);
+                }
+
+                catch (Exception exHandle)
+                {
+
+                    Console.WriteLine("Exception: " + exHandle.Message);
+
+                    Console.ReadLine();
+
+                }
+
+                finally
+                {
+
+
+
+                    foreach (Process process in Process.GetProcessesByName("Excel"))
+
+                        process.Kill();
+
+                }
+
+            }
+
+
+        }
     }
 }

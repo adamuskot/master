@@ -23,6 +23,7 @@ namespace SystemSerwisowy
         private string naprawy;
         private string dataOdbioru;
         private string smsWyslany;
+        private string zgodaElektro;
 
         public int ID
         {
@@ -200,6 +201,18 @@ namespace SystemSerwisowy
             set
             {
                 dataOdbioru = value;
+            }
+        }
+
+        public string ZgodaElektro
+        {
+            get
+            {
+                return zgodaElektro ;
+            }
+            set
+            {
+                zgodaElektro = value;
             }
         }
 

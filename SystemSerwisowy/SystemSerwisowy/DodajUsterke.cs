@@ -44,6 +44,28 @@ namespace SystemSerwisowy
                 usterka.Uwagi = tbUwagi.Text;
                 usterka.Odbior = "NIE";
                 usterka.WykonaneNaprawy = "";
+                DialogResult dialogResult = MessageBox.Show("Czy klient wyraża zgodę RODO?", "Zgoda RODO", MessageBoxButtons.YesNo);
+                var bylaZgoda = serwis.glowna.listaUsterek.Cast<Usterka>().Where(x => x.Telefon == tbTelefon.Text && (x.ZgodaElektro == "BRAK" || x.ZgodaElektro == "NIE")).FirstOrDefault();
+                if (bylaZgoda == null || (bylaZgoda != null && bylaZgoda.ID != usterka.ID))
+                {
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        usterka.ZgodaElektro = "TAK";
+                        printPreviewDialog2.Document = printDocument2;
+                        printPreviewDialog2.ShowDialog();
+                        if (printDialog1.ShowDialog() == DialogResult.OK)
+                            printDocument2.Print();
+                    }
+                    else if (dialogResult == DialogResult.No)
+                    {
+                        usterka.ZgodaElektro = "NIE";
+                    }
+                }
+                else
+                {
+                    // już wcześniej ten klient odpowiadał na to pytanie więc teraz już automatycznie ma zgodę.
+                    usterka.ZgodaElektro = "TAK";
+                }
                 if (!serwis.glowna.bazaKlientow.ContainsKey(usterka.Nazwisko))
                 {
                     serwis.glowna.bazaKlientow.Add(usterka.Nazwisko, usterka.Telefon);
@@ -54,13 +76,15 @@ namespace SystemSerwisowy
                 }
                 serwis.glowna.listaUsterek.Add(usterka);
                 serwis.glowna.czasNaprawy = (int)nudCzasNaprawy.Value;
+
                 //printPreviewDialog1.Document = printDocument1;
                 //printPreviewDialog1.ShowDialog();
-                if (chbDrukuj.Checked)
-                {
-                    if (printDialog1.ShowDialog() == DialogResult.OK)
-                        printDocument1.Print();
-                }
+                //if (chbDrukuj.Checked)
+                //{
+                //    if (printDialog1.ShowDialog() == DialogResult.OK)
+                //        printDocument1.Print();
+                //}
+
                 Close();
                 serwis.glowna.nadpiszUsterki();
                 serwis.Enabled = true;
@@ -232,6 +256,42 @@ namespace SystemSerwisowy
             DateTime now = DateTime.Today;
             dateTimePicker1.Value = now.AddDays((double)nudCzasNaprawy.Value);
             serwis.glowna.czasNaprawy = (int)nudCzasNaprawy.Value;
+        }
+
+        private void printDocument2_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            try
+            {
+                generujWydrukRodo(e);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void generujWydrukRodo(System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            Font font = new Font(FontFamily.GenericSansSerif, 11, FontStyle.Regular);
+            float[] dashValues = { 2, 2, 2, 2 };
+            Pen blackPen = new Pen(Color.Black, 3);
+            blackPen.DashPattern = dashValues;
+            e.Graphics.DrawLine(blackPen, new Point(40, 560), new Point(780, 560));
+            
+            StringFormat drawFormat = new StringFormat();
+            e.Graphics.DrawString(serwis.glowna.firma.Miasto + ", " + DateTime.Today.ToShortDateString(), font, Brushes.Black, new Point(75, 70));
+            e.Graphics.DrawString("Ja niżej podpisany wyrażam zgodę ne przesyłanie informacji handlowych za pomocą", font, Brushes.Black, new Point(110, 120));
+            e.Graphics.DrawString("środków komunikacji elektronicznej w rozumieniu ustawy z dnia 18 lipca 2002 roku", font, Brushes.Black, new Point(75, 150));
+            e.Graphics.DrawString("o świadczenie usług drogą elektroniczną (Dz.U.2017.1219 t.j.) w formie wiadomości", font, Brushes.Black, new Point(75, 180));
+            e.Graphics.DrawString("tekstowej sms na podany numer telefonu: " + tbTelefon.Text + " na temat usług oferowanych przez", font, Brushes.Black, new Point(75, 210));
+            e.Graphics.DrawString(serwis.glowna.firma.NazwaRodo, font, Brushes.Black, new RectangleF(75, 240, 650, 60), drawFormat);
+            //e.Graphics.DrawString("LUMIK A.PAWLAK, Ł. MIKOŁAJCZYK SPÓŁKA CYWILNA przy ul. SIERADZKIEJ 6", font, Brushes.Black, new Point(75, 240));
+            //e.Graphics.DrawString("z siedzibą w ZDUŃSKIEJ WOLI.", font, Brushes.Black, new Point(75, 270));
+            e.Graphics.DrawString("Zgoda jest dobrowolna i może być w każdej chwili wycofana.", font, Brushes.Black, new Point(75, 315));
+            e.Graphics.DrawString("Wycofanie zgody nie wływa na zgodność z prawem przetwarzania, którego dokonano na", font, Brushes.Black, new Point(75, 360));
+            e.Graphics.DrawString("podstawie  zgody przed jej wycofaniem.", font, Brushes.Black, new Point(75, 390));
+            e.Graphics.DrawString("..................................", font, Brushes.Black, new Point(550, 510));
+            e.Graphics.DrawString(tbNazwisko.Text, font, Brushes.Black, new Point(560, 530));
         }
     }
 }

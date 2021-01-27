@@ -45,6 +45,7 @@
             this.tbSzukajka = new System.Windows.Forms.TextBox();
             this.chbNaprawa = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnRaportRodo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsterki)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -80,9 +81,9 @@
             // 
             this.btNowy.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btNowy.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btNowy.Location = new System.Drawing.Point(486, 12);
+            this.btNowy.Location = new System.Drawing.Point(466, 12);
             this.btNowy.Name = "btNowy";
-            this.btNowy.Size = new System.Drawing.Size(132, 66);
+            this.btNowy.Size = new System.Drawing.Size(124, 66);
             this.btNowy.TabIndex = 1;
             this.btNowy.Text = "Nowe zgłoszenie";
             this.btNowy.UseVisualStyleBackColor = true;
@@ -92,9 +93,9 @@
             // 
             this.btEdycja.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btEdycja.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btEdycja.Location = new System.Drawing.Point(682, 12);
+            this.btEdycja.Location = new System.Drawing.Point(646, 12);
             this.btEdycja.Name = "btEdycja";
-            this.btEdycja.Size = new System.Drawing.Size(109, 66);
+            this.btEdycja.Size = new System.Drawing.Size(124, 66);
             this.btEdycja.TabIndex = 2;
             this.btEdycja.Text = "Edycja zgłoszenia";
             this.btEdycja.UseVisualStyleBackColor = true;
@@ -104,9 +105,9 @@
             // 
             this.btUsun.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btUsun.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btUsun.Location = new System.Drawing.Point(853, 12);
+            this.btUsun.Location = new System.Drawing.Point(826, 12);
             this.btUsun.Name = "btUsun";
-            this.btUsun.Size = new System.Drawing.Size(101, 66);
+            this.btUsun.Size = new System.Drawing.Size(124, 66);
             this.btUsun.TabIndex = 3;
             this.btUsun.Text = "Usuń zgłoszenie";
             this.btUsun.UseVisualStyleBackColor = true;
@@ -143,7 +144,7 @@
             // 
             this.btPotwierdzenie.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btPotwierdzenie.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btPotwierdzenie.Location = new System.Drawing.Point(296, 12);
+            this.btPotwierdzenie.Location = new System.Drawing.Point(286, 12);
             this.btPotwierdzenie.Name = "btPotwierdzenie";
             this.btPotwierdzenie.Size = new System.Drawing.Size(124, 66);
             this.btPotwierdzenie.TabIndex = 6;
@@ -231,11 +232,24 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtry";
             // 
+            // btnRaportRodo
+            // 
+            this.btnRaportRodo.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnRaportRodo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnRaportRodo.Location = new System.Drawing.Point(106, 12);
+            this.btnRaportRodo.Name = "btnRaportRodo";
+            this.btnRaportRodo.Size = new System.Drawing.Size(124, 66);
+            this.btnRaportRodo.TabIndex = 12;
+            this.btnRaportRodo.Text = "Raport RODO";
+            this.btnRaportRodo.UseVisualStyleBackColor = true;
+            this.btnRaportRodo.Click += new System.EventHandler(this.btnRaportRodo_Click);
+            // 
             // SekcjaSerwisu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1329, 627);
+            this.Controls.Add(this.btnRaportRodo);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tbSzukajka);
             this.Controls.Add(this.cbKryterium);
@@ -276,5 +290,6 @@
         private System.Windows.Forms.TextBox tbSzukajka;
         private System.Windows.Forms.CheckBox chbNaprawa;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnRaportRodo;
     }
 }

@@ -113,8 +113,17 @@ namespace SystemSerwisowy
                 {
                     dataOdbioru = listaUsterek[i].DataOdbioru;
                 }
+                string zgodaElektro = "";
+                if (listaUsterek[i].ZgodaElektro == "TAK" || listaUsterek[i].ZgodaElektro == "NIE")
+                {
+                    zgodaElektro = listaUsterek[i].ZgodaElektro;
+                }
+                else
+                {
+                    zgodaElektro = "BRAK";
+                }
 
-                zapisuj.WriteLine(listaUsterek[i].ID + "|" + listaUsterek[i].Nazwisko + "|" + listaUsterek[i].Telefon + "|" + listaUsterek[i].Model + "|" + listaUsterek[i].NumerSeryjny + "|" + listaUsterek[i].Opis + "|" + listaUsterek[i].Uwagi + "|" + listaUsterek[i].Koszt + "|" + dataZgloszenia + "|" + dataRealizacji + "|" + listaUsterek[i].Status + "|" + listaUsterek[i].Odbior + "|" + listaUsterek[i].WykonaneNaprawy + "|" + dataOdbioru + "|" + listaUsterek[i].SMS);
+                zapisuj.WriteLine(listaUsterek[i].ID + "|" + listaUsterek[i].Nazwisko + "|" + listaUsterek[i].Telefon + "|" + listaUsterek[i].Model + "|" + listaUsterek[i].NumerSeryjny + "|" + listaUsterek[i].Opis + "|" + listaUsterek[i].Uwagi + "|" + listaUsterek[i].Koszt + "|" + dataZgloszenia + "|" + dataRealizacji + "|" + listaUsterek[i].Status + "|" + listaUsterek[i].Odbior + "|" + listaUsterek[i].WykonaneNaprawy + "|" + dataOdbioru + "|" + listaUsterek[i].SMS + "|" + zgodaElektro);
             }
             zapisuj.Close();
         }
@@ -126,7 +135,7 @@ namespace SystemSerwisowy
             plik.Close();
             plik = new FileStream(sciezka, FileMode.Append, FileAccess.Write);
             StreamWriter zapisuj = new StreamWriter(plik);
-            zapisuj.WriteLine(firma.Miasto + "|" + firma.Ulica + "|" + firma.Czynne + "|" + firma.Telefon + "|" + firma.Email);
+            zapisuj.WriteLine(firma.Miasto + "|" + firma.Ulica + "|" + firma.Czynne + "|" + firma.Telefon + "|" + firma.Email + "|" + firma.NazwaRodo);
             zapisuj.Close();
         }
 
@@ -271,6 +280,7 @@ namespace SystemSerwisowy
                             fir.Czynne = split[2];
                             fir.Telefon = split[3];
                             fir.Email = split[4];
+                            fir.NazwaRodo = (split.Count() < 6 || split[5] == null) ? "" : split[5];
                             firma = fir;
                         }
                     }
@@ -496,10 +506,13 @@ namespace SystemSerwisowy
                                 ust.WykonaneNaprawy = split[12];
                                 ust.DataOdbioru = split[13];
                                 ust.DniPoTerminie = Convert.ToInt32((Convert.ToDateTime(DateTime.Today) - Convert.ToDateTime(ust.DataRealizacji)).TotalDays);
-                                ust.SMS = (split[14] == null) ? "NIE" : split[14];
+                                ust.SMS = (split.Count() < 15 || split[14] == null) ? "NIE" : split[14];
+                                ust.ZgodaElektro = (split.Count() < 16 || split[15] == null) ? "BRAK" : split[15];
                             }
                             catch
                             {
+                                if (split.Count() < 16)
+                                    ust.ZgodaElektro = "BRAK";
                                 if (split.Count() < 15)
                                     ust.SMS = "NIE";
                                 if (split.Count() < 14)

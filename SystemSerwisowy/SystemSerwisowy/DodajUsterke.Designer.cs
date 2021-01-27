@@ -61,6 +61,9 @@
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.printDocument2 = new System.Drawing.Printing.PrintDocument();
+            this.printPreviewDialog2 = new System.Windows.Forms.PrintPreviewDialog();
+            this.printDialog2 = new System.Windows.Forms.PrintDialog();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudCzasNaprawy)).BeginInit();
             this.SuspendLayout();
@@ -418,6 +421,24 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
+            // printDocument2
+            // 
+            this.printDocument2.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument2_PrintPage);
+            // 
+            // printPreviewDialog2
+            // 
+            this.printPreviewDialog2.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog2.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog2.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog2.Enabled = true;
+            this.printPreviewDialog2.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog2.Icon")));
+            this.printPreviewDialog2.Name = "printPreviewDialog2";
+            this.printPreviewDialog2.Visible = false;
+            // 
+            // printDialog2
+            // 
+            this.printDialog2.UseEXDialog = true;
+            // 
             // DodajUsterke
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -471,5 +492,8 @@
         private System.Windows.Forms.Label lblDni;
         private System.Windows.Forms.NumericUpDown nudCzasNaprawy;
         private System.Windows.Forms.Label lblCzas;
+        private System.Drawing.Printing.PrintDocument printDocument2;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog2;
+        private System.Windows.Forms.PrintDialog printDialog2;
     }
 }

@@ -12,7 +12,7 @@ namespace SystemSerwisowy
         private string czynne;
         private string telefon;
         private string email;
-
+        private string nazwaRodo;
 
         public string Miasto
         {
@@ -69,6 +69,17 @@ namespace SystemSerwisowy
                 email = value;
             }
         }
+        public string NazwaRodo
+        {
+            get
+            {
+                return nazwaRodo;
+            }
+            set
+            {
+                nazwaRodo = value;
+            }
+        }
         public Firma()
         {
             miasto = "";
@@ -76,6 +87,7 @@ namespace SystemSerwisowy
             czynne = "";
             telefon = "";
             email = "";
+            nazwaRodo = "";
         }
     }
 }

@@ -28,6 +28,7 @@ namespace SystemSerwisowy
             tbMiasto.Text = firma.Miasto;
             tbTelefon.Text = firma.Telefon;
             tbUlica.Text = firma.Ulica;
+            tbNazwaRodo.Text = firma.NazwaRodo;
         }
 
         private void btZapisz_Click(object sender, EventArgs e)
@@ -37,6 +38,7 @@ namespace SystemSerwisowy
             firma.Miasto = tbMiasto.Text;
             firma.Telefon = tbTelefon.Text;
             firma.Ulica = tbUlica.Text;
+            firma.NazwaRodo = tbNazwaRodo.Text;
             glowna.nadpiszFirme();
             Close();
             glowna.Enabled = true;

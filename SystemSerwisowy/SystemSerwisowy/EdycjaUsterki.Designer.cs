@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EdycjaUsterki));
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.chbSmsWyslany = new System.Windows.Forms.CheckBox();
@@ -60,6 +61,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btZapisz = new System.Windows.Forms.Button();
             this.btAnuluj = new System.Windows.Forms.Button();
+            this.cbZgoda = new System.Windows.Forms.ComboBox();
+            this.lblZgoda = new System.Windows.Forms.Label();
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,6 +85,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.cbZgoda);
+            this.panel1.Controls.Add(this.lblZgoda);
             this.panel1.Controls.Add(this.chbSmsWyslany);
             this.panel1.Controls.Add(this.btnWyslijSms);
             this.panel1.Controls.Add(this.chbPilne);
@@ -110,7 +118,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(460, 391);
+            this.panel1.Size = new System.Drawing.Size(460, 420);
             this.panel1.TabIndex = 1;
             // 
             // chbSmsWyslany
@@ -387,7 +395,7 @@
             // 
             this.btZapisz.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btZapisz.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btZapisz.Location = new System.Drawing.Point(370, 409);
+            this.btZapisz.Location = new System.Drawing.Point(370, 438);
             this.btZapisz.Name = "btZapisz";
             this.btZapisz.Size = new System.Drawing.Size(102, 52);
             this.btZapisz.TabIndex = 2;
@@ -400,7 +408,7 @@
             this.btAnuluj.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btAnuluj.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btAnuluj.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btAnuluj.Location = new System.Drawing.Point(251, 409);
+            this.btAnuluj.Location = new System.Drawing.Point(251, 438);
             this.btAnuluj.Name = "btAnuluj";
             this.btAnuluj.Size = new System.Drawing.Size(102, 52);
             this.btAnuluj.TabIndex = 3;
@@ -408,13 +416,54 @@
             this.btAnuluj.UseVisualStyleBackColor = true;
             this.btAnuluj.Click += new System.EventHandler(this.btAnuluj_Click);
             // 
+            // cbZgoda
+            // 
+            this.cbZgoda.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.cbZgoda.FormattingEnabled = true;
+            this.cbZgoda.Items.AddRange(new object[] {
+            "NIE",
+            "TAK",
+            "BRAK"});
+            this.cbZgoda.Location = new System.Drawing.Point(158, 384);
+            this.cbZgoda.Name = "cbZgoda";
+            this.cbZgoda.Size = new System.Drawing.Size(112, 24);
+            this.cbZgoda.TabIndex = 31;
+            // 
+            // lblZgoda
+            // 
+            this.lblZgoda.AutoSize = true;
+            this.lblZgoda.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblZgoda.Location = new System.Drawing.Point(21, 387);
+            this.lblZgoda.Name = "lblZgoda";
+            this.lblZgoda.Size = new System.Drawing.Size(93, 16);
+            this.lblZgoda.TabIndex = 30;
+            this.lblZgoda.Text = "Zgoda Elektro";
+            // 
+            // printDialog1
+            // 
+            this.printDialog1.UseEXDialog = true;
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
+            // printPreviewDialog1
+            // 
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
+            // 
             // EdycjaUsterki
             // 
             this.AcceptButton = this.btZapisz;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btAnuluj;
-            this.ClientSize = new System.Drawing.Size(484, 473);
+            this.ClientSize = new System.Drawing.Size(484, 502);
             this.Controls.Add(this.btAnuluj);
             this.Controls.Add(this.btZapisz);
             this.Controls.Add(this.panel1);
@@ -462,5 +511,10 @@
         private System.Windows.Forms.CheckBox chbPilne;
         private System.Windows.Forms.Button btnWyslijSms;
         private System.Windows.Forms.CheckBox chbSmsWyslany;
+        private System.Windows.Forms.ComboBox cbZgoda;
+        private System.Windows.Forms.Label lblZgoda;
+        private System.Windows.Forms.PrintDialog printDialog1;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
     }
 }
