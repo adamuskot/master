@@ -44,15 +44,16 @@ namespace SystemSerwisowy
                 usterka.Uwagi = tbUwagi.Text;
                 usterka.Odbior = "NIE";
                 usterka.WykonaneNaprawy = "";
-                DialogResult dialogResult = MessageBox.Show("Czy klient wyraża zgodę RODO?", "Zgoda RODO", MessageBoxButtons.YesNo);
-                var bylaZgoda = serwis.glowna.listaUsterek.Cast<Usterka>().Where(x => x.Telefon == tbTelefon.Text && (x.ZgodaElektro == "BRAK" || x.ZgodaElektro == "NIE")).FirstOrDefault();
-                if (bylaZgoda == null || (bylaZgoda != null && bylaZgoda.ID != usterka.ID))
+
+                var bylaZgoda = serwis.glowna.listaUsterek.Cast<Usterka>().Where(x => x.Telefon == tbTelefon.Text && x.ZgodaElektro == "TAK" ).FirstOrDefault();
+                if (bylaZgoda == null)
                 {
+                    DialogResult dialogResult = MessageBox.Show("Czy klient wyraża zgodę RODO?", "Zgoda RODO", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
                         usterka.ZgodaElektro = "TAK";
-                        printPreviewDialog2.Document = printDocument2;
-                        printPreviewDialog2.ShowDialog();
+                        //printPreviewDialog2.Document = printDocument2;
+                        //printPreviewDialog2.ShowDialog();
                         if (printDialog1.ShowDialog() == DialogResult.OK)
                             printDocument2.Print();
                     }
@@ -66,6 +67,28 @@ namespace SystemSerwisowy
                     // już wcześniej ten klient odpowiadał na to pytanie więc teraz już automatycznie ma zgodę.
                     usterka.ZgodaElektro = "TAK";
                 }
+                var bylaBlokada = serwis.glowna.listaUsterek.Cast<Usterka>().Where(x => x.Telefon == tbTelefon.Text && x.BlokujKlienta == "TAK").FirstOrDefault();
+                if (bylaBlokada != null)
+                {
+                    DialogResult dialogResult = MessageBox.Show("Czy wciąż chcesz blokować klienta?", "Uwaga Podejrzany klient", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        usterka.BlokujKlienta = "TAK";
+                    }
+                    else
+                    {
+                        usterka.BlokujKlienta = "NIE";
+                        var listaTemp = serwis.glowna.listaUsterek.Cast<Usterka>().Where(x => x.Telefon == tbTelefon.Text && x.BlokujKlienta == "TAK").ToList();
+                        foreach (Usterka item in listaTemp)
+                        {
+                            item.BlokujKlienta = "NIE";
+                        }
+                    }
+                }
+                else
+                {
+                    usterka.BlokujKlienta = "NIE";
+                }
                 if (!serwis.glowna.bazaKlientow.ContainsKey(usterka.Nazwisko))
                 {
                     serwis.glowna.bazaKlientow.Add(usterka.Nazwisko, usterka.Telefon);
@@ -77,13 +100,13 @@ namespace SystemSerwisowy
                 serwis.glowna.listaUsterek.Add(usterka);
                 serwis.glowna.czasNaprawy = (int)nudCzasNaprawy.Value;
 
-                //printPreviewDialog1.Document = printDocument1;
-                //printPreviewDialog1.ShowDialog();
-                //if (chbDrukuj.Checked)
-                //{
-                //    if (printDialog1.ShowDialog() == DialogResult.OK)
-                //        printDocument1.Print();
-                //}
+                printPreviewDialog1.Document = printDocument1;
+                printPreviewDialog1.ShowDialog();
+                if (chbDrukuj.Checked)
+                {
+                    if (printDialog1.ShowDialog() == DialogResult.OK)
+                        printDocument1.Print();
+                }
 
                 Close();
                 serwis.glowna.nadpiszUsterki();
@@ -292,6 +315,15 @@ namespace SystemSerwisowy
             e.Graphics.DrawString("podstawie  zgody przed jej wycofaniem.", font, Brushes.Black, new Point(75, 390));
             e.Graphics.DrawString("..................................", font, Brushes.Black, new Point(550, 510));
             e.Graphics.DrawString(tbNazwisko.Text, font, Brushes.Black, new Point(560, 530));
+        }
+
+        private void tbTelefon_TextChanged(object sender, EventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(tbTelefon.Text, "[^0-9]"))
+            {
+                MessageBox.Show("Możesz wpowadzać tylko cyfry.");
+                tbTelefon.Text = tbTelefon.Text.Remove(tbTelefon.Text.Length - 1);
+            }
         }
     }
 }

@@ -9,6 +9,8 @@ using System.Text;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Threading;
+using System.Diagnostics;
+
 
 
 namespace SystemSerwisowy
@@ -122,8 +124,16 @@ namespace SystemSerwisowy
                 {
                     zgodaElektro = "BRAK";
                 }
-
-                zapisuj.WriteLine(listaUsterek[i].ID + "|" + listaUsterek[i].Nazwisko + "|" + listaUsterek[i].Telefon + "|" + listaUsterek[i].Model + "|" + listaUsterek[i].NumerSeryjny + "|" + listaUsterek[i].Opis + "|" + listaUsterek[i].Uwagi + "|" + listaUsterek[i].Koszt + "|" + dataZgloszenia + "|" + dataRealizacji + "|" + listaUsterek[i].Status + "|" + listaUsterek[i].Odbior + "|" + listaUsterek[i].WykonaneNaprawy + "|" + dataOdbioru + "|" + listaUsterek[i].SMS + "|" + zgodaElektro);
+                string blokujKlienta = "";
+                if (listaUsterek[i].BlokujKlienta == "TAK" || listaUsterek[i].BlokujKlienta == "NIE")
+                {
+                    blokujKlienta = listaUsterek[i].BlokujKlienta;
+                }
+                else
+                {
+                    blokujKlienta = "BRAK";
+                }
+                zapisuj.WriteLine(listaUsterek[i].ID + "|" + listaUsterek[i].Nazwisko + "|" + listaUsterek[i].Telefon + "|" + listaUsterek[i].Model + "|" + listaUsterek[i].NumerSeryjny + "|" + listaUsterek[i].Opis + "|" + listaUsterek[i].Uwagi + "|" + listaUsterek[i].Koszt + "|" + dataZgloszenia + "|" + dataRealizacji + "|" + listaUsterek[i].Status + "|" + listaUsterek[i].Odbior + "|" + listaUsterek[i].WykonaneNaprawy + "|" + dataOdbioru + "|" + listaUsterek[i].SMS + "|" + zgodaElektro + "|" + blokujKlienta);
             }
             zapisuj.Close();
         }
@@ -508,9 +518,12 @@ namespace SystemSerwisowy
                                 ust.DniPoTerminie = Convert.ToInt32((Convert.ToDateTime(DateTime.Today) - Convert.ToDateTime(ust.DataRealizacji)).TotalDays);
                                 ust.SMS = (split.Count() < 15 || split[14] == null) ? "NIE" : split[14];
                                 ust.ZgodaElektro = (split.Count() < 16 || split[15] == null) ? "BRAK" : split[15];
+                                ust.BlokujKlienta = (split.Count() < 17 || split[16] == null) ? "NIE" : split[16];
                             }
                             catch
                             {
+                                if (split.Count() < 17)
+                                    ust.BlokujKlienta = "NIE";
                                 if (split.Count() < 16)
                                     ust.ZgodaElektro = "BRAK";
                                 if (split.Count() < 15)
@@ -889,27 +902,93 @@ namespace SystemSerwisowy
 
         private void raportStanuToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            indeks = 0;
             if (listaProduktow.Count > 0)
             {
-                try
-                {
-                    System.Drawing.Printing.PrintDocument pd = new System.Drawing.Printing.PrintDocument();
-                    pd.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocument1_PrintPage);
-                    //printPreviewDialog1.Document = pd;  // psuje drukowanie - tylko pierwsza strona wychodzi
-                    //printPreviewDialog1.ShowDialog();
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.InitialDirectory = @"C:\";
+                saveFileDialog.Filter = "Excel files (*.xlsx)|*.xlsx";
+                saveFileDialog.FilterIndex = 0;
+                saveFileDialog.RestoreDirectory = true;
+                saveFileDialog.CreatePrompt = true;
+                saveFileDialog.Title = "Zapisz Raport do:";
 
-                    if (printDialog1.ShowDialog() == DialogResult.OK)
-                        pd.Print();
-                }
-                catch
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
+                    string path = saveFileDialog.FileName;
+                    try
+                    {
+                        Excel.Application ExcelApp = new Excel.Application();
+                        //zapisuj.WriteLine("utworzenie excelapp");
+                        Excel.Workbook ExcelWorkBook = null;
+                        //zapisuj.WriteLine("utworzenieworkbook");
+                        Excel.Worksheet ExcelWorkSheet = null;
+
+                        //zapisuj.WriteLine("utworzenie worksheet");
+
+
+                        ExcelApp.Visible = true;
+
+                        ExcelWorkBook = ExcelApp.Workbooks.Add(Excel.XlWBATemplate.xlWBATWorksheet);
+
+
+                        //zapisuj.WriteLine("Przed zapisem danych");
+                        ExcelWorkSheet = ExcelWorkBook.Worksheets[1];
+                        int i = 2;
+                        ExcelWorkSheet.Cells[1, 1] = "LP.";
+                        ExcelWorkSheet.Cells[1, 2] = "Nazwa";
+                        ExcelWorkSheet.Cells[1, 3] = "Numer seryjny";
+                        ExcelWorkSheet.Cells[1, 4] = "Wyposażenie";
+                        ExcelWorkSheet.Cells[1, 5] = "Cena kupna";
+                        ExcelWorkSheet.Cells[1, 6] = "Data kupna";
+                        ExcelWorkSheet.Cells[1, 7] = "Uwagi";
+
+                        foreach (Produkt item in listaProduktow)
+                        {
+                            if (item.Dostepny == "TAK")
+                            {
+                                ExcelWorkSheet.Cells[i, 1] = i - 1;
+                                ExcelWorkSheet.Cells[i, 2] = item.Nazwa;
+                                ExcelWorkSheet.Cells[i, 3] = item.NumerSeryjny;
+                                ExcelWorkSheet.Cells[i, 4] = item.Wyposazenie;
+                                ExcelWorkSheet.Cells[i, 5] = item.CenaZakupu + "zł " + "[" + item.Ilosc + "szt.]";
+                                ExcelWorkSheet.Cells[i, 6] = item.DataZakupu;
+                                ExcelWorkSheet.Cells[i, 7] = item.Uwagi;
+                                i++;
+                            }
+                        }
+
+                        ExcelWorkBook.Worksheets[1].Name = "Raport stanu";
+                        ExcelWorkBook.SaveAs(path);
+                        //zapisuj.WriteLine("po zapisie workbook");
+
+                        ExcelWorkBook.Close();
+
+                        ExcelApp.Quit();
+                        MessageBox.Show("Raport zapisano pomyślnie w: " + saveFileDialog.FileName);
+                    }
+
+                    catch (Exception)
+                    {
+                        //zapisuj.WriteLine("exception:" + exHandle);
+                    }
+
+                    finally
+                    {
+                        //zapisuj.WriteLine("Koniec");
+                        //zapisuj.Close();
+
+
+                        foreach (Process process in Process.GetProcessesByName("Excel"))
+                        {
+                            process.Kill();
+                        }
+                    }
 
                 }
             }
             else
             {
-                MessageBox.Show("Brak listów do wydruku!");
+                MessageBox.Show("Brak produktów do wydruku!");
             }
         }
 
@@ -917,73 +996,89 @@ namespace SystemSerwisowy
         {
             if (listaProduktow.Count() > 0)
             {
-                List<Produkt> listatemp = new List<Produkt>();
-                for (int j = 0; j < listaProduktow.Count; j++)
-                {
-                    if (listaProduktow[j].Dostepny == "TAK")
-                    {
-                        listatemp.Add(listaProduktow[j]);
-                    }
-                }
-                Font font = new Font(FontFamily.GenericSansSerif, 10, FontStyle.Regular);
-                int i = 0;
-                Font font1 = new Font(FontFamily.GenericSansSerif, 10, FontStyle.Bold);
-                Font font2 = new Font(FontFamily.GenericSansSerif, 10, FontStyle.Regular);
-                Font font3 = new Font(FontFamily.GenericSansSerif, 18, FontStyle.Bold);
-                e.Graphics.DrawString("Raport rzeczy będących na stanie - " + DateTime.Today.ToShortDateString(), font3, Brushes.Black, new Point(130, 60));
+                
 
-                RectangleF[] rects = 
-            {
-                new RectangleF(40,90,30,40), //lp
-                new RectangleF(70,90,90,40), //nazwa
-                new RectangleF(160,90,110,40), // numer seryjny
-                new RectangleF(270,90,140,40), // wyposazenie
-                new RectangleF(410,90,90,40), // cena
-                new RectangleF(500,90,90,40), //data
-                new RectangleF(590,90,210,40) //uwagi
-            };
-                e.Graphics.DrawRectangles(new Pen(Brushes.Black, 1), rects);
-                e.Graphics.DrawString("Lp.", font1, Brushes.Black, new Point(42, 95));
-                e.Graphics.DrawString("Nazwa", font1, Brushes.Black, new Point(72, 95));
-                e.Graphics.DrawString("Numer Seryjny", font1, Brushes.Black, new Point(162, 95));
-                e.Graphics.DrawString("Wyposażenie", font1, Brushes.Black, new Point(272, 95));
-                e.Graphics.DrawString("Cena kupna", font1, Brushes.Black, new Point(412, 95));
-                e.Graphics.DrawString("Data kupna", font1, Brushes.Black, new Point(502, 95));
-                e.Graphics.DrawString("Uwagi", font1, Brushes.Black, new Point(592, 95));
-                while (indeks < listatemp.Count())
-                {
-                    RectangleF[] rectangles = 
-                {
-                    new RectangleF(40,130+40*i,30,40), //lp
-                    new RectangleF(70,130+40*i,90,40), //nazwa
-                    new RectangleF(160,130+40*i,110,40), // numer seryjny
-                    new RectangleF(270,130+40*i,140,40), // wyposazenie
-                    new RectangleF(410,130+40*i,90,40), // cena
-                    new RectangleF(500,130+40*i,90,40), //data
-                    new RectangleF(590,130+40*i,210,40) //uwagi
-                };
-                    e.Graphics.DrawRectangles(new Pen(Brushes.Black, 1), rectangles);
-                    e.Graphics.DrawString((indeks + 1).ToString(), font2, Brushes.Black, new Point(42, 135 + 40 * i));
-                    e.Graphics.DrawString(listatemp[indeks].Nazwa, font2, Brushes.Black, new Rectangle(72, 135 + 40 * i, 85, 35));
-                    e.Graphics.DrawString(listatemp[indeks].NumerSeryjny.ToString(), font2, Brushes.Black, new Rectangle(162, 135 + 40 * i, 105, 35));
-                    e.Graphics.DrawString(listatemp[indeks].Wyposazenie, font2, Brushes.Black, new Rectangle(272, 135 + 40 * i, 135, 35));
-                    e.Graphics.DrawString(listatemp[indeks].CenaZakupu + "zł " + "[" + listatemp[indeks].Ilosc + "szt.]", font2, Brushes.Black, new Rectangle(412, 135 + 40 * i, 85, 35));
-                    e.Graphics.DrawString(listatemp[indeks].DataZakupu, font2, Brushes.Black, new Point(502, 135 + 40 * i));
-                    e.Graphics.DrawString(listatemp[indeks].Uwagi, font2, Brushes.Black, new Rectangle(592, 135 + 40 * i, 205, 35));
-                    indeks++;
-                    if (i < 24)
-                    {
-                        i++;
-                    }
-                    else
-                    {
-                        i = 0;
-                        e.HasMorePages = true;
-                        return;
-                    }
 
-                }
-                e.HasMorePages = false;
+
+
+
+
+
+
+
+
+
+
+
+
+
+            //    List<Produkt> listatemp = new List<Produkt>();
+            //    for (int j = 0; j < listaProduktow.Count; j++)
+            //    {
+            //        if (listaProduktow[j].Dostepny == "TAK")
+            //        {
+            //            listatemp.Add(listaProduktow[j]);
+            //        }
+            //    }
+            //    Font font = new Font(FontFamily.GenericSansSerif, 10, FontStyle.Regular);
+            //    int i = 0;
+            //    Font font1 = new Font(FontFamily.GenericSansSerif, 10, FontStyle.Bold);
+            //    Font font2 = new Font(FontFamily.GenericSansSerif, 10, FontStyle.Regular);
+            //    Font font3 = new Font(FontFamily.GenericSansSerif, 18, FontStyle.Bold);
+            //    e.Graphics.DrawString("Raport rzeczy będących na stanie - " + DateTime.Today.ToShortDateString(), font3, Brushes.Black, new Point(130, 60));
+
+            //    RectangleF[] rects = 
+            //{
+            //    new RectangleF(40,90,30,40), //lp
+            //    new RectangleF(70,90,90,40), //nazwa
+            //    new RectangleF(160,90,110,40), // numer seryjny
+            //    new RectangleF(270,90,140,40), // wyposazenie
+            //    new RectangleF(410,90,90,40), // cena
+            //    new RectangleF(500,90,90,40), //data
+            //    new RectangleF(590,90,210,40) //uwagi
+            //};
+            //    e.Graphics.DrawRectangles(new Pen(Brushes.Black, 1), rects);
+            //    e.Graphics.DrawString("Lp.", font1, Brushes.Black, new Point(42, 95));
+            //    e.Graphics.DrawString("Nazwa", font1, Brushes.Black, new Point(72, 95));
+            //    e.Graphics.DrawString("Numer Seryjny", font1, Brushes.Black, new Point(162, 95));
+            //    e.Graphics.DrawString("Wyposażenie", font1, Brushes.Black, new Point(272, 95));
+            //    e.Graphics.DrawString("Cena kupna", font1, Brushes.Black, new Point(412, 95));
+            //    e.Graphics.DrawString("Data kupna", font1, Brushes.Black, new Point(502, 95));
+            //    e.Graphics.DrawString("Uwagi", font1, Brushes.Black, new Point(592, 95));
+            //    while (indeks < listatemp.Count())
+            //    {
+            //        RectangleF[] rectangles = 
+            //    {
+            //        new RectangleF(40,130+40*i,30,40), //lp
+            //        new RectangleF(70,130+40*i,90,40), //nazwa
+            //        new RectangleF(160,130+40*i,110,40), // numer seryjny
+            //        new RectangleF(270,130+40*i,140,40), // wyposazenie
+            //        new RectangleF(410,130+40*i,90,40), // cena
+            //        new RectangleF(500,130+40*i,90,40), //data
+            //        new RectangleF(590,130+40*i,210,40) //uwagi
+            //    };
+            //        e.Graphics.DrawRectangles(new Pen(Brushes.Black, 1), rectangles);
+            //        e.Graphics.DrawString((indeks + 1).ToString(), font2, Brushes.Black, new Point(42, 135 + 40 * i));
+            //        e.Graphics.DrawString(listatemp[indeks].Nazwa, font2, Brushes.Black, new Rectangle(72, 135 + 40 * i, 85, 35));
+            //        e.Graphics.DrawString(listatemp[indeks].NumerSeryjny.ToString(), font2, Brushes.Black, new Rectangle(162, 135 + 40 * i, 105, 35));
+            //        e.Graphics.DrawString(listatemp[indeks].Wyposazenie, font2, Brushes.Black, new Rectangle(272, 135 + 40 * i, 135, 35));
+            //        e.Graphics.DrawString(listatemp[indeks].CenaZakupu + "zł " + "[" + listatemp[indeks].Ilosc + "szt.]", font2, Brushes.Black, new Rectangle(412, 135 + 40 * i, 85, 35));
+            //        e.Graphics.DrawString(listatemp[indeks].DataZakupu, font2, Brushes.Black, new Point(502, 135 + 40 * i));
+            //        e.Graphics.DrawString(listatemp[indeks].Uwagi, font2, Brushes.Black, new Rectangle(592, 135 + 40 * i, 205, 35));
+            //        indeks++;
+            //        if (i < 24)
+            //        {
+            //            i++;
+            //        }
+            //        else
+            //        {
+            //            i = 0;
+            //            e.HasMorePages = true;
+            //            return;
+            //        }
+
+            //    }
+            //    e.HasMorePages = false;
             }
         }
 
@@ -1079,6 +1174,11 @@ namespace SystemSerwisowy
         {
             TrescSMS sms = new TrescSMS(this);
             sms.Show(this);
+        }
+
+        private void wersjaProgramuStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Wersja programu Serwis2015 v1.0.1");
         }
 
 

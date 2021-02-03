@@ -269,6 +269,7 @@
             this.tbTelefon.Name = "tbTelefon";
             this.tbTelefon.Size = new System.Drawing.Size(184, 22);
             this.tbTelefon.TabIndex = 12;
+            this.tbTelefon.TextChanged += new System.EventHandler(this.tbTelefon_TextChanged);
             // 
             // tbNazwisko
             // 

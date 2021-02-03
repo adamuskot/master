@@ -24,6 +24,7 @@ namespace SystemSerwisowy
         private string dataOdbioru;
         private string smsWyslany;
         private string zgodaElektro;
+        private string blokujKlienta;
 
         public int ID
         {
@@ -215,6 +216,17 @@ namespace SystemSerwisowy
                 zgodaElektro = value;
             }
         }
+        public string BlokujKlienta
+        {
+            get
+            {
+                return blokujKlienta;
+            }
+            set
+            {
+                blokujKlienta = value;
+            }
+        }
 
 
         public Usterka()
@@ -234,9 +246,11 @@ namespace SystemSerwisowy
             naprawy = "";
             dataOdbioru = "";
             smsWyslany = "NIE";
+            zgodaElektro = "NIE";
+            blokujKlienta = "NIE";
         }
 
-        public Usterka(int _id, string tel, string nazw, string mod, string num, string datOd, string datDo, string opi, string uwag, string koszta, string stat, string odb, string napr, string dataOdb, string smsWysl)
+        public Usterka(int _id, string tel, string nazw, string mod, string num, string datOd, string datDo, string opi, string uwag, string koszta, string stat, string odb, string napr, string dataOdb, string smsWysl, string zgoda, string blokuj)
         {
             id = _id;
             telefon = tel;
@@ -253,6 +267,8 @@ namespace SystemSerwisowy
             naprawy = napr;
             dataOdbioru = dataOdb;
             smsWyslany = smsWysl;
+            zgodaElektro = zgoda;
+            blokujKlienta = blokuj;
         }
     }
 }

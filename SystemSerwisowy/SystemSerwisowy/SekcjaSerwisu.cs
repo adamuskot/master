@@ -243,7 +243,7 @@ namespace SystemSerwisowy
             float[] dashValues = { 2, 2, 2, 2 };
             Pen blackPen = new Pen(Color.Black, 3);
             Bitmap image1;
-            
+
             //Bitmap tempImage = new Bitmap("C:\\Wizytowka.jpeg", true);
             blackPen.DashPattern = dashValues;
             e.Graphics.DrawLine(blackPen, new Point(40, 582), new Point(780, 582));
@@ -266,7 +266,7 @@ namespace SystemSerwisowy
                     e.Graphics.DrawString("Tel. " + glowna.firma.Telefon + "  " + glowna.firma.Email, font2, Brushes.Black, new Point(270, 100 + indeks * 550));
                     e.Graphics.DrawString("SERWIS GSM - simlocki, języki, naprawy wszelkiego rodzaju usterek \n TELEFONY KOMÓRKOWE - skup, sprzedaż, zamiana \n AKCESORIA GSM \n LOMBARD - pożyczki pod zastaw", font3, Brushes.Black, new RectangleF(80, 120 + indeks * 550, 660, 80), drawFormat);
                 }
-                
+
                 e.Graphics.DrawString("POTWIERDZENIE PRZYJĘCIA DO NAPRAWY \n " + glowna.firma.Miasto + ", " + ust.DataZgloszenia, font2, Brushes.Black, new RectangleF(180, 200 + indeks * 550, 430, 50), drawFormat);
                 e.Graphics.DrawRectangle(new Pen(Brushes.Black, 1), new Rectangle(70, 255 + indeks * 550, 340, 110));
                 e.Graphics.DrawRectangle(new Pen(Brushes.Black, 1), new Rectangle(410, 255 + indeks * 550, 360, 110));
@@ -279,7 +279,7 @@ namespace SystemSerwisowy
                 e.Graphics.DrawString("Numer seryjny:           " + ust.NumerSeryjny, font2, Brushes.Black, new Point(415, 276 + indeks * 550));
                 e.Graphics.DrawString("Opis usterki:                " + ust.Opis, font2, Brushes.Black, new Point(415, 294 + indeks * 550));
                 e.Graphics.DrawString("Uwagi:                          " + ust.Uwagi, font2, Brushes.Black, new Point(415, 312 + indeks * 550));
-                e.Graphics.DrawString("Przewidywany koszt: " + ust.Koszt , font2, Brushes.Black, new Point(415, 330 + indeks * 550));
+                e.Graphics.DrawString("Przewidywany koszt: " + ust.Koszt, font2, Brushes.Black, new Point(415, 330 + indeks * 550));
                 e.Graphics.DrawString("Przewidywana data odbioru: " + ust.DataRealizacji, font2, Brushes.Black, new Point(415, 348 + indeks * 550));
                 if (glowna.regulamin.Count() > 0)
                 {
@@ -482,6 +482,11 @@ namespace SystemSerwisowy
 
         private void btnRaportRodo_Click(object sender, EventArgs e)
         {
+            //string sciezka = Path.GetDirectoryName(System.Windows.Forms.Application.ExecutablePath) + "\\Serwis2015\\Baza\\LogiRaport.txt";
+            //FileStream plik = new FileStream(sciezka, FileMode.Truncate, FileAccess.Write); // czyszczenie pliku txt
+            //plik.Close();
+            //plik = new FileStream(sciezka, FileMode.Append, FileAccess.Write);
+            //StreamWriter zapisuj = new StreamWriter(plik);
 
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.InitialDirectory = @"C:\";
@@ -489,28 +494,29 @@ namespace SystemSerwisowy
             saveFileDialog.FilterIndex = 0;
             saveFileDialog.RestoreDirectory = true;
             saveFileDialog.CreatePrompt = true;
-            saveFileDialog.Title = "Zapisz Raport do:";            
+            saveFileDialog.Title = "Zapisz Raport do:";
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string path = saveFileDialog.FileName;
-
-                Excel.Application ExcelApp = new Excel.Application();
-
-                Excel.Workbook ExcelWorkBook = null;
-
-                Excel.Worksheet ExcelWorkSheet = null;
-
-
-
-                ExcelApp.Visible = true;
-
-                ExcelWorkBook = ExcelApp.Workbooks.Add(Excel.XlWBATemplate.xlWBATWorksheet);
-
                 try
                 {
+                    Excel.Application ExcelApp = new Excel.Application();
+                    //zapisuj.WriteLine("utworzenie excelapp");
+                    Excel.Workbook ExcelWorkBook = null;
+                    //zapisuj.WriteLine("utworzenieworkbook");
+                    Excel.Worksheet ExcelWorkSheet = null;
 
-                    ExcelWorkSheet = ExcelWorkBook.Worksheets[1]; 
+                    //zapisuj.WriteLine("utworzenie worksheet");
+
+
+                    ExcelApp.Visible = true;
+
+                    ExcelWorkBook = ExcelApp.Workbooks.Add(Excel.XlWBATemplate.xlWBATWorksheet);
+
+
+                    //zapisuj.WriteLine("Przed zapisem danych");
+                    ExcelWorkSheet = ExcelWorkBook.Worksheets[1];
                     int i = 2;
                     ExcelWorkSheet.Cells[1, 1] = "Imię i nazwisko";
                     ExcelWorkSheet.Cells[1, 2] = "Numer Telefonu";
@@ -526,7 +532,7 @@ namespace SystemSerwisowy
 
                     ExcelWorkBook.Worksheets[1].Name = "Raport zgód RODO";
                     ExcelWorkBook.SaveAs(path);
-
+                    //zapisuj.WriteLine("po zapisie workbook");
 
                     ExcelWorkBook.Close();
 
@@ -534,24 +540,21 @@ namespace SystemSerwisowy
                     MessageBox.Show("Raport zapisano pomyślnie w: " + saveFileDialog.FileName);
                 }
 
-                catch (Exception exHandle)
+                catch (Exception)
                 {
-
-                    Console.WriteLine("Exception: " + exHandle.Message);
-
-                    Console.ReadLine();
-
+                    //zapisuj.WriteLine("exception:" + exHandle);
                 }
 
                 finally
                 {
-
+                    //zapisuj.WriteLine("Koniec");
+                    //zapisuj.Close();
 
 
                     foreach (Process process in Process.GetProcessesByName("Excel"))
-
+                    {
                         process.Kill();
-
+                    }
                 }
 
             }

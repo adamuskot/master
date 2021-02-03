@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EdycjaUsterki));
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cbZgoda = new System.Windows.Forms.ComboBox();
+            this.lblZgoda = new System.Windows.Forms.Label();
             this.chbSmsWyslany = new System.Windows.Forms.CheckBox();
             this.btnWyslijSms = new System.Windows.Forms.Button();
             this.chbPilne = new System.Windows.Forms.CheckBox();
@@ -61,11 +63,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btZapisz = new System.Windows.Forms.Button();
             this.btAnuluj = new System.Windows.Forms.Button();
-            this.cbZgoda = new System.Windows.Forms.ComboBox();
-            this.lblZgoda = new System.Windows.Forms.Label();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.cbBlokuj = new System.Windows.Forms.ComboBox();
+            this.lblBlokuj = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -85,6 +87,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.cbBlokuj);
+            this.panel1.Controls.Add(this.lblBlokuj);
             this.panel1.Controls.Add(this.cbZgoda);
             this.panel1.Controls.Add(this.lblZgoda);
             this.panel1.Controls.Add(this.chbSmsWyslany);
@@ -118,8 +122,31 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(460, 420);
+            this.panel1.Size = new System.Drawing.Size(460, 460);
             this.panel1.TabIndex = 1;
+            // 
+            // cbZgoda
+            // 
+            this.cbZgoda.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.cbZgoda.FormattingEnabled = true;
+            this.cbZgoda.Items.AddRange(new object[] {
+            "NIE",
+            "TAK",
+            "BRAK"});
+            this.cbZgoda.Location = new System.Drawing.Point(158, 383);
+            this.cbZgoda.Name = "cbZgoda";
+            this.cbZgoda.Size = new System.Drawing.Size(112, 24);
+            this.cbZgoda.TabIndex = 31;
+            // 
+            // lblZgoda
+            // 
+            this.lblZgoda.AutoSize = true;
+            this.lblZgoda.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblZgoda.Location = new System.Drawing.Point(21, 386);
+            this.lblZgoda.Name = "lblZgoda";
+            this.lblZgoda.Size = new System.Drawing.Size(93, 16);
+            this.lblZgoda.TabIndex = 30;
+            this.lblZgoda.Text = "Zgoda Elektro";
             // 
             // chbSmsWyslany
             // 
@@ -395,7 +422,7 @@
             // 
             this.btZapisz.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btZapisz.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btZapisz.Location = new System.Drawing.Point(370, 438);
+            this.btZapisz.Location = new System.Drawing.Point(370, 478);
             this.btZapisz.Name = "btZapisz";
             this.btZapisz.Size = new System.Drawing.Size(102, 52);
             this.btZapisz.TabIndex = 2;
@@ -408,36 +435,13 @@
             this.btAnuluj.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btAnuluj.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btAnuluj.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btAnuluj.Location = new System.Drawing.Point(251, 438);
+            this.btAnuluj.Location = new System.Drawing.Point(251, 478);
             this.btAnuluj.Name = "btAnuluj";
             this.btAnuluj.Size = new System.Drawing.Size(102, 52);
             this.btAnuluj.TabIndex = 3;
             this.btAnuluj.Text = "Anuluj";
             this.btAnuluj.UseVisualStyleBackColor = true;
             this.btAnuluj.Click += new System.EventHandler(this.btAnuluj_Click);
-            // 
-            // cbZgoda
-            // 
-            this.cbZgoda.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.cbZgoda.FormattingEnabled = true;
-            this.cbZgoda.Items.AddRange(new object[] {
-            "NIE",
-            "TAK",
-            "BRAK"});
-            this.cbZgoda.Location = new System.Drawing.Point(158, 384);
-            this.cbZgoda.Name = "cbZgoda";
-            this.cbZgoda.Size = new System.Drawing.Size(112, 24);
-            this.cbZgoda.TabIndex = 31;
-            // 
-            // lblZgoda
-            // 
-            this.lblZgoda.AutoSize = true;
-            this.lblZgoda.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblZgoda.Location = new System.Drawing.Point(21, 387);
-            this.lblZgoda.Name = "lblZgoda";
-            this.lblZgoda.Size = new System.Drawing.Size(93, 16);
-            this.lblZgoda.TabIndex = 30;
-            this.lblZgoda.Text = "Zgoda Elektro";
             // 
             // printDialog1
             // 
@@ -457,13 +461,35 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
+            // cbBlokuj
+            // 
+            this.cbBlokuj.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.cbBlokuj.FormattingEnabled = true;
+            this.cbBlokuj.Items.AddRange(new object[] {
+            "NIE",
+            "TAK"});
+            this.cbBlokuj.Location = new System.Drawing.Point(158, 413);
+            this.cbBlokuj.Name = "cbBlokuj";
+            this.cbBlokuj.Size = new System.Drawing.Size(112, 24);
+            this.cbBlokuj.TabIndex = 33;
+            // 
+            // lblBlokuj
+            // 
+            this.lblBlokuj.AutoSize = true;
+            this.lblBlokuj.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblBlokuj.Location = new System.Drawing.Point(21, 416);
+            this.lblBlokuj.Name = "lblBlokuj";
+            this.lblBlokuj.Size = new System.Drawing.Size(88, 16);
+            this.lblBlokuj.TabIndex = 32;
+            this.lblBlokuj.Text = "Blokuj Klienta";
+            // 
             // EdycjaUsterki
             // 
             this.AcceptButton = this.btZapisz;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btAnuluj;
-            this.ClientSize = new System.Drawing.Size(484, 502);
+            this.ClientSize = new System.Drawing.Size(484, 542);
             this.Controls.Add(this.btAnuluj);
             this.Controls.Add(this.btZapisz);
             this.Controls.Add(this.panel1);
@@ -516,5 +542,7 @@
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
+        private System.Windows.Forms.ComboBox cbBlokuj;
+        private System.Windows.Forms.Label lblBlokuj;
     }
 }

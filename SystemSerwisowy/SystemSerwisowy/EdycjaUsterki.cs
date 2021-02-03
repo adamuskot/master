@@ -56,6 +56,7 @@ namespace SystemSerwisowy
                     break;
             }
             cbZgoda.SelectedItem = usterka.ZgodaElektro;
+            cbBlokuj.SelectedItem = usterka.BlokujKlienta;
             try
             {
                 cbStatus.SelectedItem = usterka.Status;
@@ -124,11 +125,45 @@ namespace SystemSerwisowy
                     if (printDialog1.ShowDialog() == DialogResult.OK)
                         printDocument1.Print();
                 }
+                var listaTemp = serwis.glowna.listaUsterek.Cast<Usterka>().Where(x => x.Telefon == tbTelefon.Text && x.ZgodaElektro == "NIE").ToList();
+                foreach (Usterka item in listaTemp)
+                {
+                    item.ZgodaElektro = "TAK";
+                }
             }
             else
             {
                 serwis.glowna.listaUsterek[indeks].ZgodaElektro = cbZgoda.SelectedItem.ToString();
+                var listaTemp = serwis.glowna.listaUsterek.Cast<Usterka>().Where(x => x.Telefon == tbTelefon.Text && x.ZgodaElektro == "TAK").ToList();
+                foreach (Usterka item in listaTemp)
+                {
+                    item.ZgodaElektro = "NIE";
+                }
             }
+
+            var bylaBlokada = serwis.glowna.listaUsterek.Cast<Usterka>().Where(x => x.Telefon == tbTelefon.Text && x.BlokujKlienta == "TAK").FirstOrDefault();
+            if (cbBlokuj.SelectedItem == "TAK")
+            {
+
+                var listaTemp = serwis.glowna.listaUsterek.Cast<Usterka>().Where(x => x.Telefon == tbTelefon.Text && x.BlokujKlienta == "NIE").ToList();
+                foreach (Usterka item in listaTemp)
+                {
+                    item.BlokujKlienta = "TAK";
+                }
+                serwis.glowna.listaUsterek[indeks].BlokujKlienta = "TAK";
+            }
+            else
+            {
+                serwis.glowna.listaUsterek[indeks].BlokujKlienta = "NIE";
+                var listaTemp = serwis.glowna.listaUsterek.Cast<Usterka>().Where(x => x.Telefon == tbTelefon.Text && x.BlokujKlienta == "TAK").ToList();
+                foreach (Usterka item in listaTemp)
+                {
+                    item.BlokujKlienta = "NIE";
+                }
+            }
+            
+
+
             serwis.glowna.nadpiszUsterki();
             serwis.Enabled = true;
             serwis.AktualizujGrida();
@@ -139,7 +174,7 @@ namespace SystemSerwisowy
         {
             Pomocnik pomoc = new Pomocnik();
             Usterka uster = new Usterka(Convert.ToInt32(tbId.Text), tbTelefon.Text, tbNazwisko.Text, tbModel.Text, tbNumer.Text, tbDataOd.Text, tbDataDo.Text, tbOpis.Text, (chbPilne.Checked) ? tbUwagi.Text + "Pilne" : tbUwagi.Text, tbKoszt.Text,
-                cbStatus.SelectedItem.ToString(), cbOdbior.SelectedItem.ToString(), tbNaprawy.Text, DateTime.Now.ToShortDateString(), (chbSmsWyslany.Checked ? "TAK" : "NIE"));
+                cbStatus.SelectedItem.ToString(), cbOdbior.SelectedItem.ToString(), tbNaprawy.Text, DateTime.Now.ToShortDateString(), (chbSmsWyslany.Checked ? "TAK" : "NIE"), cbZgoda.SelectedItem.ToString(), cbBlokuj.SelectedItem.ToString());
             if (pomoc.czyUsterkiTakieSame(serwis.glowna.listaUsterek[indeks], uster))
             {
                 serwis.Enabled = true;

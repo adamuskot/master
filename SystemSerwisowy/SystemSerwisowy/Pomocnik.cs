@@ -40,6 +40,10 @@ namespace SystemSerwisowy
                 return false;
             if (ust1.WykonaneNaprawy != ust2.WykonaneNaprawy)
                 return false;
+            if (ust1.ZgodaElektro != ust2.ZgodaElektro)
+                return false;
+            if (ust1.BlokujKlienta != ust2.BlokujKlienta)
+                return false;
             return true;
         }
     }
