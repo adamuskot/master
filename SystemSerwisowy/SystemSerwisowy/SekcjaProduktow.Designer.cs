@@ -38,6 +38,7 @@
             this.tbSzukajka = new System.Windows.Forms.TextBox();
             this.chkDostepne = new System.Windows.Forms.CheckBox();
             this.chbSprzedane = new System.Windows.Forms.CheckBox();
+            this.cbKategorie = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdukty)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,11 +46,11 @@
             // 
             this.dgvProdukty.AllowUserToAddRows = false;
             this.dgvProdukty.AllowUserToOrderColumns = true;
-            this.dgvProdukty.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvProdukty.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvProdukty.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProdukty.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvProdukty.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dgvProdukty.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.dgvProdukty.Location = new System.Drawing.Point(12, 131);
             this.dgvProdukty.Name = "dgvProdukty";
             this.dgvProdukty.ReadOnly = true;
@@ -126,11 +127,13 @@
             this.cbWarunek.FormattingEnabled = true;
             this.cbWarunek.Items.AddRange(new object[] {
             "Nazwa",
-            "Numer Seryjny"});
+            "Numer Seryjny",
+            "Kategoria"});
             this.cbWarunek.Location = new System.Drawing.Point(348, 85);
             this.cbWarunek.Name = "cbWarunek";
             this.cbWarunek.Size = new System.Drawing.Size(121, 26);
             this.cbWarunek.TabIndex = 6;
+            this.cbWarunek.SelectedIndexChanged += new System.EventHandler(this.cbWarunek_SelectedIndexChanged);
             // 
             // tbSzukajka
             // 
@@ -170,11 +173,23 @@
             this.chbSprzedane.UseVisualStyleBackColor = true;
             this.chbSprzedane.CheckedChanged += new System.EventHandler(this.chbSprzedane_CheckedChanged);
             // 
+            // cbKategorie
+            // 
+            this.cbKategorie.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.cbKategorie.FormattingEnabled = true;
+            this.cbKategorie.Location = new System.Drawing.Point(491, 85);
+            this.cbKategorie.Name = "cbKategorie";
+            this.cbKategorie.Size = new System.Drawing.Size(133, 24);
+            this.cbKategorie.TabIndex = 24;
+            this.cbKategorie.Visible = false;
+            this.cbKategorie.SelectedIndexChanged += new System.EventHandler(this.cbKategorie_SelectedIndexChanged);
+            // 
             // SekcjaProduktow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1052, 562);
+            this.Controls.Add(this.cbKategorie);
             this.Controls.Add(this.chbSprzedane);
             this.Controls.Add(this.chkDostepne);
             this.Controls.Add(this.tbSzukajka);
@@ -189,6 +204,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Elektronika";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SekcjaProduktow_FormClosing);
+            this.Load += new System.EventHandler(this.SekcjaProduktow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdukty)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -207,5 +223,6 @@
         private System.Windows.Forms.TextBox tbSzukajka;
         private System.Windows.Forms.CheckBox chkDostepne;
         private System.Windows.Forms.CheckBox chbSprzedane;
+        private System.Windows.Forms.ComboBox cbKategorie;
     }
 }

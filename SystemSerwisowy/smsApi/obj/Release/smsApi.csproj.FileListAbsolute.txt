@@ -1,0 +1,6 @@
+D:\Repozytorium\SystemSerwisowy\master\SystemSerwisowy\smsApi\bin\Release\smsApi.dll.config
+D:\Repozytorium\SystemSerwisowy\master\SystemSerwisowy\smsApi\bin\Release\smsApi.dll
+D:\Repozytorium\SystemSerwisowy\master\SystemSerwisowy\smsApi\bin\Release\smsApi.pdb
+D:\Repozytorium\SystemSerwisowy\master\SystemSerwisowy\smsApi\obj\Release\smsApi.csproj.CoreCompileInputs.cache
+D:\Repozytorium\SystemSerwisowy\master\SystemSerwisowy\smsApi\obj\Release\smsApi.dll
+D:\Repozytorium\SystemSerwisowy\master\SystemSerwisowy\smsApi\obj\Release\smsApi.pdb

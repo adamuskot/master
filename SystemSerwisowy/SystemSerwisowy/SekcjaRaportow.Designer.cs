@@ -30,12 +30,16 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SekcjaRaportow));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dtpDataRaportuSerwisu = new System.Windows.Forms.DateTimePicker();
             this.btRaportSerwisu = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblStatusy = new System.Windows.Forms.Label();
             this.chBLStatusy = new System.Windows.Forms.CheckedListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblDo = new System.Windows.Forms.Label();
+            this.lblOd = new System.Windows.Forms.Label();
+            this.dtpDataDoRaportuSprzedazy = new System.Windows.Forms.DateTimePicker();
             this.btRaportSprzedazy = new System.Windows.Forms.Button();
-            this.dtpDataRaportuSprzedazy = new System.Windows.Forms.DateTimePicker();
+            this.dtpDataOdRaportuSprzedazy = new System.Windows.Forms.DateTimePicker();
             this.btZamknij = new System.Windows.Forms.Button();
             this.printDialogSerwis = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialogSerwis = new System.Windows.Forms.PrintPreviewDialog();
@@ -43,44 +47,57 @@
             this.printDocumentSprzedaz = new System.Drawing.Printing.PrintDocument();
             this.printDialogSprzedaz = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialogSprzedaz = new System.Windows.Forms.PrintPreviewDialog();
+            this.btRaportStanu = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.groupBox1.Controls.Add(this.dtpDataRaportuSerwisu);
             this.groupBox1.Controls.Add(this.btRaportSerwisu);
-            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.lblStatusy);
             this.groupBox1.Controls.Add(this.chBLStatusy);
             this.groupBox1.Location = new System.Drawing.Point(13, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(344, 288);
+            this.groupBox1.Size = new System.Drawing.Size(344, 287);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Raport Serwisu";
+            // 
+            // dtpDataRaportuSerwisu
+            // 
+            this.dtpDataRaportuSerwisu.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.dtpDataRaportuSerwisu.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDataRaportuSerwisu.Location = new System.Drawing.Point(7, 162);
+            this.dtpDataRaportuSerwisu.Name = "dtpDataRaportuSerwisu";
+            this.dtpDataRaportuSerwisu.Size = new System.Drawing.Size(331, 20);
+            this.dtpDataRaportuSerwisu.TabIndex = 4;
             // 
             // btRaportSerwisu
             // 
             this.btRaportSerwisu.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btRaportSerwisu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btRaportSerwisu.Location = new System.Drawing.Point(114, 202);
+            this.btRaportSerwisu.Location = new System.Drawing.Point(7, 188);
             this.btRaportSerwisu.Name = "btRaportSerwisu";
-            this.btRaportSerwisu.Size = new System.Drawing.Size(110, 57);
+            this.btRaportSerwisu.Size = new System.Drawing.Size(159, 57);
             this.btRaportSerwisu.TabIndex = 3;
-            this.btRaportSerwisu.Text = "Generuj Raport";
+            this.btRaportSerwisu.Text = "Generuj Raport Serwisu Statusów";
             this.btRaportSerwisu.UseVisualStyleBackColor = true;
             this.btRaportSerwisu.Click += new System.EventHandler(this.btRaportSerwisu_Click);
             // 
-            // label1
+            // lblStatusy
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(6, 48);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(169, 16);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Wybierz statusy do raportu:";
+            this.lblStatusy.AutoSize = true;
+            this.lblStatusy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblStatusy.Location = new System.Drawing.Point(6, 19);
+            this.lblStatusy.Name = "lblStatusy";
+            this.lblStatusy.Size = new System.Drawing.Size(169, 16);
+            this.lblStatusy.TabIndex = 1;
+            this.lblStatusy.Text = "Wybierz statusy do raportu:";
             // 
             // chBLStatusy
             // 
@@ -91,45 +108,78 @@
             "Przyjęty do naprawy",
             "Wysłane na gwarancję",
             "Czeka na części",
-            "Czeka na decyzję klienta"});
-            this.chBLStatusy.Location = new System.Drawing.Point(7, 76);
+            "Czeka na decyzję klienta",
+            "Oddany Naprawiony/Nienaprawiony"});
+            this.chBLStatusy.Location = new System.Drawing.Point(7, 47);
             this.chBLStatusy.Name = "chBLStatusy";
             this.chBLStatusy.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.chBLStatusy.Size = new System.Drawing.Size(331, 88);
+            this.chBLStatusy.Size = new System.Drawing.Size(331, 109);
             this.chBLStatusy.TabIndex = 0;
             // 
             // groupBox2
             // 
             this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.groupBox2.Controls.Add(this.lblDo);
+            this.groupBox2.Controls.Add(this.lblOd);
+            this.groupBox2.Controls.Add(this.dtpDataDoRaportuSprzedazy);
             this.groupBox2.Controls.Add(this.btRaportSprzedazy);
-            this.groupBox2.Controls.Add(this.dtpDataRaportuSprzedazy);
+            this.groupBox2.Controls.Add(this.dtpDataOdRaportuSprzedazy);
             this.groupBox2.Location = new System.Drawing.Point(371, 13);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(344, 288);
+            this.groupBox2.Size = new System.Drawing.Size(344, 179);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Raport Sprzedaży";
+            // 
+            // lblDo
+            // 
+            this.lblDo.AutoSize = true;
+            this.lblDo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblDo.Location = new System.Drawing.Point(23, 62);
+            this.lblDo.Name = "lblDo";
+            this.lblDo.Size = new System.Drawing.Size(29, 16);
+            this.lblDo.TabIndex = 7;
+            this.lblDo.Text = "Do:";
+            // 
+            // lblOd
+            // 
+            this.lblOd.AutoSize = true;
+            this.lblOd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblOd.Location = new System.Drawing.Point(23, 23);
+            this.lblOd.Name = "lblOd";
+            this.lblOd.Size = new System.Drawing.Size(29, 16);
+            this.lblOd.TabIndex = 6;
+            this.lblOd.Text = "Od:";
+            // 
+            // dtpDataDoRaportuSprzedazy
+            // 
+            this.dtpDataDoRaportuSprzedazy.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.dtpDataDoRaportuSprzedazy.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDataDoRaportuSprzedazy.Location = new System.Drawing.Point(26, 78);
+            this.dtpDataDoRaportuSprzedazy.Name = "dtpDataDoRaportuSprzedazy";
+            this.dtpDataDoRaportuSprzedazy.Size = new System.Drawing.Size(300, 20);
+            this.dtpDataDoRaportuSprzedazy.TabIndex = 5;
             // 
             // btRaportSprzedazy
             // 
             this.btRaportSprzedazy.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btRaportSprzedazy.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btRaportSprzedazy.Location = new System.Drawing.Point(111, 202);
+            this.btRaportSprzedazy.Location = new System.Drawing.Point(87, 116);
             this.btRaportSprzedazy.Name = "btRaportSprzedazy";
-            this.btRaportSprzedazy.Size = new System.Drawing.Size(110, 57);
+            this.btRaportSprzedazy.Size = new System.Drawing.Size(170, 57);
             this.btRaportSprzedazy.TabIndex = 4;
             this.btRaportSprzedazy.Text = "Generuj Raport";
             this.btRaportSprzedazy.UseVisualStyleBackColor = true;
             this.btRaportSprzedazy.Click += new System.EventHandler(this.btRaportSprzedazy_Click);
             // 
-            // dtpDataRaportuSprzedazy
+            // dtpDataOdRaportuSprzedazy
             // 
-            this.dtpDataRaportuSprzedazy.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.dtpDataRaportuSprzedazy.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDataRaportuSprzedazy.Location = new System.Drawing.Point(21, 58);
-            this.dtpDataRaportuSprzedazy.Name = "dtpDataRaportuSprzedazy";
-            this.dtpDataRaportuSprzedazy.Size = new System.Drawing.Size(300, 20);
-            this.dtpDataRaportuSprzedazy.TabIndex = 0;
+            this.dtpDataOdRaportuSprzedazy.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.dtpDataOdRaportuSprzedazy.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDataOdRaportuSprzedazy.Location = new System.Drawing.Point(26, 39);
+            this.dtpDataOdRaportuSprzedazy.Name = "dtpDataOdRaportuSprzedazy";
+            this.dtpDataOdRaportuSprzedazy.Size = new System.Drawing.Size(300, 20);
+            this.dtpDataOdRaportuSprzedazy.TabIndex = 0;
             // 
             // btZamknij
             // 
@@ -179,11 +229,34 @@
             this.printPreviewDialogSprzedaz.Name = "printPreviewDialogSprzedaz";
             this.printPreviewDialogSprzedaz.Visible = false;
             // 
+            // btRaportStanu
+            // 
+            this.btRaportStanu.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btRaportStanu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btRaportStanu.Location = new System.Drawing.Point(87, 26);
+            this.btRaportStanu.Name = "btRaportStanu";
+            this.btRaportStanu.Size = new System.Drawing.Size(170, 57);
+            this.btRaportStanu.TabIndex = 5;
+            this.btRaportStanu.Text = "Generuj Raport Stanu XLSX";
+            this.btRaportStanu.UseVisualStyleBackColor = true;
+            this.btRaportStanu.Click += new System.EventHandler(this.btRaportStanu_Click);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.btRaportStanu);
+            this.groupBox3.Location = new System.Drawing.Point(371, 198);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(344, 102);
+            this.groupBox3.TabIndex = 6;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Raport Stanu";
+            // 
             // SekcjaRaportow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(727, 368);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.btZamknij);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -194,6 +267,8 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -203,10 +278,10 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckedListBox chBLStatusy;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblStatusy;
         private System.Windows.Forms.Button btRaportSerwisu;
         private System.Windows.Forms.Button btRaportSprzedazy;
-        private System.Windows.Forms.DateTimePicker dtpDataRaportuSprzedazy;
+        private System.Windows.Forms.DateTimePicker dtpDataOdRaportuSprzedazy;
         private System.Windows.Forms.Button btZamknij;
         private System.Windows.Forms.PrintDialog printDialogSerwis;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialogSerwis;
@@ -214,5 +289,11 @@
         private System.Drawing.Printing.PrintDocument printDocumentSprzedaz;
         private System.Windows.Forms.PrintDialog printDialogSprzedaz;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialogSprzedaz;
+        private System.Windows.Forms.DateTimePicker dtpDataRaportuSerwisu;
+        private System.Windows.Forms.Button btRaportStanu;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label lblDo;
+        private System.Windows.Forms.Label lblOd;
+        private System.Windows.Forms.DateTimePicker dtpDataDoRaportuSprzedazy;
     }
 }

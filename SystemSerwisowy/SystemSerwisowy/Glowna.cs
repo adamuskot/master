@@ -28,6 +28,7 @@ namespace SystemSerwisowy
         public string trescSmsNaprawiony = "";
         public string trescSmsNienaprawiony = "";
         public string trescSmsInny = "";
+        public List<string> kategorieProduktow;
 
         public Glowna()
         {
@@ -38,6 +39,7 @@ namespace SystemSerwisowy
             listaUsterek = new List<Usterka>();
             bazaKlientow = new Dictionary<string, string>();
             regulamin = new List<string>();
+            kategorieProduktow = new List<string>();
             wczytajPliki();
             //Przypominacz();
             timer1.Enabled = true;
@@ -60,7 +62,7 @@ namespace SystemSerwisowy
             StreamWriter zapisuj = new StreamWriter(plik);
             for (int i = 0; i < listaProduktow.Count(); i++)
             {
-                zapisuj.WriteLine(listaProduktow[i].Id + "|" + listaProduktow[i].Nazwa + "|" + listaProduktow[i].NumerSeryjny + "|" + listaProduktow[i].CenaZakupu + "|" + listaProduktow[i].CenaSprzedazy + "|" + listaProduktow[i].Wyposazenie + "|" + listaProduktow[i].Ilosc + "|" + listaProduktow[i].DataZakupu + "|" + listaProduktow[i].DataSprzedazy + "|" + listaProduktow[i].Uwagi + "|" + listaProduktow[i].Dostepny + "|" + listaProduktow[i].WykonaneNaprawy);
+                zapisuj.WriteLine(listaProduktow[i].Id + "|" + listaProduktow[i].Nazwa + "|" + listaProduktow[i].NumerSeryjny + "|" + listaProduktow[i].CenaZakupu + "|" + listaProduktow[i].CenaSprzedazy + "|" + listaProduktow[i].Wyposazenie + "|" + listaProduktow[i].Ilosc + "|" + listaProduktow[i].DataZakupu + "|" + listaProduktow[i].DataSprzedazy + "|" + listaProduktow[i].Uwagi + "|" + listaProduktow[i].Dostepny + "|" + listaProduktow[i].Kategoria);
             }
             zapisuj.Close();
         }
@@ -174,6 +176,7 @@ namespace SystemSerwisowy
             zapisuj.WriteLine("Tresc sms naprawiony=" + trescSmsNaprawiony);
             zapisuj.WriteLine("Tresc sms nienaprawiony=" + trescSmsNienaprawiony);
             zapisuj.WriteLine("Tresc sms inny=" + trescSmsInny);
+            zapisuj.WriteLine("Statusy=" + string.Join("|", kategorieProduktow));
             zapisuj.Close();
         }
 
@@ -319,7 +322,7 @@ namespace SystemSerwisowy
                         linia = czytaj.ReadLine();
                         if (linia != null && linia != "")
                         {
-                            var split = linia.Split('=');
+                            string[] split = linia.Split('=');
                             if (split[0] == "Czas naprawy")
                             {
                                 czasNaprawy = Convert.ToInt32(split[1]);
@@ -336,9 +339,18 @@ namespace SystemSerwisowy
                             {
                                 trescSmsInny = split[1];
                             }
+                            if (split[0] == "Statusy")
+                            {
+                                kategorieProduktow = split[1].ToString().Split('|').ToList();
+                            }
                         }
                     }
                     czytaj.Close();
+                    if (kategorieProduktow.Count == 0)
+                    {
+                        Pomocnik pomoc = new Pomocnik();
+                        kategorieProduktow = pomoc.UzupelnijDomysleKategorie();
+                    }
                 }
                 else
                 {
@@ -372,13 +384,13 @@ namespace SystemSerwisowy
                                 pr.DataSprzedazy = split[8];
                                 pr.Uwagi = split[9];
                                 pr.Dostepny = split[10];
-                                pr.WykonaneNaprawy = split[11];
+                                pr.Kategoria = kategorieProduktow.Contains(split[11]) ? split[11] : "";
 
                             }
                             catch
                             {
                                 if (split.Count() < 12)
-                                    pr.WykonaneNaprawy = "";
+                                    pr.Kategoria = "";
                                 if (split.Count() < 11)
                                 {
                                     if (pr.Ilosc > 0)
@@ -902,94 +914,94 @@ namespace SystemSerwisowy
 
         private void raportStanuToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if (listaProduktow.Count > 0)
-            {
-                SaveFileDialog saveFileDialog = new SaveFileDialog();
-                saveFileDialog.InitialDirectory = @"C:\";
-                saveFileDialog.Filter = "Excel files (*.xlsx)|*.xlsx";
-                saveFileDialog.FilterIndex = 0;
-                saveFileDialog.RestoreDirectory = true;
-                saveFileDialog.CreatePrompt = true;
-                saveFileDialog.Title = "Zapisz Raport do:";
+            //if (listaProduktow.Count > 0)
+            //{
+            //    SaveFileDialog saveFileDialog = new SaveFileDialog();
+            //    saveFileDialog.InitialDirectory = @"C:\";
+            //    saveFileDialog.Filter = "Excel files (*.xlsx)|*.xlsx";
+            //    saveFileDialog.FilterIndex = 0;
+            //    saveFileDialog.RestoreDirectory = true;
+            //    saveFileDialog.CreatePrompt = true;
+            //    saveFileDialog.Title = "Zapisz Raport do:";
 
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    string path = saveFileDialog.FileName;
-                    try
-                    {
-                        Excel.Application ExcelApp = new Excel.Application();
-                        //zapisuj.WriteLine("utworzenie excelapp");
-                        Excel.Workbook ExcelWorkBook = null;
-                        //zapisuj.WriteLine("utworzenieworkbook");
-                        Excel.Worksheet ExcelWorkSheet = null;
+            //    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            //    {
+            //        string path = saveFileDialog.FileName;
+            //        try
+            //        {
+            //            Excel.Application ExcelApp = new Excel.Application();
+            //            //zapisuj.WriteLine("utworzenie excelapp");
+            //            Excel.Workbook ExcelWorkBook = null;
+            //            //zapisuj.WriteLine("utworzenieworkbook");
+            //            Excel.Worksheet ExcelWorkSheet = null;
 
-                        //zapisuj.WriteLine("utworzenie worksheet");
-
-
-                        ExcelApp.Visible = true;
-
-                        ExcelWorkBook = ExcelApp.Workbooks.Add(Excel.XlWBATemplate.xlWBATWorksheet);
+            //            //zapisuj.WriteLine("utworzenie worksheet");
 
 
-                        //zapisuj.WriteLine("Przed zapisem danych");
-                        ExcelWorkSheet = ExcelWorkBook.Worksheets[1];
-                        int i = 2;
-                        ExcelWorkSheet.Cells[1, 1] = "LP.";
-                        ExcelWorkSheet.Cells[1, 2] = "Nazwa";
-                        ExcelWorkSheet.Cells[1, 3] = "Numer seryjny";
-                        ExcelWorkSheet.Cells[1, 4] = "Wyposażenie";
-                        ExcelWorkSheet.Cells[1, 5] = "Cena kupna";
-                        ExcelWorkSheet.Cells[1, 6] = "Data kupna";
-                        ExcelWorkSheet.Cells[1, 7] = "Uwagi";
+            //            ExcelApp.Visible = true;
 
-                        foreach (Produkt item in listaProduktow)
-                        {
-                            if (item.Dostepny == "TAK")
-                            {
-                                ExcelWorkSheet.Cells[i, 1] = i - 1;
-                                ExcelWorkSheet.Cells[i, 2] = item.Nazwa;
-                                ExcelWorkSheet.Cells[i, 3] = item.NumerSeryjny;
-                                ExcelWorkSheet.Cells[i, 4] = item.Wyposazenie;
-                                ExcelWorkSheet.Cells[i, 5] = item.CenaZakupu + "zł " + "[" + item.Ilosc + "szt.]";
-                                ExcelWorkSheet.Cells[i, 6] = item.DataZakupu;
-                                ExcelWorkSheet.Cells[i, 7] = item.Uwagi;
-                                i++;
-                            }
-                        }
-
-                        ExcelWorkBook.Worksheets[1].Name = "Raport stanu";
-                        ExcelWorkBook.SaveAs(path);
-                        //zapisuj.WriteLine("po zapisie workbook");
-
-                        ExcelWorkBook.Close();
-
-                        ExcelApp.Quit();
-                        MessageBox.Show("Raport zapisano pomyślnie w: " + saveFileDialog.FileName);
-                    }
-
-                    catch (Exception)
-                    {
-                        //zapisuj.WriteLine("exception:" + exHandle);
-                    }
-
-                    finally
-                    {
-                        //zapisuj.WriteLine("Koniec");
-                        //zapisuj.Close();
+            //            ExcelWorkBook = ExcelApp.Workbooks.Add(Excel.XlWBATemplate.xlWBATWorksheet);
 
 
-                        foreach (Process process in Process.GetProcessesByName("Excel"))
-                        {
-                            process.Kill();
-                        }
-                    }
+            //            //zapisuj.WriteLine("Przed zapisem danych");
+            //            ExcelWorkSheet = ExcelWorkBook.Worksheets[1];
+            //            int i = 2;
+            //            ExcelWorkSheet.Cells[1, 1] = "LP.";
+            //            ExcelWorkSheet.Cells[1, 2] = "Nazwa";
+            //            ExcelWorkSheet.Cells[1, 3] = "Numer seryjny";
+            //            ExcelWorkSheet.Cells[1, 4] = "Wyposażenie";
+            //            ExcelWorkSheet.Cells[1, 5] = "Cena kupna";
+            //            ExcelWorkSheet.Cells[1, 6] = "Data kupna";
+            //            ExcelWorkSheet.Cells[1, 7] = "Uwagi";
 
-                }
-            }
-            else
-            {
-                MessageBox.Show("Brak produktów do wydruku!");
-            }
+            //            foreach (Produkt item in listaProduktow)
+            //            {
+            //                if (item.Dostepny == "TAK")
+            //                {
+            //                    ExcelWorkSheet.Cells[i, 1] = i - 1;
+            //                    ExcelWorkSheet.Cells[i, 2] = item.Nazwa;
+            //                    ExcelWorkSheet.Cells[i, 3] = item.NumerSeryjny;
+            //                    ExcelWorkSheet.Cells[i, 4] = item.Wyposazenie;
+            //                    ExcelWorkSheet.Cells[i, 5] = item.CenaZakupu + "zł " + "[" + item.Ilosc + "szt.]";
+            //                    ExcelWorkSheet.Cells[i, 6] = item.DataZakupu;
+            //                    ExcelWorkSheet.Cells[i, 7] = item.Uwagi;
+            //                    i++;
+            //                }
+            //            }
+
+            //            ExcelWorkBook.Worksheets[1].Name = "Raport stanu";
+            //            ExcelWorkBook.SaveAs(path);
+            //            //zapisuj.WriteLine("po zapisie workbook");
+
+            //            ExcelWorkBook.Close();
+
+            //            ExcelApp.Quit();
+            //            MessageBox.Show("Raport zapisano pomyślnie w: " + saveFileDialog.FileName);
+            //        }
+
+            //        catch (Exception)
+            //        {
+            //            //zapisuj.WriteLine("exception:" + exHandle);
+            //        }
+
+            //        finally
+            //        {
+            //            //zapisuj.WriteLine("Koniec");
+            //            //zapisuj.Close();
+
+
+            //            foreach (Process process in Process.GetProcessesByName("Excel"))
+            //            {
+            //                process.Kill();
+            //            }
+            //        }
+
+            //    }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Brak produktów do wydruku!");
+            //}
         }
 
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
@@ -1181,6 +1193,10 @@ namespace SystemSerwisowy
             MessageBox.Show("Wersja programu Serwis2015 v1.0.1");
         }
 
-
+        private void StatusyStripMenuItem_Click(object sender, EventArgs e)
+        {
+            KategorieProduktow sms = new KategorieProduktow(this);
+            sms.Show(this);
+        }
     }
 }

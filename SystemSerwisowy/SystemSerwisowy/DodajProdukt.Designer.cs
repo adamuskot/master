@@ -49,6 +49,10 @@
             this.tbId = new System.Windows.Forms.TextBox();
             this.btDodaj = new System.Windows.Forms.Button();
             this.btAnuluj = new System.Windows.Forms.Button();
+            this.lblKategoria = new System.Windows.Forms.Label();
+            this.cbKategorie = new System.Windows.Forms.ComboBox();
+            this.LblInnaKategoria = new System.Windows.Forms.Label();
+            this.tbInnaKategoria = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudIlosc)).BeginInit();
             this.SuspendLayout();
@@ -139,6 +143,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.tbInnaKategoria);
+            this.panel1.Controls.Add(this.LblInnaKategoria);
+            this.panel1.Controls.Add(this.cbKategorie);
+            this.panel1.Controls.Add(this.lblKategoria);
             this.panel1.Controls.Add(this.tbNaprawy);
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.nudIlosc);
@@ -159,7 +167,7 @@
             this.panel1.Controls.Add(this.label4);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(398, 276);
+            this.panel1.Size = new System.Drawing.Size(398, 339);
             this.panel1.TabIndex = 8;
             // 
             // tbNaprawy
@@ -260,7 +268,7 @@
             // 
             this.btDodaj.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btDodaj.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btDodaj.Location = new System.Drawing.Point(293, 304);
+            this.btDodaj.Location = new System.Drawing.Point(293, 367);
             this.btDodaj.Name = "btDodaj";
             this.btDodaj.Size = new System.Drawing.Size(117, 44);
             this.btDodaj.TabIndex = 16;
@@ -273,7 +281,7 @@
             this.btAnuluj.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btAnuluj.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btAnuluj.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btAnuluj.Location = new System.Drawing.Point(177, 304);
+            this.btAnuluj.Location = new System.Drawing.Point(177, 367);
             this.btAnuluj.Name = "btAnuluj";
             this.btAnuluj.Size = new System.Drawing.Size(110, 44);
             this.btAnuluj.TabIndex = 17;
@@ -281,13 +289,53 @@
             this.btAnuluj.UseVisualStyleBackColor = true;
             this.btAnuluj.Click += new System.EventHandler(this.btAnuluj_Click);
             // 
+            // lblKategoria
+            // 
+            this.lblKategoria.AutoSize = true;
+            this.lblKategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblKategoria.Location = new System.Drawing.Point(16, 260);
+            this.lblKategoria.Name = "lblKategoria";
+            this.lblKategoria.Size = new System.Drawing.Size(71, 18);
+            this.lblKategoria.TabIndex = 18;
+            this.lblKategoria.Text = "Kategoria";
+            // 
+            // cbKategorie
+            // 
+            this.cbKategorie.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.cbKategorie.FormattingEnabled = true;
+            this.cbKategorie.Location = new System.Drawing.Point(166, 260);
+            this.cbKategorie.Name = "cbKategorie";
+            this.cbKategorie.Size = new System.Drawing.Size(210, 24);
+            this.cbKategorie.TabIndex = 19;
+            this.cbKategorie.SelectedIndexChanged += new System.EventHandler(this.cbKategorie_SelectedIndexChanged);
+            // 
+            // LblInnaKategoria
+            // 
+            this.LblInnaKategoria.AutoSize = true;
+            this.LblInnaKategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.LblInnaKategoria.Location = new System.Drawing.Point(16, 287);
+            this.LblInnaKategoria.Name = "LblInnaKategoria";
+            this.LblInnaKategoria.Size = new System.Drawing.Size(145, 18);
+            this.LblInnaKategoria.TabIndex = 20;
+            this.LblInnaKategoria.Text = "Wprowadź kategorię";
+            this.LblInnaKategoria.Visible = false;
+            // 
+            // tbInnaKategoria
+            // 
+            this.tbInnaKategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.tbInnaKategoria.Location = new System.Drawing.Point(166, 288);
+            this.tbInnaKategoria.Name = "tbInnaKategoria";
+            this.tbInnaKategoria.Size = new System.Drawing.Size(210, 22);
+            this.tbInnaKategoria.TabIndex = 21;
+            this.tbInnaKategoria.Visible = false;
+            // 
             // DodajProdukt
             // 
             this.AcceptButton = this.btDodaj;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btAnuluj;
-            this.ClientSize = new System.Drawing.Size(422, 361);
+            this.ClientSize = new System.Drawing.Size(422, 424);
             this.Controls.Add(this.btAnuluj);
             this.Controls.Add(this.btDodaj);
             this.Controls.Add(this.panel1);
@@ -325,5 +373,9 @@
         private System.Windows.Forms.Button btAnuluj;
         private System.Windows.Forms.TextBox tbNaprawy;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox tbInnaKategoria;
+        private System.Windows.Forms.Label LblInnaKategoria;
+        private System.Windows.Forms.ComboBox cbKategorie;
+        private System.Windows.Forms.Label lblKategoria;
     }
 }

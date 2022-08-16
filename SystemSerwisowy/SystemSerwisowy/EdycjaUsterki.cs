@@ -113,7 +113,7 @@ namespace SystemSerwisowy
                 serwis.glowna.listaUsterek[indeks].Uwagi += "Pilne";
             }
 
-            if (cbZgoda.SelectedItem == "TAK")
+            if (cbZgoda.SelectedItem.ToString() == "TAK")
             {
                 bool bylaZgoda = serwis.glowna.listaUsterek.Cast<Usterka>().Where(x => x.Telefon == tbTelefon.Text && (x.ZgodaElektro == "TAK")).Any();
 
@@ -142,7 +142,7 @@ namespace SystemSerwisowy
             }
 
             var bylaBlokada = serwis.glowna.listaUsterek.Cast<Usterka>().Where(x => x.Telefon == tbTelefon.Text && x.BlokujKlienta == "TAK").FirstOrDefault();
-            if (cbBlokuj.SelectedItem == "TAK")
+            if (cbBlokuj.SelectedItem.ToString() == "TAK")
             {
 
                 var listaTemp = serwis.glowna.listaUsterek.Cast<Usterka>().Where(x => x.Telefon == tbTelefon.Text && x.BlokujKlienta == "NIE").ToList();

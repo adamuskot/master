@@ -19,6 +19,7 @@ namespace SystemSerwisowy
             InitializeComponent();
             tbData.Text = DateTime.Now.Date.ToShortDateString();
             tbId.Text = produkt.glowna.GetFreeIdProduktu().ToString();
+            cbKategorie.DataSource = p.glowna.kategorieProduktow;
         }
 
         private void btAnuluj_Click(object sender, EventArgs e)
@@ -51,6 +52,17 @@ namespace SystemSerwisowy
             {
                 ok = false;
             }
+            if (cbKategorie.SelectedItem.ToString() == "")
+            {
+                ok = false;
+                MessageBox.Show("Wybierz" +
+                    " kategorię!");
+            }
+            if (cbKategorie.SelectedItem.ToString() == "Inne" && tbInnaKategoria.Text == "")
+            {
+                ok = false;
+                MessageBox.Show("Wpisz nazwę nowej kategorii!");
+            }
             return ok;
         }
 
@@ -70,7 +82,19 @@ namespace SystemSerwisowy
                 nowy.NumerSeryjny = tbNumer.Text;
                 nowy.Uwagi = tbUwagi.Text;
                 nowy.Wyposazenie = tbWyposazenie.Text;
-                nowy.WykonaneNaprawy = tbNaprawy.Text;
+                if (cbKategorie.Text != "Inne")
+                {
+                    nowy.Kategoria = cbKategorie.SelectedItem.ToString();
+                }
+                else
+                {
+                    nowy.Kategoria = tbInnaKategoria.Text;
+                }
+                if (!produkt.glowna.kategorieProduktow.Contains(nowy.Kategoria))
+                {
+                    produkt.glowna.kategorieProduktow.Add(nowy.Kategoria);
+                    produkt.glowna.nadpiszUstawienia();
+                }
                 produkt.glowna.listaProduktow.Add(nowy);
                 produkt.glowna.nadpiszProdukty();
                 Close();
@@ -83,6 +107,20 @@ namespace SystemSerwisowy
         {
             produkt.Enabled = true;
             produkt.Focus();
+        }
+
+        private void cbKategorie_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbKategorie.Text == "Inne")
+            {
+                LblInnaKategoria.Visible = true;
+                tbInnaKategoria.Visible = true;
+            }
+            else
+            {
+                LblInnaKategoria.Visible = false;
+                tbInnaKategoria.Visible = false;
+            }
         }
     }
 }

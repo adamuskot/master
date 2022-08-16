@@ -14,6 +14,7 @@
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -26,7 +27,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -53,6 +53,7 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -63,7 +64,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Czesc.cs" />
+    <Compile Include="KategorieProduktow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KategorieProduktow.Designer.cs">
+      <DependentUpon>KategorieProduktow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wspolne\Czesc.cs" />
     <Compile Include="DodajAkcesoria.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,7 +95,7 @@
     <Compile Include="EdycjaUsterki.Designer.cs">
       <DependentUpon>EdycjaUsterki.cs</DependentUpon>
     </Compile>
-    <Compile Include="Firma.cs" />
+    <Compile Include="Wspolne\Firma.cs" />
     <Compile Include="FirmaDane.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,7 +109,7 @@
       <DependentUpon>Glowna.cs</DependentUpon>
     </Compile>
     <Compile Include="Pomocnik.cs" />
-    <Compile Include="Produkt.cs" />
+    <Compile Include="Wspolne\Produkt.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Przypominacz.cs">
@@ -159,7 +166,7 @@
     <Compile Include="TrescSMS.Designer.cs">
       <DependentUpon>TrescSMS.cs</DependentUpon>
     </Compile>
-    <Compile Include="Usterka.cs" />
+    <Compile Include="Wspolne\Usterka.cs" />
     <Compile Include="WyslijSMS.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -221,6 +228,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SprzedajProdukt.resx">
       <DependentUpon>SprzedajProdukt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KategorieProduktow.resx">
+      <DependentUpon>KategorieProduktow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TrescSMS.resx">
       <DependentUpon>TrescSMS.cs</DependentUpon>

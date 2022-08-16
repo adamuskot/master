@@ -17,8 +17,9 @@ namespace SystemSerwisowy
         {
             glowna = g;
             InitializeComponent();
-            AktualizujGrida();
             cbWarunek.SelectedIndex = 0;
+            cbKategorie.DataSource = g.kategorieProduktow;
+            AktualizujGrida();
         }
 
         private void btDodawanie_Click(object sender, EventArgs e)
@@ -48,7 +49,23 @@ namespace SystemSerwisowy
             }
             dgvProdukty.DataSource = temp;
             tbSzukajka.Text = "";
-            this.Refresh();
+            UstawSzerokoscKolumn();
+            //this.Refresh();
+        }
+        public void UstawSzerokoscKolumn()
+        {
+            dgvProdukty.Columns[0].Width = 50; // ID
+            dgvProdukty.Columns[1].Width = 180; // Imie i nazwisko
+            dgvProdukty.Columns[2].Width = 180;
+            dgvProdukty.Columns[3].Width = 130;
+            dgvProdukty.Columns[4].Width = 50;
+            dgvProdukty.Columns[5].Width = 50;
+            dgvProdukty.Columns[6].Width = 20;
+            dgvProdukty.Columns[7].Width = 77;
+            dgvProdukty.Columns[8].Width = 77;
+            dgvProdukty.Columns[9].Width = 30;
+            dgvProdukty.Columns[10].Width = 80;
+            dgvProdukty.Columns[11].Width = 100;
         }
 
         private void btZamknij_Click(object sender, EventArgs e)
@@ -112,6 +129,7 @@ namespace SystemSerwisowy
             List<Produkt> temp = glowna.listaProduktow;
             dgvProdukty.DataSource = temp;
             glowna.nadpiszProdukty();
+            AktualizujGrida();
         }
 
         private void tbSzukajka_TextChanged(object sender, EventArgs e)
@@ -125,7 +143,7 @@ namespace SystemSerwisowy
                     {
                         for (int i = 0; i < glowna.listaProduktow.Count(); i++)
                         {
-                            if (glowna.listaProduktow[i].Nazwa.ToUpper().Contains(tbSzukajka.Text.ToUpper()) && glowna.listaProduktow[i].Dostepny =="TAK")
+                            if (glowna.listaProduktow[i].Nazwa.ToUpper().Contains(tbSzukajka.Text.ToUpper()) && glowna.listaProduktow[i].Dostepny == "TAK")
                             {
                                 temp.Add(glowna.listaProduktow[i]);
                             }
@@ -142,7 +160,7 @@ namespace SystemSerwisowy
                         }
                     }
                 }
-                else
+                else if (cbWarunek.SelectedIndex == 1)
                 {
                     if (chkDostepne.Checked)
                     {
@@ -193,6 +211,7 @@ namespace SystemSerwisowy
             {
                 aktualny = 0;
             }
+            UstawSzerokoscKolumn();
         }
 
         private void chkDostepne_CheckedChanged(object sender, EventArgs e)
@@ -214,6 +233,7 @@ namespace SystemSerwisowy
                 temp = glowna.listaProduktow;
             }
             dgvProdukty.DataSource = temp;
+            UstawSzerokoscKolumn();
         }
 
         private void dgvProdukty_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -249,6 +269,75 @@ namespace SystemSerwisowy
                 temp = glowna.listaProduktow;
             }
             dgvProdukty.DataSource = temp;
+            UstawSzerokoscKolumn();
+        }
+
+        private void cbWarunek_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbWarunek.Text == "Kategoria")
+            {
+                cbKategorie.Visible = true;
+                tbSzukajka.Visible = false;
+                cbKategorie.SelectedIndex = -1;
+            }
+            else
+            {
+                tbSzukajka.Visible = true;
+                cbKategorie.Visible = false;
+                tbSzukajka_TextChanged(null, null);
+            }
+        }
+
+        private void cbKategorie_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<Produkt> temp = new List<Produkt>();
+            if (cbWarunek.SelectedIndex == 2 && cbKategorie.SelectedIndex != -1)          
+            {
+                if (chkDostepne.Checked)
+                {
+                    for (int i = 0; i < glowna.listaProduktow.Count(); i++)
+                    {
+                        if (glowna.listaProduktow[i].Kategoria == cbKategorie.Text && glowna.listaProduktow[i].Dostepny == "TAK")
+                        {
+                            temp.Add(glowna.listaProduktow[i]);
+                        }
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < glowna.listaProduktow.Count(); i++)
+                    {
+                        if (glowna.listaProduktow[i].Kategoria == cbKategorie.Text)
+                        {
+                            temp.Add(glowna.listaProduktow[i]);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (chkDostepne.Checked)
+                {
+                    for (int i = 0; i < glowna.listaProduktow.Count(); i++)
+                    {
+                        if (glowna.listaProduktow[i].Dostepny == "TAK")
+                        {
+                            temp.Add(glowna.listaProduktow[i]);
+                        }
+                    }
+                }
+                else
+                {
+                    temp = glowna.listaProduktow;
+                }
+            }
+            dgvProdukty.DataSource = temp;
+            UstawSzerokoscKolumn();
+        }
+
+        private void SekcjaProduktow_Load(object sender, EventArgs e)
+        {
+            UstawSzerokoscKolumn();
         }
     }
 }

@@ -1,10 +1,9 @@
 1. Oryginał zgłoszenia jest podstawą do wydania sprzętu z serwisu.
 2. Serwis nie odpowiada za ewentualne skutki wynikłe ze zgubienia druku zgłoszenia przez klienta.
-3. Serwis nie ponosi odpowiedzialności za dane pozostawione w pamięci urządzenia, mogą one zostać utracone w trakcie naprawy.
+3. Serwis nie ponosi odpowiedzialności za karty pamięci, karty sim oraz dane pozostawione w pamięci urządzenia, mogą one zostać utracone w trakcie naprawy.
 4. Serwis diagnozuje i naprawia sprzęt pod kątem usterek zgłoszonych przez klienta.
-5. W sytuacji nie odebrania sprzętu przez klienta w terminie 30 dni będą naliczane koszty magazynowania w wysokości 1% wartości naprawy za każdy dzień zwłoki.
+5. W sytuacji nie odebrania sprzętu przez klienta w terminie 90 dni od momentu pozostawienia w serwisie będą naliczane koszty magazynowania w wysokości 10zł miesięcznie.
 6. Na naprawy po zalaniu nie udzielamy gwarancji.
-7. Ze względu na specyfikę uszkodzeń telefonów po zalaniu, serwis nie ponosi odpowiedzialności za usterki postępujące w trakcie naprawy.
-8. Klient zgłaszając telefon do serwisu akceptuje powyższy regulamin.
-9. Uprzedzony o odpowiedzialności karnej wynikającej z art. 233 Kodeksu Karnego za składanie fałszywych oświadczeń, zleceniodawca oświadcza, że przedmiot wymieniny w rubryce SPRZĘT nie pochodzi z przestępstwa.
-10. Zleceniodawca oświadcza, że jeżeli okaże się, że przedmiot oddany do serwisu pochodził z kradzieży bierze na siebie całą odpowiedzialność, zwalniając Serwis z odpowiedzialności.
+7. Klient zgłaszając telefon do serwisu akceptuje powyższy regulamin.
+8. Uprzedzony o odpowiedzialności karnej wynikającej z art. 233 Kodeksu Karnego za składanie fałszywych oświadczeń, zleceniodawca oświadcza, że przedmiot wymieniny w rubryce SPRZĘT nie pochodzi z przestępstwa.
+9. Zleceniodawca oświadcza, że jeżeli okaże się, że przedmiot oddany do serwisu pochodził z kradzieży bierze na siebie całą odpowiedzialność, zwalniając Serwis z odpowiedzialności.

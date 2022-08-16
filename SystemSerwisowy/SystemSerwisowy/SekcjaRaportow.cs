@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
+using System.Globalization;
 using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
+using System.Threading;
+using System.Diagnostics;
 
 namespace SystemSerwisowy
 {
@@ -132,6 +135,30 @@ namespace SystemSerwisowy
                             break;
                     }
                 }
+                else if (ust.Odbior == "TAK" && ust.DataOdbioru == dtpDataRaportuSerwisu.Value.ToShortDateString())
+                {
+                    switch (ust.Status)
+                    {
+                        case "Naprawiony":
+                            if (chBLStatusy.CheckedItems.Contains("Oddany Naprawiony/Nienaprawiony"))
+                            {
+                                if (!listaDoRaportu.Contains(ust))
+                                {
+                                    listaDoRaportu.Add(ust);
+                                }
+                            }
+                            break;
+                        case "Brak możliwości naprawy":
+                            if (chBLStatusy.CheckedItems.Contains("Oddany Naprawiony/Nienaprawiony"))
+                            {
+                                if (!listaDoRaportu.Contains(ust))
+                                {
+                                    listaDoRaportu.Add(ust);
+                                }
+                            }
+                            break;
+                    }
+                }
             }
             if (listaDoRaportu.Count() > 0)
             {
@@ -146,7 +173,7 @@ namespace SystemSerwisowy
                     statusy += " " + chBLStatusy.CheckedItems[j] + ",";
                 }
                 e.Graphics.DrawString(statusy, font1, Brushes.Black, new Point(50, 50));
-                RectangleF[] rects = 
+                RectangleF[] rects =
             {
                 new RectangleF(20,70,30,40), //lp
                 new RectangleF(50,70,90,40), //nazwisko
@@ -172,7 +199,7 @@ namespace SystemSerwisowy
                 e.Graphics.DrawString("Data zgłoszenia", font1, Brushes.Black, new Rectangle(741, 78, 70, 35));
                 while (indeks < listaDoRaportu.Count())
                 {
-                    RectangleF[] rectangles = 
+                    RectangleF[] rectangles =
                     {
                         new RectangleF(20,110+40*i,30,40), //lp
                         new RectangleF(50,110+40*i,90,40), //nazwisko
@@ -218,12 +245,16 @@ namespace SystemSerwisowy
         {
             try
             {
-                if (dtpDataRaportuSprzedazy.Value != DateTime.MinValue)
+                if (dtpDataOdRaportuSprzedazy.Value != DateTime.MinValue)
                 {
                     List<Produkt> listaDoRaportu = new List<Produkt>();
                     for (int i = 0; i < glowna.listaProduktow.Count(); i++)
                     {
-                        if (glowna.listaProduktow[i].DataSprzedazy == dtpDataRaportuSprzedazy.Value.ToShortDateString())
+                        
+                        bool parsujDateSprzedazy = DateTime.TryParseExact(glowna.listaProduktow[i].DataSprzedazy, "dd.MM.yyyy",CultureInfo.CurrentCulture, DateTimeStyles.None, out DateTime dataSprzedazy);
+                        if (parsujDateSprzedazy
+                            && dataSprzedazy >= Convert.ToDateTime(dtpDataOdRaportuSprzedazy.Value.ToShortDateString()) 
+                            && dataSprzedazy <= Convert.ToDateTime(dtpDataDoRaportuSprzedazy.Value.ToShortDateString()))
                         {
                             listaDoRaportu.Add(glowna.listaProduktow[i]);
                         }
@@ -234,8 +265,8 @@ namespace SystemSerwisowy
                         indeks = 0;
                         System.Drawing.Printing.PrintDocument pd = new System.Drawing.Printing.PrintDocument();
                         pd.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocumentSprzedaz_PrintPage);
-                        printPreviewDialogSprzedaz.Document = pd;  // psuje drukowanie - tylko pierwsza strona wychodzi
-                        printPreviewDialogSprzedaz.ShowDialog();
+                        //printPreviewDialogSprzedaz.Document = pd;  // psuje drukowanie - tylko pierwsza strona wychodzi
+                        //printPreviewDialogSprzedaz.ShowDialog();
 
                         if (printDialogSprzedaz.ShowDialog() == DialogResult.OK)
                             pd.Print();
@@ -250,7 +281,7 @@ namespace SystemSerwisowy
                     MessageBox.Show("Nie wybrano daty raportu.");
                 }
             }
-            catch
+            catch (Exception ex)
             {
                 MessageBox.Show("Wystąpił błąd podczas generowania wydruku.");
             }
@@ -263,7 +294,10 @@ namespace SystemSerwisowy
             decimal Dochod = 0;
             for (int i = 0; i < glowna.listaProduktow.Count(); i++)
             {
-                if (glowna.listaProduktow[i].DataSprzedazy == dtpDataRaportuSprzedazy.Value.ToShortDateString())
+                bool parsujDateSprzedazy = DateTime.TryParseExact(glowna.listaProduktow[i].DataSprzedazy, "dd.MM.yyyy", CultureInfo.CurrentCulture, DateTimeStyles.None, out DateTime dataSprzedazy);
+                if (parsujDateSprzedazy
+                    && dataSprzedazy >= Convert.ToDateTime(dtpDataOdRaportuSprzedazy.Value.ToShortDateString())
+                    && dataSprzedazy <= Convert.ToDateTime(dtpDataDoRaportuSprzedazy.Value.ToShortDateString()))
                 {
                     listaDoRaportu.Add(glowna.listaProduktow[i]);
                 }
@@ -275,9 +309,17 @@ namespace SystemSerwisowy
                 Font font1 = new Font(FontFamily.GenericSansSerif, 10, FontStyle.Bold);
                 Font font2 = new Font(FontFamily.GenericSansSerif, 10, FontStyle.Regular);
                 Font font3 = new Font(FontFamily.GenericSansSerif, 15, FontStyle.Bold);
-                e.Graphics.DrawString("Raport sprzedaży z dnia - " + DateTime.Today.ToShortDateString(), font3, Brushes.Black, new Point(130, 40));
+                if (dtpDataOdRaportuSprzedazy.Value != dtpDataDoRaportuSprzedazy.Value)
+                {
+                    e.Graphics.DrawString("Raport sprzedaży z zakresu " + dtpDataOdRaportuSprzedazy.Value.ToShortDateString() + " - " + dtpDataDoRaportuSprzedazy.Value.ToShortDateString(), font3, Brushes.Black, new Point(80, 40));
 
-                RectangleF[] rects = 
+                }
+                else
+                {
+                    e.Graphics.DrawString("Raport sprzedaży z dnia - " + dtpDataOdRaportuSprzedazy.Value.ToShortDateString(), font3, Brushes.Black, new Point(130, 40));
+                }
+
+                RectangleF[] rects =
             {
                 new RectangleF(40,90,30,40), //lp
                 new RectangleF(70,90,90,40), //nazwa
@@ -293,13 +335,13 @@ namespace SystemSerwisowy
                 e.Graphics.DrawString("Numer Seryjny", font1, Brushes.Black, new Rectangle(162, 95, 105, 35));
                 e.Graphics.DrawString("Wyposażenie", font1, Brushes.Black, new Point(272, 95));
                 e.Graphics.DrawString("Cena sprzedaży", font1, Brushes.Black, new Rectangle(412, 95, 85, 35));
-                e.Graphics.DrawString("Data sprzedaży", font1, Brushes.Black, new Rectangle(502, 95, 85, 35 ));
+                e.Graphics.DrawString("Data sprzedaży", font1, Brushes.Black, new Rectangle(502, 95, 85, 35));
                 e.Graphics.DrawString("Zysk", font1, Brushes.Black, new Point(592, 95));
                 while (indeks < listaDoRaportu.Count())
                 {
                     Kwota += Convert.ToDecimal(listaDoRaportu[indeks].CenaSprzedazy);
                     Dochod += Convert.ToDecimal(listaDoRaportu[indeks].CenaSprzedazy) - Convert.ToDecimal(listaDoRaportu[indeks].CenaZakupu);
-                    RectangleF[] rectangles = 
+                    RectangleF[] rectangles =
                 {
                     new RectangleF(40,130+40*i,30,40), //lp
                     new RectangleF(70,130+40*i,90,40), //nazwa
@@ -336,10 +378,100 @@ namespace SystemSerwisowy
                 e.HasMorePages = false;
             }
 
-
-
-
-
         }
+
+        private void btRaportStanu_Click(object sender, EventArgs e)
+        {
+            if (glowna.listaProduktow.Count > 0)
+            {
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.InitialDirectory = @"C:\";
+                saveFileDialog.Filter = "Excel files (*.xlsx)|*.xlsx";
+                saveFileDialog.FilterIndex = 0;
+                saveFileDialog.RestoreDirectory = true;
+                saveFileDialog.CreatePrompt = true;
+                saveFileDialog.Title = "Zapisz Raport do:";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string path = saveFileDialog.FileName;
+                    try
+                    {
+                        Excel.Application ExcelApp = new Excel.Application();
+                        //zapisuj.WriteLine("utworzenie excelapp");
+                        Excel.Workbook ExcelWorkBook = null;
+                        //zapisuj.WriteLine("utworzenieworkbook");
+                        Excel.Worksheet ExcelWorkSheet = null;
+
+                        //zapisuj.WriteLine("utworzenie worksheet");
+
+
+                        ExcelApp.Visible = true;
+
+                        ExcelWorkBook = ExcelApp.Workbooks.Add(Excel.XlWBATemplate.xlWBATWorksheet);
+
+
+                        //zapisuj.WriteLine("Przed zapisem danych");
+                        ExcelWorkSheet = ExcelWorkBook.Worksheets[1];
+                        int i = 2;
+                        ExcelWorkSheet.Cells[1, 1] = "LP.";
+                        ExcelWorkSheet.Cells[1, 2] = "Nazwa";
+                        ExcelWorkSheet.Cells[1, 3] = "Numer seryjny";
+                        ExcelWorkSheet.Cells[1, 4] = "Wyposażenie";
+                        ExcelWorkSheet.Cells[1, 5] = "Cena kupna";
+                        ExcelWorkSheet.Cells[1, 6] = "Data kupna";
+                        ExcelWorkSheet.Cells[1, 7] = "Uwagi";
+
+                        foreach (Produkt item in glowna.listaProduktow)
+                        {
+                            if (item.Dostepny == "TAK")
+                            {
+                                ExcelWorkSheet.Cells[i, 1] = i - 1;
+                                ExcelWorkSheet.Cells[i, 2] = item.Nazwa;
+                                ExcelWorkSheet.Cells[i, 3] = item.NumerSeryjny;
+                                ExcelWorkSheet.Cells[i, 4] = item.Wyposazenie;
+                                ExcelWorkSheet.Cells[i, 5] = item.CenaZakupu + "zł " + "[" + item.Ilosc + "szt.]";
+                                ExcelWorkSheet.Cells[i, 6] = item.DataZakupu;
+                                ExcelWorkSheet.Cells[i, 7] = item.Uwagi;
+                                i++;
+                            }
+                        }
+
+                        ExcelWorkBook.Worksheets[1].Name = "Raport stanu";
+                        ExcelWorkBook.SaveAs(path);
+                        //zapisuj.WriteLine("po zapisie workbook");
+
+                        ExcelWorkBook.Close();
+
+                        ExcelApp.Quit();
+                        MessageBox.Show("Raport zapisano pomyślnie w: " + saveFileDialog.FileName);
+                    }
+
+                    catch (Exception)
+                    {
+                        //zapisuj.WriteLine("exception:" + exHandle);
+                    }
+
+                    finally
+                    {
+                        //zapisuj.WriteLine("Koniec");
+                        //zapisuj.Close();
+
+
+                        foreach (Process process in Process.GetProcessesByName("Excel"))
+                        {
+                            process.Kill();
+                        }
+                    }
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("Brak produktów do wydruku!");
+            }
+        }
+
+
     }
 }

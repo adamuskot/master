@@ -88,3 +88,34 @@ E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\SystemSerwisowy\bin\Debug\smsA
 E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\SystemSerwisowy\bin\Debug\smsApi.pdb
 E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.TrescSMS.resources
 E:\Adam\Repozytorium\Serwis Lumik\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.WyslijSMS.resources
+D:\Repozytorium\SystemSerwisowy\master\SystemSerwisowy\SystemSerwisowy\bin\Debug\SystemSerwisowy.exe.config
+D:\Repozytorium\SystemSerwisowy\master\SystemSerwisowy\SystemSerwisowy\bin\Debug\SystemSerwisowy.exe
+D:\Repozytorium\SystemSerwisowy\master\SystemSerwisowy\SystemSerwisowy\bin\Debug\SystemSerwisowy.pdb
+D:\Repozytorium\SystemSerwisowy\master\SystemSerwisowy\SystemSerwisowy\bin\Debug\smsApi.dll
+D:\Repozytorium\SystemSerwisowy\master\SystemSerwisowy\SystemSerwisowy\bin\Debug\smsApi.pdb
+D:\Repozytorium\SystemSerwisowy\master\SystemSerwisowy\SystemSerwisowy\bin\Debug\smsApi.dll.config
+D:\Repozytorium\SystemSerwisowy\master\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.csprojAssemblyReference.cache
+D:\Repozytorium\SystemSerwisowy\master\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.csproj.ResolveComReference.cache
+D:\Repozytorium\SystemSerwisowy\master\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.DodajAkcesoria.resources
+D:\Repozytorium\SystemSerwisowy\master\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.DodajProdukt.resources
+D:\Repozytorium\SystemSerwisowy\master\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.DodajUsterke.resources
+D:\Repozytorium\SystemSerwisowy\master\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.EdycjaUsterki.resources
+D:\Repozytorium\SystemSerwisowy\master\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.FirmaDane.resources
+D:\Repozytorium\SystemSerwisowy\master\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.Glowna.resources
+D:\Repozytorium\SystemSerwisowy\master\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.Properties.Resources.resources
+D:\Repozytorium\SystemSerwisowy\master\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.Przypominacz.resources
+D:\Repozytorium\SystemSerwisowy\master\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.Regulamin.resources
+D:\Repozytorium\SystemSerwisowy\master\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.SekcjaAkcesoriow.resources
+D:\Repozytorium\SystemSerwisowy\master\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.SekcjaProduktow.resources
+D:\Repozytorium\SystemSerwisowy\master\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.SekcjaRaportow.resources
+D:\Repozytorium\SystemSerwisowy\master\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.SekcjaSerwisu.resources
+D:\Repozytorium\SystemSerwisowy\master\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.SprzedajAkcesoria.resources
+D:\Repozytorium\SystemSerwisowy\master\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.SprzedajProdukt.resources
+D:\Repozytorium\SystemSerwisowy\master\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.KategorieProduktow.resources
+D:\Repozytorium\SystemSerwisowy\master\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.TrescSMS.resources
+D:\Repozytorium\SystemSerwisowy\master\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.WyslijSMS.resources
+D:\Repozytorium\SystemSerwisowy\master\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.csproj.GenerateResource.cache
+D:\Repozytorium\SystemSerwisowy\master\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.csproj.CoreCompileInputs.cache
+D:\Repozytorium\SystemSerwisowy\master\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.csproj.CopyComplete
+D:\Repozytorium\SystemSerwisowy\master\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.exe
+D:\Repozytorium\SystemSerwisowy\master\SystemSerwisowy\SystemSerwisowy\obj\x86\Debug\SystemSerwisowy.pdb

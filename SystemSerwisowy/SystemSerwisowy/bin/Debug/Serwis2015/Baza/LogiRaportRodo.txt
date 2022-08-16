@@ -1,0 +1,6 @@
+utworzenie excelapp
+utworzenieworkbook
+utworzenie worksheet
+Przed zapisem danych
+po zapisie workbook
+Koniec

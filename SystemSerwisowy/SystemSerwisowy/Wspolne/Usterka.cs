@@ -160,6 +160,13 @@ namespace SystemSerwisowy
         }
         public string Status
         {
+//            Naprawiony
+//Brak możliwości naprawy
+//Wysłane na gwarancję
+//Przyjęty do naprawy
+//Czeka na części
+//Czeka na decyzje klienta
+//Brak zgody na naprawę
             get
             {
                 return status;

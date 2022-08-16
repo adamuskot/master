@@ -35,9 +35,12 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.zamknij = new System.Windows.Forms.ToolStripMenuItem();
             this.PomocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.DaneOFirmie = new System.Windows.Forms.ToolStripMenuItem();
             this.regulaminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.trescSmsToolStrip = new System.Windows.Forms.ToolStripMenuItem();
+            this.wersjaProgramuStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.UstawieniaStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.StatusyStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DaneOFirmie = new System.Windows.Forms.ToolStripMenuItem();
             this.wydrukiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.raportStanuToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.btSerwis = new System.Windows.Forms.Button();
@@ -62,7 +65,6 @@
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.btnRaporty = new System.Windows.Forms.Button();
-            this.wersjaProgramuStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -106,34 +108,57 @@
             // PomocToolStripMenuItem
             // 
             this.PomocToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.DaneOFirmie,
             this.regulaminToolStripMenuItem,
             this.trescSmsToolStrip,
-            this.wersjaProgramuStripMenuItem});
+            this.wersjaProgramuStripMenuItem,
+            this.UstawieniaStripMenuItem});
             this.PomocToolStripMenuItem.Name = "PomocToolStripMenuItem";
             this.PomocToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.PomocToolStripMenuItem.Text = "Pomoc";
             // 
-            // DaneOFirmie
-            // 
-            this.DaneOFirmie.Name = "DaneOFirmie";
-            this.DaneOFirmie.Size = new System.Drawing.Size(165, 22);
-            this.DaneOFirmie.Text = "Dane o Firmie";
-            this.DaneOFirmie.Click += new System.EventHandler(this.DaneOFirmie_Click);
-            // 
             // regulaminToolStripMenuItem
             // 
             this.regulaminToolStripMenuItem.Name = "regulaminToolStripMenuItem";
-            this.regulaminToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.regulaminToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.regulaminToolStripMenuItem.Text = "Regulamin";
             this.regulaminToolStripMenuItem.Click += new System.EventHandler(this.regulaminToolStripMenuItem_Click);
             // 
             // trescSmsToolStrip
             // 
             this.trescSmsToolStrip.Name = "trescSmsToolStrip";
-            this.trescSmsToolStrip.Size = new System.Drawing.Size(165, 22);
+            this.trescSmsToolStrip.Size = new System.Drawing.Size(180, 22);
             this.trescSmsToolStrip.Text = "Treść SMS";
             this.trescSmsToolStrip.Click += new System.EventHandler(this.trescSmsToolStrip_Click);
+            // 
+            // wersjaProgramuStripMenuItem
+            // 
+            this.wersjaProgramuStripMenuItem.Name = "wersjaProgramuStripMenuItem";
+            this.wersjaProgramuStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.wersjaProgramuStripMenuItem.Text = "Wersja programu";
+            this.wersjaProgramuStripMenuItem.Click += new System.EventHandler(this.wersjaProgramuStripMenuItem_Click);
+            // 
+            // UstawieniaStripMenuItem
+            // 
+            this.UstawieniaStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.StatusyStripMenuItem,
+            this.DaneOFirmie});
+            this.UstawieniaStripMenuItem.Name = "UstawieniaStripMenuItem";
+            this.UstawieniaStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.UstawieniaStripMenuItem.Text = "Ustawienia";
+            // 
+            // StatusyStripMenuItem
+            // 
+            this.StatusyStripMenuItem.Name = "StatusyStripMenuItem";
+            this.StatusyStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.StatusyStripMenuItem.Text = "Kategorie Produktów";
+            this.StatusyStripMenuItem.Click += new System.EventHandler(this.StatusyStripMenuItem_Click);
+            // 
+            // DaneOFirmie
+            // 
+            this.DaneOFirmie.Name = "DaneOFirmie";
+            this.DaneOFirmie.Size = new System.Drawing.Size(185, 22);
+            this.DaneOFirmie.Text = "Dane o Firmie";
+            this.DaneOFirmie.Click += new System.EventHandler(this.DaneOFirmie_Click);
             // 
             // wydrukiToolStripMenuItem
             // 
@@ -146,7 +171,7 @@
             // raportStanuToolStripMenuItem1
             // 
             this.raportStanuToolStripMenuItem1.Name = "raportStanuToolStripMenuItem1";
-            this.raportStanuToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.raportStanuToolStripMenuItem1.Size = new System.Drawing.Size(142, 22);
             this.raportStanuToolStripMenuItem1.Text = "Raport Stanu";
             this.raportStanuToolStripMenuItem1.Click += new System.EventHandler(this.raportStanuToolStripMenuItem1_Click);
             // 
@@ -378,13 +403,6 @@
             this.btnRaporty.UseVisualStyleBackColor = true;
             this.btnRaporty.Click += new System.EventHandler(this.btnRaporty_Click);
             // 
-            // wersjaProgramuStripMenuItem
-            // 
-            this.wersjaProgramuStripMenuItem.Name = "wersjaProgramuStripMenuItem";
-            this.wersjaProgramuStripMenuItem.Size = new System.Drawing.Size(165, 22);
-            this.wersjaProgramuStripMenuItem.Text = "Wersja programu";
-            this.wersjaProgramuStripMenuItem.Click += new System.EventHandler(this.wersjaProgramuStripMenuItem_Click);
-            // 
             // Glowna
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -450,6 +468,8 @@
         private System.Windows.Forms.Button btnRaporty;
         private System.Windows.Forms.ToolStripMenuItem trescSmsToolStrip;
         private System.Windows.Forms.ToolStripMenuItem wersjaProgramuStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem UstawieniaStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem StatusyStripMenuItem;
     }
 }
 

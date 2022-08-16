@@ -1,4 +1,5 @@
-Czas naprawy=3
-Tresc sms naprawiony=Dzien dobry, artykul naprawiony
-Tresc sms nienaprawiony=Dzien dobry, artykul nienaprawiony
-Tresc sms inny=Dzien dobry, nie wiem co z telefonem ale wysylam sms
+Czas naprawy=7
+Tresc sms naprawiony=Sprzet oddany do serwisu zostal naprawiony. SERWIS LUMIK ZDUNSKA WOLA TEL: 513343438
+Tresc sms nienaprawiony=Obsluga serwisowa sprzetu zostala zakonczona. Niestety brak mozliwosci naprawy.SERWIS LUMIK ZDUNSKA WOLA 513343438
+Tresc sms inny=
+Statusy=Telefon|Laptop|Złoto|Srebro|Narzędzia|Konsola|AGD|RTV|Zegarek|Rower|Inne

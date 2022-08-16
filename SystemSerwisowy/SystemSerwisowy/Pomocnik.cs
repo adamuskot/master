@@ -46,5 +46,22 @@ namespace SystemSerwisowy
                 return false;
             return true;
         }
+
+        public List<string> UzupelnijDomysleKategorie()
+        {
+            List<string> listaKategorii = new List<string>();
+            listaKategorii.Add("Telefon");
+            listaKategorii.Add("Laptop");
+            listaKategorii.Add("Złoto");
+            listaKategorii.Add("Srebro");
+            listaKategorii.Add("Narzędzia");
+            listaKategorii.Add("Konsola");
+            listaKategorii.Add("AGD");
+            listaKategorii.Add("RTV");
+            listaKategorii.Add("Zegarek");
+            listaKategorii.Add("Rower");
+            listaKategorii.Add("Inne");
+            return listaKategorii;
+        }
     }
 }

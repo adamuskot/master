@@ -15,18 +15,18 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_101E2EE2930BB70A0484DA7487B70075"
-        "OwnerKey" = "8:_83911A0EDB1F464BAE06D673AAC2A8AF"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_83911A0EDB1F464BAE06D673AAC2A8AF"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
+        "MsmKey" = "8:_F90F4AF7FE84C7EBFA73F067F2A4F88A"
+        "OwnerKey" = "8:_83911A0EDB1F464BAE06D673AAC2A8AF"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_83911A0EDB1F464BAE06D673AAC2A8AF"
         "MsmSig" = "8:_UNDEFINED"
@@ -34,7 +34,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_101E2EE2930BB70A0484DA7487B70075"
+        "OwnerKey" = "8:_F90F4AF7FE84C7EBFA73F067F2A4F88A"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -142,14 +142,14 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_101E2EE2930BB70A0484DA7487B70075"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F90F4AF7FE84C7EBFA73F067F2A4F88A"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:smsApi, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_101E2EE2930BB70A0484DA7487B70075"
+                    "_F90F4AF7FE84C7EBFA73F067F2A4F88A"
                     {
                     "Name" = "8:smsApi.dll"
                     "Attributes" = "3:512"
@@ -252,7 +252,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Serwis2015"
         "ProductCode" = "8:{BE4B393D-8AF2-4ADA-84E6-FF4972ACF16B}"
-        "PackageCode" = "8:{62E7568F-0D23-4A7E-908B-685AA21EAC99}"
+        "PackageCode" = "8:{12F03BC7-C9C6-4548-A6A0-D25D73469B4E}"
         "UpgradeCode" = "8:{9642A068-4BF8-458B-98E8-D4015E7AB396}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

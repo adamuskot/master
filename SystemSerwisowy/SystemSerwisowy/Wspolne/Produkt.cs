@@ -18,7 +18,7 @@ namespace SystemSerwisowy
         private string datado;
         private string dostepnosc;
         private string uwagi;
-        private string historia;
+        private string kategoria;
 
         public int Id
         {
@@ -151,16 +151,15 @@ namespace SystemSerwisowy
                 uwagi = value;
             }
         }
-
-        public string WykonaneNaprawy
+        public string Kategoria
         {
             get
             {
-                return historia;
+                return kategoria;
             }
             set
             {
-                historia = value;
+                kategoria = value;
             }
         }
 
@@ -177,7 +176,7 @@ namespace SystemSerwisowy
             cenakupna = "";
             cenasprzedazy = "";
             dostepnosc = "TAK";
-            WykonaneNaprawy = "";
+            kategoria = "";
         }
     }
 }
