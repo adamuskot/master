@@ -45,28 +45,28 @@ namespace SystemSerwisowy
                 usterka.Odbior = "NIE";
                 usterka.WykonaneNaprawy = "";
 
-                var bylaZgoda = serwis.glowna.listaUsterek.Cast<Usterka>().Where(x => x.Telefon == tbTelefon.Text && x.ZgodaElektro == "TAK" ).FirstOrDefault();
-                if (bylaZgoda == null)
-                {
-                    DialogResult dialogResult = MessageBox.Show("Czy klient wyraża zgodę RODO?", "Zgoda RODO", MessageBoxButtons.YesNo);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        usterka.ZgodaElektro = "TAK";
-                        //printPreviewDialog2.Document = printDocument2;
-                        //printPreviewDialog2.ShowDialog();
-                        if (printDialog1.ShowDialog() == DialogResult.OK)
-                            printDocument2.Print();
-                    }
-                    else if (dialogResult == DialogResult.No)
-                    {
-                        usterka.ZgodaElektro = "NIE";
-                    }
-                }
-                else
-                {
-                    // już wcześniej ten klient odpowiadał na to pytanie więc teraz już automatycznie ma zgodę.
-                    usterka.ZgodaElektro = "TAK";
-                }
+                //var bylaZgoda = serwis.glowna.listaUsterek.Cast<Usterka>().Where(x => x.Telefon == tbTelefon.Text && x.ZgodaElektro == "TAK" ).FirstOrDefault();
+                //if (bylaZgoda == null)
+                //{
+                //    DialogResult dialogResult = MessageBox.Show("Czy klient wyraża zgodę RODO?", "Zgoda RODO", MessageBoxButtons.YesNo);
+                //    if (dialogResult == DialogResult.Yes)
+                //    {
+                //        usterka.ZgodaElektro = "TAK";
+                //        //printPreviewDialog2.Document = printDocument2;
+                //        //printPreviewDialog2.ShowDialog();
+                //        if (printDialog2.ShowDialog() == DialogResult.OK)
+                //            printDocument2.Print();
+                //    }
+                //    else if (dialogResult == DialogResult.No)
+                //    {
+                //        usterka.ZgodaElektro = "NIE";
+                //    }
+                //}
+                //else
+                //{
+                //    // już wcześniej ten klient odpowiadał na to pytanie więc teraz już automatycznie ma zgodę.
+                //    usterka.ZgodaElektro = "TAK";
+                //}
                 var bylaBlokada = serwis.glowna.listaUsterek.Cast<Usterka>().Where(x => x.Telefon == tbTelefon.Text && x.BlokujKlienta == "TAK").FirstOrDefault();
                 if (bylaBlokada != null)
                 {

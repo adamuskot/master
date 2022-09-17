@@ -35,6 +35,7 @@ namespace SystemSerwisowy
             Close();
             glowna.Enabled = true;
             glowna.Focus();
+            glowna.generujRaport();
         }
 
         private void uzupelnijRegulamin()
@@ -57,12 +58,14 @@ namespace SystemSerwisowy
             Close();
             glowna.Enabled = true;
             glowna.Focus();
+            glowna.generujRaport();
         }
 
         private void Regulamin_FormClosing(object sender, FormClosingEventArgs e)
         {
             glowna.Enabled = true;
             glowna.Focus();
+            glowna.generujRaport();
         }
     }
 }

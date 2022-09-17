@@ -58,6 +58,7 @@ namespace SystemSerwisowy
         {
             glowna.Enabled = true;
             glowna.Focus();
+            glowna.generujRaport();
         }
     }
 }

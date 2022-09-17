@@ -36,6 +36,7 @@ namespace SystemSerwisowy
             glowna.nadpiszUstawienia();
             Close();
             glowna.Enabled = true;
+            glowna.generujRaport();
             glowna.Focus();
         }
 
@@ -44,12 +45,14 @@ namespace SystemSerwisowy
             Close();
             glowna.Enabled = true;
             glowna.Focus();
+            glowna.generujRaport();
         }
 
         private void StatusyProduktow_FormClosing(object sender, FormClosingEventArgs e)
         {
             glowna.Enabled = true;
             glowna.Focus();
+            glowna.generujRaport();
         }
     }
 }

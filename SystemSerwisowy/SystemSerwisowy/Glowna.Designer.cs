@@ -119,21 +119,21 @@
             // regulaminToolStripMenuItem
             // 
             this.regulaminToolStripMenuItem.Name = "regulaminToolStripMenuItem";
-            this.regulaminToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.regulaminToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.regulaminToolStripMenuItem.Text = "Regulamin";
             this.regulaminToolStripMenuItem.Click += new System.EventHandler(this.regulaminToolStripMenuItem_Click);
             // 
             // trescSmsToolStrip
             // 
             this.trescSmsToolStrip.Name = "trescSmsToolStrip";
-            this.trescSmsToolStrip.Size = new System.Drawing.Size(180, 22);
+            this.trescSmsToolStrip.Size = new System.Drawing.Size(165, 22);
             this.trescSmsToolStrip.Text = "Treść SMS";
             this.trescSmsToolStrip.Click += new System.EventHandler(this.trescSmsToolStrip_Click);
             // 
             // wersjaProgramuStripMenuItem
             // 
             this.wersjaProgramuStripMenuItem.Name = "wersjaProgramuStripMenuItem";
-            this.wersjaProgramuStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.wersjaProgramuStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.wersjaProgramuStripMenuItem.Text = "Wersja programu";
             this.wersjaProgramuStripMenuItem.Click += new System.EventHandler(this.wersjaProgramuStripMenuItem_Click);
             // 
@@ -143,7 +143,7 @@
             this.StatusyStripMenuItem,
             this.DaneOFirmie});
             this.UstawieniaStripMenuItem.Name = "UstawieniaStripMenuItem";
-            this.UstawieniaStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.UstawieniaStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.UstawieniaStripMenuItem.Text = "Ustawienia";
             // 
             // StatusyStripMenuItem
@@ -164,6 +164,7 @@
             // 
             this.wydrukiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.raportStanuToolStripMenuItem1});
+            this.wydrukiToolStripMenuItem.Enabled = false;
             this.wydrukiToolStripMenuItem.Name = "wydrukiToolStripMenuItem";
             this.wydrukiToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
             this.wydrukiToolStripMenuItem.Text = "Wydruki";

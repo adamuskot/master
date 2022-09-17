@@ -172,6 +172,14 @@ namespace SystemSerwisowy
         private bool SprawdzFormularz()
         {
             bool ok = true;
+            string cena = tbCenaZakupu.Text;
+            cena.Replace(',', '.');
+            double res;
+            if (cena == "" || !double.TryParse(cena, out res))
+            {
+                ok = false;
+                MessageBox.Show("Wpisz poprawną cenę!");
+            }
             if (tbNazwa.Text == "")
             {
                 ok = false;

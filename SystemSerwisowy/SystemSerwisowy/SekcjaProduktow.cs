@@ -73,6 +73,7 @@ namespace SystemSerwisowy
             Close();
             glowna.Enabled = true;
             glowna.Focus();
+            glowna.generujRaport();
         }
 
         private void SekcjaProduktow_FormClosing(object sender, FormClosingEventArgs e)

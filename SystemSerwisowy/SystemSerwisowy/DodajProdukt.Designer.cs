@@ -37,6 +37,10 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tbInnaKategoria = new System.Windows.Forms.TextBox();
+            this.LblInnaKategoria = new System.Windows.Forms.Label();
+            this.cbKategorie = new System.Windows.Forms.ComboBox();
+            this.lblKategoria = new System.Windows.Forms.Label();
             this.tbNaprawy = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.nudIlosc = new System.Windows.Forms.NumericUpDown();
@@ -49,10 +53,6 @@
             this.tbId = new System.Windows.Forms.TextBox();
             this.btDodaj = new System.Windows.Forms.Button();
             this.btAnuluj = new System.Windows.Forms.Button();
-            this.lblKategoria = new System.Windows.Forms.Label();
-            this.cbKategorie = new System.Windows.Forms.ComboBox();
-            this.LblInnaKategoria = new System.Windows.Forms.Label();
-            this.tbInnaKategoria = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudIlosc)).BeginInit();
             this.SuspendLayout();
@@ -93,9 +93,9 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label4.Location = new System.Drawing.Point(16, 91);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(43, 18);
+            this.label4.Size = new System.Drawing.Size(66, 18);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Cena";
+            this.label4.Text = "Cena [zł]";
             // 
             // label5
             // 
@@ -169,6 +169,46 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(398, 339);
             this.panel1.TabIndex = 8;
+            // 
+            // tbInnaKategoria
+            // 
+            this.tbInnaKategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.tbInnaKategoria.Location = new System.Drawing.Point(166, 288);
+            this.tbInnaKategoria.Name = "tbInnaKategoria";
+            this.tbInnaKategoria.Size = new System.Drawing.Size(210, 22);
+            this.tbInnaKategoria.TabIndex = 21;
+            this.tbInnaKategoria.Visible = false;
+            // 
+            // LblInnaKategoria
+            // 
+            this.LblInnaKategoria.AutoSize = true;
+            this.LblInnaKategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.LblInnaKategoria.Location = new System.Drawing.Point(16, 287);
+            this.LblInnaKategoria.Name = "LblInnaKategoria";
+            this.LblInnaKategoria.Size = new System.Drawing.Size(145, 18);
+            this.LblInnaKategoria.TabIndex = 20;
+            this.LblInnaKategoria.Text = "Wprowadź kategorię";
+            this.LblInnaKategoria.Visible = false;
+            // 
+            // cbKategorie
+            // 
+            this.cbKategorie.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.cbKategorie.FormattingEnabled = true;
+            this.cbKategorie.Location = new System.Drawing.Point(166, 260);
+            this.cbKategorie.Name = "cbKategorie";
+            this.cbKategorie.Size = new System.Drawing.Size(210, 24);
+            this.cbKategorie.TabIndex = 19;
+            this.cbKategorie.SelectedIndexChanged += new System.EventHandler(this.cbKategorie_SelectedIndexChanged);
+            // 
+            // lblKategoria
+            // 
+            this.lblKategoria.AutoSize = true;
+            this.lblKategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblKategoria.Location = new System.Drawing.Point(16, 260);
+            this.lblKategoria.Name = "lblKategoria";
+            this.lblKategoria.Size = new System.Drawing.Size(71, 18);
+            this.lblKategoria.TabIndex = 18;
+            this.lblKategoria.Text = "Kategoria";
             // 
             // tbNaprawy
             // 
@@ -288,46 +328,6 @@
             this.btAnuluj.Text = "Anuluj";
             this.btAnuluj.UseVisualStyleBackColor = true;
             this.btAnuluj.Click += new System.EventHandler(this.btAnuluj_Click);
-            // 
-            // lblKategoria
-            // 
-            this.lblKategoria.AutoSize = true;
-            this.lblKategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblKategoria.Location = new System.Drawing.Point(16, 260);
-            this.lblKategoria.Name = "lblKategoria";
-            this.lblKategoria.Size = new System.Drawing.Size(71, 18);
-            this.lblKategoria.TabIndex = 18;
-            this.lblKategoria.Text = "Kategoria";
-            // 
-            // cbKategorie
-            // 
-            this.cbKategorie.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.cbKategorie.FormattingEnabled = true;
-            this.cbKategorie.Location = new System.Drawing.Point(166, 260);
-            this.cbKategorie.Name = "cbKategorie";
-            this.cbKategorie.Size = new System.Drawing.Size(210, 24);
-            this.cbKategorie.TabIndex = 19;
-            this.cbKategorie.SelectedIndexChanged += new System.EventHandler(this.cbKategorie_SelectedIndexChanged);
-            // 
-            // LblInnaKategoria
-            // 
-            this.LblInnaKategoria.AutoSize = true;
-            this.LblInnaKategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.LblInnaKategoria.Location = new System.Drawing.Point(16, 287);
-            this.LblInnaKategoria.Name = "LblInnaKategoria";
-            this.LblInnaKategoria.Size = new System.Drawing.Size(145, 18);
-            this.LblInnaKategoria.TabIndex = 20;
-            this.LblInnaKategoria.Text = "Wprowadź kategorię";
-            this.LblInnaKategoria.Visible = false;
-            // 
-            // tbInnaKategoria
-            // 
-            this.tbInnaKategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.tbInnaKategoria.Location = new System.Drawing.Point(166, 288);
-            this.tbInnaKategoria.Name = "tbInnaKategoria";
-            this.tbInnaKategoria.Size = new System.Drawing.Size(210, 22);
-            this.tbInnaKategoria.TabIndex = 21;
-            this.tbInnaKategoria.Visible = false;
             // 
             // DodajProdukt
             // 

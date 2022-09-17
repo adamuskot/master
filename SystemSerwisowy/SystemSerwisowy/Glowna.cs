@@ -864,7 +864,7 @@ namespace SystemSerwisowy
 
                 foreach (Produkt prod in listaProduktow)
                 {
-                    if (prod.Dostepny == "TAK")
+                    if (prod.Dostepny == "TAK" && double.TryParse(prod.CenaZakupu, out double res))
                     {
                         urzadzenia = urzadzenia + (double.Parse(prod.CenaZakupu, System.Globalization.CultureInfo.InvariantCulture) * (double)prod.Ilosc);
                     }
@@ -872,7 +872,7 @@ namespace SystemSerwisowy
 
                 foreach (Czesc cz in listaAkcesoriow)
                 {
-                    if (cz.Dostepny == "TAK")
+                    if (cz.Dostepny == "TAK" && double.TryParse(cz.CenaZakupu, out double res))
                     {
                         akcesoria += double.Parse(cz.CenaZakupu, System.Globalization.CultureInfo.InvariantCulture) * (double)cz.Ilosc;
                     }
@@ -887,9 +887,9 @@ namespace SystemSerwisowy
                 lblSprzedaz.Text = "Wartość rzeczy na stanie: " + urzadzenia.ToString() + " zł.";
                 lblAkcesoria.Text = "Wartość części na stanie: " + akcesoria.ToString() + " zł.";
             }
-            catch
+            catch (Exception ex)
             {
-
+                MessageBox.Show("Wystąpił problem z aktualizowaniem raportów: " + ex.Message);
             }
         }
 

@@ -27,6 +27,7 @@ namespace SystemSerwisowy
         {
             glowna.Enabled = true;
             glowna.Focus();
+            glowna.generujRaport();
         }
 
         private void btZamknij_Click(object sender, EventArgs e)
@@ -34,6 +35,7 @@ namespace SystemSerwisowy
             Close();
             glowna.Enabled = true;
             glowna.Focus();
+            glowna.generujRaport();
         }
 
         private void btRaportSerwisu_Click(object sender, EventArgs e)
@@ -421,6 +423,7 @@ namespace SystemSerwisowy
                         ExcelWorkSheet.Cells[1, 5] = "Cena kupna";
                         ExcelWorkSheet.Cells[1, 6] = "Data kupna";
                         ExcelWorkSheet.Cells[1, 7] = "Uwagi";
+                        ExcelWorkSheet.Cells[1, 8] = "Kategoria";
 
                         foreach (Produkt item in glowna.listaProduktow)
                         {
@@ -430,9 +433,11 @@ namespace SystemSerwisowy
                                 ExcelWorkSheet.Cells[i, 2] = item.Nazwa;
                                 ExcelWorkSheet.Cells[i, 3] = item.NumerSeryjny;
                                 ExcelWorkSheet.Cells[i, 4] = item.Wyposazenie;
-                                ExcelWorkSheet.Cells[i, 5] = item.CenaZakupu + "zł " + "[" + item.Ilosc + "szt.]";
+                                ExcelWorkSheet.Cells[i, 5] = item.CenaZakupu;
                                 ExcelWorkSheet.Cells[i, 6] = item.DataZakupu;
                                 ExcelWorkSheet.Cells[i, 7] = item.Uwagi;
+                                ExcelWorkSheet.Cells[i, 8] = item.Kategoria;
+
                                 i++;
                             }
                         }

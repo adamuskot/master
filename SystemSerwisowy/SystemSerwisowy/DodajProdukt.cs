@@ -35,10 +35,10 @@ namespace SystemSerwisowy
             double res;
             string cena = tbCena.Text;
             cena.Replace(',', '.');
-            if (cena == "" && double.TryParse(cena, out res))
+            if (cena == "" || !double.TryParse(cena, out res))
             {
                 ok = false;
-                MessageBox.Show("Wpisz poprawną cenę!");
+                MessageBox.Show("Wpisz poprawną cenę! Należy podać samą kwotę w zł bez dodatkowych znaków.");
             }
             if (tbData.Text == "")
             {
