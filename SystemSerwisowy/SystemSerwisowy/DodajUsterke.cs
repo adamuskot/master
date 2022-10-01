@@ -100,8 +100,8 @@ namespace SystemSerwisowy
                 serwis.glowna.listaUsterek.Add(usterka);
                 serwis.glowna.czasNaprawy = (int)nudCzasNaprawy.Value;
 
-                printPreviewDialog1.Document = printDocument1;
-                printPreviewDialog1.ShowDialog();
+                //printPreviewDialog1.Document = printDocument1;
+                //printPreviewDialog1.ShowDialog();
                 if (chbDrukuj.Checked)
                 {
                     if (printDialog1.ShowDialog() == DialogResult.OK)

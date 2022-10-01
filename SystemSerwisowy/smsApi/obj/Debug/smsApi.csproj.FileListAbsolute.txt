@@ -10,3 +10,4 @@ D:\Repozytorium\SystemSerwisowy\master\SystemSerwisowy\smsApi\bin\Debug\smsApi.p
 D:\Repozytorium\SystemSerwisowy\master\SystemSerwisowy\smsApi\obj\Debug\smsApi.csproj.CoreCompileInputs.cache
 D:\Repozytorium\SystemSerwisowy\master\SystemSerwisowy\smsApi\obj\Debug\smsApi.dll
 D:\Repozytorium\SystemSerwisowy\master\SystemSerwisowy\smsApi\obj\Debug\smsApi.pdb
+D:\Repozytorium\SystemSerwisowy\master\SystemSerwisowy\smsApi\obj\Debug\smsApi.csprojAssemblyReference.cache
